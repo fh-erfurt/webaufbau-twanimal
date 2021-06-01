@@ -29,8 +29,6 @@
   align-items: center;
   margin-left: 15px;
   margin-top: 15px;
-
-  /** Nicht relevant **/
   width: 350px;
   max-width: 350px;
 }
@@ -56,20 +54,6 @@
   padding: 0 15px;
 }
 
-/* .searchForm button {
-  width: 20px;
-  height: 20px;
-} */
-
-/* .searchForm input[type="text"] {
-  width: 80%;
-  height: 59px;
-  border-radius: 46px;
-  border: solid 1px #e2e2e2;
-  background-color: #f8f8f8;
-  padding: 0 15px;
-} */
-
 .profile {
   display: flex;
   align-items: center;
@@ -93,6 +77,7 @@
   background-size: cover;
   background-position: center;
   margin-left: 10px;
+  object-fit: Cover;
 }
 
 .info {

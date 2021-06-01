@@ -1,6 +1,5 @@
 import "./assets/fonts/Inter/font.css";
 import "./App.css";
-import "./assets/css/components/homepage.css";
 import Navigation from "./components/Navigation";
 import ProfileCard from "./components/ProfileCard";
 import PostContent from "./components/PostContent";
