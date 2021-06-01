@@ -9,7 +9,7 @@ class ProfileCard extends Component {
     return (
       <React.Fragment className="profileCard">
         <div className="search-field">
-          <form className="searchForm" action="#">
+          <form action="#">
             <FontAwesomeIcon className="icons" icon={faSearch} />
             <input
               type="text"
