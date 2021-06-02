@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faPaw } from "@fortawesome/free-solid-svg-icons";
-import "../assets/css/components/homepage.css";
+import "../assets/css/components/profileCard.css";
 
 class ProfileCard extends Component {
   state = {};
