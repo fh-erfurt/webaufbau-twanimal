@@ -1,7 +1,8 @@
-import logo from './logo.svg';
-import './assets/fonts/Inter/font.css'
-import './App.css';
-import Navigation from './components/Navigation';
+import "./assets/fonts/Inter/font.css";
+import "./App.css";
+import Navigation from "./components/Navigation";
+import ProfileCard from "./components/ProfileCard";
+import PostContent from "./components/PostContent";
 
 function App() {
   return (
@@ -9,6 +10,14 @@ function App() {
       <header className="App-header">
         <Navigation />
       </header>
+      <div className="Homepage">
+        <div className="postContent">
+          <PostContent />
+        </div>
+        <div className="profileCard">
+          <ProfileCard />
+        </div>
+      </div>
     </div>
   );
 }
