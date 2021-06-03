@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faPaw } from "@fortawesome/free-solid-svg-icons";
-import style from "../assets/css/components/profileCard.module.css";
+import style from "../assets/css/components/profileCard.module.scss";
 
 class ProfileCard extends Component {
   state = {};
@@ -53,7 +53,7 @@ class ProfileCard extends Component {
         </div>
 
         <div className={style.newPost}>
-          <FontAwesomeIcon className="icons" icon={faPaw} />
+          <FontAwesomeIcon className={style.icons} icon={faPaw} />
           <button>Neuer Beitrag</button>
         </div>
       </React.Fragment>

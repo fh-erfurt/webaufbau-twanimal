@@ -31,10 +31,12 @@
   outline: none;
 }
 
-.searchField .icons {
-  position: absolute;
-  left: 12px;
-  color: #7c7c7c;
+.searchField {
+  .icons {
+    position: absolute;
+    left: 12px;
+    color: #7c7c7c;
+  }
 }
 
 .profile {
@@ -53,14 +55,16 @@
   padding: 0 15px;
 }
 
-.profileImage img {
-  height: 93px;
-  width: 91px;
-  border-radius: 50%;
-  background-size: cover;
-  background-position: center;
-  margin-left: 10px;
-  object-fit: Cover;
+.profileImage {
+  img {
+    height: 93px;
+    width: 91px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    margin-left: 10px;
+    object-fit: Cover;
+  }
 }
 
 .info {
@@ -68,8 +72,10 @@
   padding: 0 15px;
 }
 
-.info .posts {
-  margin: auto;
+.info {
+  .posts {
+    margin: auto;
+  }
 }
 
 .status {
@@ -91,19 +97,23 @@
   margin-left: 15px;
 }
 
-.newPost button {
-  background: transparent;
-  border: none;
-  padding: 0 20px 0 45px;
-  height: 100%;
-  font-size: larger;
-  color: #ffffff;
+.newPost {
+  button {
+    background: transparent;
+    border: none;
+    padding: 0 20px 0 45px;
+    height: 100%;
+    font-size: larger;
+    color: #ffffff;
+  }
 }
 
-.newPost .icons {
-  position: absolute;
-  left: 32px;
-  transform: rotate(-25deg);
-  color: #ffffff;
-  font-size: 35px;
+.newPost {
+  .icons {
+    position: absolute;
+    left: 32px;
+    transform: rotate(-25deg);
+    color: #ffffff;
+    font-size: 35px;
+  }
 }
