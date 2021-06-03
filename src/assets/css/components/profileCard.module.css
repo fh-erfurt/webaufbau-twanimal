@@ -1,18 +1,10 @@
-/* Generally */
-
-.Homepage {
-  display: flex;
-  justify-content: center;
-  padding: 0 60px 0 60px;
-}
-
 .profileCard {
   width: 30%;
 }
 
 /* profileCard */
 
-.search-field {
+.searchField {
   display: inline-flex;
   height: 40px;
   border-radius: 20px;
@@ -28,18 +20,18 @@
   padding: 0 15px;
 }
 
-.search-field input {
+.searchField input {
   background: transparent;
   border: none;
   padding: 0 20px 0 35px;
   height: 100%;
 }
 
-.search-field input:focus {
+.searchField input:focus {
   outline: none;
 }
 
-.search-field .icons {
+.searchField .icons {
   position: absolute;
   left: 12px;
   color: #7c7c7c;

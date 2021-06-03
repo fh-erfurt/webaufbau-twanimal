@@ -10,7 +10,7 @@ function App() {
       <header className="App-header">
         <Navigation />
       </header>
-      <div className="Homepage">
+      <div className="homepage">
         <div className="postContent">
           <PostContent />
         </div>

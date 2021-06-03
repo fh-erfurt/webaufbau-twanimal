@@ -1,16 +1,16 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faPaw } from "@fortawesome/free-solid-svg-icons";
-import "../assets/css/components/profileCard.css";
+import style from "../assets/css/components/profileCard.module.css";
 
 class ProfileCard extends Component {
   state = {};
   render() {
     return (
-      <React.Fragment className="profileCard">
-        <div className="search-field">
+      <React.Fragment className={style.profileCard}>
+        <div className={style.searchField}>
           <form action="#">
-            <FontAwesomeIcon className="icons" icon={faSearch} />
+            <FontAwesomeIcon className={style.icons} icon={faSearch} />
             <input
               type="text"
               placeholder="Twanimal durchsuchen..."
@@ -18,32 +18,32 @@ class ProfileCard extends Component {
             />
           </form>
         </div>
-        <div className="profile">
-          <div className="profileImage">
+        <div className={style.profile}>
+          <div className={style.profileImage}>
             <img
               src="https://images.unsplash.com/photo-1552053831-71594a27632d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80"
               alt="profileImage"
             />
           </div>
-          <div className="profileName">
+          <div className={style.profileName}>
             <b>Hannelore</b>
             <span>@hanni_the_dog</span>
           </div>
         </div>
 
-        <div className="info">
-          <div className="posts">
+        <div className={style.info}>
+          <div className={style.posts}>
             <b>12 Beiträge</b>
           </div>
-          <div className="posts">
+          <div className={style.posts}>
             <b>400 Follower</b>
           </div>
-          <div className="posts">
+          <div className={style.posts}>
             <b>40 Freunde</b>
           </div>
         </div>
 
-        <div className="status">
+        <div className={style.status}>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam,
             purus sit amet luctus venenatis, lectus magna fringilla urna,
@@ -52,7 +52,7 @@ class ProfileCard extends Component {
           </p>
         </div>
 
-        <div className="newPost">
+        <div className={style.newPost}>
           <FontAwesomeIcon className="icons" icon={faPaw} />
           <button>Neuer Beitrag</button>
         </div>
