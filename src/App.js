@@ -3,6 +3,7 @@ import "./App.css";
 import Navigation from "./components/Navigation";
 import ProfileCard from "./components/ProfileCard";
 import PostContent from "./components/PostContent";
+import Login from "./components/Login";
 
 function App() {
   return (
