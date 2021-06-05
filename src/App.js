@@ -8,9 +8,11 @@ import Login from "./components/Login";
 function App() {
   return (
     <div className="App">
+      {/* 
       <header className="App-header">
         <Navigation />
       </header>
+
       <div className="homepage">
         <div className="postContent">
           <PostContent />
@@ -18,7 +20,9 @@ function App() {
         <div className="profileCard">
           <ProfileCard />
         </div>
-      </div>
+      </div> 
+      */}
+      <Login />
     </div>
   );
 }
