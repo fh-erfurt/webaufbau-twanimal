@@ -1,0 +1,98 @@
+// body {
+//     background-image: url(../../images/background-viecher.jpg);
+//     background-size: cover;
+//     background-repeat: no-repeat;
+// }
+
+.formTextContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  
+    width: 600px;
+    height: auto;
+    border-radius: 5px;
+    margin: 11% auto;
+    box-shadow: 0 9px 50px hsla(24, 26%, 4%, 0.548);
+    padding: 2%;
+    background-color: #ffffff;
+
+    .contentWraperImage {
+        align-self: center;
+        width: auto;
+        height: auto;
+    
+        .logo {
+          font-size: 50px;
+          transform: rotate(-25deg);
+          color: #1ead68;
+        }
+    }
+
+    .heading {
+        color: #1ead68;
+    }
+
+    .text {
+        font-size: 20px;
+    }
+
+    .loginButton, 
+    .registrationButton {
+        width: 220px;
+        border-radius: 51px;
+        padding: 10px;
+        margin: 5px;
+    
+        button {
+          background: transparent;
+          border: none;
+          padding: 0 30px;
+          height: 100%;
+          font-size: larger;
+          color: #ffffff;
+        }
+
+        button:hover {
+            cursor: pointer;
+        }
+
+        .buttonIcon {
+            font-size: 20px;
+            transform: rotate(-25deg);
+            margin-right: 10px;
+        }        
+    }
+
+    .loginButton {
+        border: solid 2px #1ead68;
+        background-color: #ffffff;
+
+        button,
+        .buttonIcon {
+            color: #1ead68;
+        }
+    }
+
+    .registrationButton {
+        border: solid 2px #1ead68;
+        background-color: #1ead68;
+
+        button,
+        .buttonIcon {
+            color: #ffffff;
+        }
+    }
+
+    .link {
+        width: 225px;
+        text-align: center;
+        font-size: small;
+        padding-top: 10px;
+    
+        a {
+          color: #0000ff;
+          text-decoration: none;
+        }
+    }
+}
