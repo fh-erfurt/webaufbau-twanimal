@@ -8,47 +8,49 @@ class Startpage extends Component {
     render() {
         return (
             <React.Fragment>
-                <div className={style.formTextContainer}>
-                    <div className={style.contentWraperImage}>
-                        <div className={style.logo}>
-                            <FontAwesomeIcon
-                                className={style.icons}
-                                icon={faPaw}
-                            />
+                <div className={style.verticalCenter}>
+                    <div className={style.formTextContainer}>
+                        <div className={style.contentWraperImage}>
+                            <div className={style.logo}>
+                                <FontAwesomeIcon
+                                    className={style.icons}
+                                    icon={faPaw}
+                                />
+                            </div>
                         </div>
-                    </div>
-                    <div className={style.heading}>
-                        <h1>Gib deinem Haustier eine Stimme!</h1>
-                    </div>
-                    <div className={style.text}>
-                        <p>Willkommen bei Twanimal</p>
-                    </div>
-                    <div className={style.loginButton}>
-                        <Link to="/login">
-                            <button>
-                                <FontAwesomeIcon 
-                                    className={style.buttonIcon} 
-                                    icon={faPaw} 
-                                />
-                                Anmelden
-                            </button>
-                        </Link>
-                    </div>
-                    <div className={style.registrationButton}>
-                        <a href="#">
-                            <button>
-                                <FontAwesomeIcon 
-                                    className={style.buttonIcon} 
-                                    icon={faPaw} 
-                                />
-                                Registrieren
-                            </button>
-                        </a>
-                    </div>
-                    <div className={style.link}>
-                        <a href="#">
-                            Was ist Twanimal?
-                        </a>
+                        <div className={style.heading}>
+                            <h1>Gib deinem Haustier eine Stimme!</h1>
+                        </div>
+                        <div className={style.text}>
+                            <p>Willkommen bei Twanimal</p>
+                        </div>
+                        <div className={style.loginButton}>
+                            <Link to="/login">
+                                <button>
+                                    <FontAwesomeIcon 
+                                        className={style.buttonIcon} 
+                                        icon={faPaw} 
+                                    />
+                                    Anmelden
+                                </button>
+                            </Link>
+                        </div>
+                        <div className={style.registrationButton}>
+                            <a href="#">
+                                <button>
+                                    <FontAwesomeIcon 
+                                        className={style.buttonIcon} 
+                                        icon={faPaw} 
+                                    />
+                                    Registrieren
+                                </button>
+                            </a>
+                        </div>
+                        <div className={style.link}>
+                            <a href="#">
+                                Was ist Twanimal?
+                            </a>
+                        </div>
                     </div>
                 </div>
             </React.Fragment>

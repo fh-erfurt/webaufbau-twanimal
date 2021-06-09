@@ -1,20 +1,28 @@
 // body {
 //     background-image: url(../../images/background-viecher.jpg);
 //     background-size: cover;
-//     background-repeat: no-repeat;
 // }
+
+.verticalCenter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-image: url(../../images/background-viecher.jpg);
+    background-size: cover;
+}
 
 .formTextContainer {
     display: flex;
     align-items: center;
     flex-direction: column;
   
-    width: 600px;
+    width: 100%;
+    max-width: 600px;
     height: auto;
     border-radius: 5px;
-    margin: 11% auto;
     box-shadow: 0 9px 50px hsla(24, 26%, 4%, 0.548);
-    padding: 2%;
+    padding: 20px;
     background-color: #ffffff;
 
     .contentWraperImage {
