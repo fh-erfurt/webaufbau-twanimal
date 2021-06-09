@@ -1,18 +1,6 @@
-/* Generally */
-
-.Homepage {
-  display: flex;
-  justify-content: center;
-  padding: 0 60px 0 60px;
-}
-
-.profileCard {
-  width: 30%;
-}
-
 /* profileCard */
 
-.search-field {
+.searchField {
   display: inline-flex;
   height: 40px;
   border-radius: 20px;
@@ -26,25 +14,21 @@
   width: 350px;
   max-width: 350px;
   padding: 0 15px;
+  input {
+    background: transparent;
+    border: none;
+    padding: 0 20px 0 35px;
+    height: 100%;
+  }
+  input:focus {
+    outline: none;
+  }
+  .icons {
+    position: absolute;
+    left: 12px;
+    color: #7c7c7c;
+  }
 }
-
-.search-field input {
-  background: transparent;
-  border: none;
-  padding: 0 20px 0 35px;
-  height: 100%;
-}
-
-.search-field input:focus {
-  outline: none;
-}
-
-.search-field .icons {
-  position: absolute;
-  left: 12px;
-  color: #7c7c7c;
-}
-
 .profile {
   display: flex;
   align-items: center;
@@ -61,23 +45,24 @@
   padding: 0 15px;
 }
 
-.profileImage img {
-  height: 93px;
-  width: 91px;
-  border-radius: 50%;
-  background-size: cover;
-  background-position: center;
-  margin-left: 10px;
-  object-fit: Cover;
+.profileImage {
+  img {
+    height: 93px;
+    width: 91px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    margin-left: 10px;
+    object-fit: Cover;
+  }
 }
 
 .info {
   display: flex;
   padding: 0 15px;
-}
-
-.info .posts {
-  margin: auto;
+  .posts {
+    margin: auto;
+  }
 }
 
 .status {
@@ -97,21 +82,20 @@
   overflow: hidden;
   align-items: center;
   margin-left: 15px;
-}
 
-.newPost button {
-  background: transparent;
-  border: none;
-  padding: 0 20px 0 45px;
-  height: 100%;
-  font-size: larger;
-  color: #ffffff;
-}
-
-.newPost .icons {
-  position: absolute;
-  left: 32px;
-  transform: rotate(-25deg);
-  color: #ffffff;
-  font-size: 35px;
+  button {
+    background: transparent;
+    border: none;
+    padding: 0 20px 0 45px;
+    height: 100%;
+    font-size: larger;
+    color: #ffffff;
+  }
+  .icons {
+    position: absolute;
+    left: 32px;
+    transform: rotate(-25deg);
+    color: #ffffff;
+    font-size: 35px;
+  }
 }
