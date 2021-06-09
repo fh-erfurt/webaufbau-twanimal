@@ -1,14 +1,20 @@
+.verticalCenter {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .formTextContainer {
   display: flex;
   align-items: center;
   flex-direction: column;
 
-  width: 350px;
-  height: auto;
+  width: 100%;
+  max-width: 350px;
   border-radius: 5px;
-  margin: 11% auto;
+  margin: 0 auto;
   box-shadow: 0 9px 50px hsla(24, 26%, 4%, 0.548);
-  padding: 2%;
+  padding: 20px;
   background-color: #ffffff;
 
   .contentWraperImage {
@@ -42,14 +48,14 @@
       color: #5e6472;
       outline: none;
       border-width: 2px;
-      transition: 0.2s linear;
+      transition: 0.2s ease;
     }
 
     /* focus */
 
     input:focus {
-      transform: translateX(-2px);
       border-radius: 5px;
+      border-color: #1ead68;
     }
   }
   .submitButton {
