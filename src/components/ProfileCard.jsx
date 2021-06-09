@@ -4,6 +4,14 @@ import { faSearch, faPaw } from "@fortawesome/free-solid-svg-icons"
 import style from "../assets/css/components/profileCard.module.scss"
 
 class ProfileCard extends Component {
+    constructor(props) {
+		super(props);
+
+		this.state = {
+			user: this.props.user
+		}
+	}
+
     state = {}
     render() {
         return (
@@ -29,8 +37,8 @@ class ProfileCard extends Component {
                         />
                     </div>
                     <div className={style.profileName}>
-                        <b>Hannelore</b>
-                        <span>@hanni_the_dog</span>
+                        <b>{ this.state.user.displayName }</b>
+                        <span>{ this.state.user.username }</span>
                     </div>
                 </div>
 

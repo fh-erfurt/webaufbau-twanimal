@@ -17,7 +17,7 @@ class Home extends Component {
                         <PostContent />
                     </div>
                     <div className={style.profileCard}>
-                        <ProfileCard />
+                        <ProfileCard user={{ username: 'Hanni', displayName: 'the dog' }} />
                     </div>
                 </div>
             </React.Fragment>
