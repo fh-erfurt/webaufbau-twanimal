@@ -1,9 +1,7 @@
-.postContent{
-  .postContent {
-    flex: 3;
-  }
-.profileImage 
-  img {
+.postContent {
+  flex: 3;
+
+  .profileImage img {
     height: 90px;
     width: 90px;
     border-radius: 50%;
@@ -13,11 +11,19 @@
     margin-top: 20px;
     object-fit: Cover;
   }
-  p{
-    margin-left: 500px;
-    position: absolute;
-    top: 100px;
-    font-size: larger;
+
+  .status {
+    p {
+      background-color: #f0f2f5;
+      border-radius: 50px;
+      padding: 10px;
+      width: 400px;
+      margin-left: 325px;
+      padding-left: 30px;
+      position: absolute;
+      top: 100px;
+      font-size: larger;
+    }
   }
 
   .newPost {
@@ -29,22 +35,22 @@
     border-radius: 51px;
     position: absolute;
     margin-left: 750px;
-   
+
     button {
       background: transparent;
       border: none;
-      padding: 0 20px ;
+      padding: 0 20px;
       height: 100%;
       font-size: larger;
       color: #ffffff;
     }
   }
 }
-.post{
+.post {
   flex: 3;
 }
-.pImage{
-  img{
+.pImage {
+  img {
     height: 60px;
     width: 60px;
     border-radius: 50%;
@@ -55,7 +61,7 @@
     object-fit: Cover;
   }
 }
-.profileName{
+.profileName {
   display: flex;
   flex-direction: row;
   font-size: larger;
@@ -75,16 +81,16 @@
   font-size: small;
 }
 
-.Neu{
-  p{
-   margin-left: 200px;
-   width: 730px;
-   padding: 0 30px;
+.Neu {
+  p {
+    margin-left: 200px;
+    width: 730px;
+    padding: 0 30px;
   }
 }
 
-.Image{
-  img{
+.Image {
+  img {
     height: 500px;
     width: 700px;
     border-radius: 5%;
