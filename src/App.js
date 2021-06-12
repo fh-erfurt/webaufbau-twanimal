@@ -28,9 +28,6 @@ function App() {
                     <Route path="/registration">
                         <Registration />
                     </Route>
-                    <Route path="/">
-                        <Startpage />
-                    </Route>
                 </Switch>
             </Router>
         </div>
