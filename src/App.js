@@ -9,6 +9,7 @@ import Login from "./routes/Login";
 import Home from "./routes/Home";
 import Registration from "./routes/Registration";
 import Profile from "./routes/Profile";
+import Startpage from "./routes/Startpage";
 
 function App() {
   return (
@@ -26,6 +27,9 @@ function App() {
           </Route>
           <Route path="/registration">
             <Registration />
+          </Route>
+          <Route path="/">
+            <Startpage />
           </Route>
         </Switch>
       </Router>
