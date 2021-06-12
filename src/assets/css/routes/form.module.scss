@@ -4,7 +4,8 @@
   align-items: center;
   justify-content: center;
 }
-.formTextContainer {
+.formTextContainer,
+.registrationTextContainer {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -29,12 +30,17 @@
     }
   }
 
+  .text p {
+    color: #1ead68;
+  }
+
   .inputs {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 5px;
 
+    input[type="text"],
     input[type="email"],
     input[type="password"] {
       width: auto;
@@ -59,22 +65,25 @@
     }
   }
   .submitButton {
-    width: auto;
-    border-radius: 51px;
-    border: solid 1px #e2e2e2;
-    padding: 15px;
-    margin: 10px;
-    background-color: #1ead68;
+    display: flex;
+    justify-content: center;
 
     button {
-      background: transparent;
-      border: none;
-      padding: 0 20px 0 75px;
-      height: 100%;
+      width: 100%;
+      max-width: 200px;
+      border-radius: 51px;
+      border: solid 1px #e2e2e2;
+      background-color: #1ead68;
+      height: 55px;
       font-size: larger;
       color: #ffffff;
     }
   }
+
+  .submitButton button:hover {
+    cursor: pointer;
+  }
+
   .link {
     width: 225px;
     text-align: center;
@@ -84,6 +93,36 @@
     a {
       color: #0000ff;
       text-decoration: none;
+    }
+  }
+}
+
+.registrationTextContainer {
+  max-width: 550px;
+
+  .inputs {
+    input[type="text"],
+    input[type="email"] {
+      width: 100%;
+    }
+
+    .passwordInput {
+      input[id="passwordConfirmLeft"] {
+        margin-left: unset;
+        margin-right: 10px;
+      }
+
+      input[id="passwordConfirmRight"] {
+        margin-right: unset;
+        margin-left: 10px;
+      }
+    }
+  }
+
+  .submitButton {
+    button {
+      padding: unset;
+      width: 100%;
     }
   }
 }
