@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faPaw } from "@fortawesome/free-solid-svg-icons";
 import style from "../assets/css/routes/login.module.scss";
+import { Link } from "react-router-dom";
 
 class Login extends Component {
   render() {
@@ -29,9 +30,9 @@ class Login extends Component {
               </form>
             </div>
             <div className={style.link}>
-              <a href="#">
+              <Link to="/registration">
                 Noch nicht Teil der Crew? Hier geht's zur Registration
-              </a>
+              </Link>
             </div>
           </div>
         </div>
