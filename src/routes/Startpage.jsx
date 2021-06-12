@@ -36,7 +36,7 @@ class Startpage extends Component {
                             </Link>
                         </div>
                         <div className={style.registrationButton}>
-                            <a href="#">
+                            <Link to="/registration">
                                 <button>
                                     <FontAwesomeIcon 
                                         className={style.buttonIcon} 
@@ -44,7 +44,7 @@ class Startpage extends Component {
                                     />
                                     Registrieren
                                 </button>
-                            </a>
+                            </Link>
                         </div>
                         <div className={style.link}>
                             <a href="#">
