@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faPaw } from "@fortawesome/free-solid-svg-icons";
-import style from "../assets/css/routes/login.module.scss";
+import style from "../assets/css/routes/form.module.scss";
 import { Link } from "react-router-dom";
 
 class Registration extends Component {
@@ -9,7 +9,7 @@ class Registration extends Component {
         return (
             <React.Fragment>
             <div className={style.verticalCenter}>
-            <div className={style.formTextContainer}>
+            <div className={style.registrationTextContainer}>
                 <div className={style.contentWraperImage}>
                 <div className={style.logo}>
                     <FontAwesomeIcon className={style.icons} icon={faPaw} />
