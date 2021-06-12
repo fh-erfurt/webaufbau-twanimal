@@ -30,6 +30,10 @@
     }
   }
 
+  .text p {
+    color: #1ead68;
+  }
+
   .inputs {
     display: flex;
     flex-direction: column;
@@ -61,22 +65,25 @@
     }
   }
   .submitButton {
-    width: auto;
-    border-radius: 51px;
-    border: solid 1px #e2e2e2;
-    padding: 15px;
-    margin: 10px;
-    background-color: #1ead68;
+    display: flex;
+    justify-content: center;
 
     button {
-      background: transparent;
-      border: none;
-      padding: 0 20px 0 75px;
-      height: 100%;
+      width: 100%;
+      max-width: 200px;
+      border-radius: 51px;
+      border: solid 1px #e2e2e2;
+      background-color: #1ead68;
+      height: 55px;
       font-size: larger;
       color: #ffffff;
     }
   }
+
+  .submitButton button:hover {
+    cursor: pointer;
+  }
+
   .link {
     width: 225px;
     text-align: center;
@@ -100,9 +107,22 @@
     }
 
     .passwordInput {
-      input[type="password"] {
-        margin: 1px 15px 1px 1px;
+      input[id="passwordConfirmLeft"] {
+        margin-left: unset;
+        margin-right: 10px;
       }
+
+      input[id="passwordConfirmRight"] {
+        margin-right: unset;
+        margin-left: 10px;
+      }
+    }
+  }
+
+  .submitButton {
+    button {
+      padding: unset;
+      width: 100%;
     }
   }
 }

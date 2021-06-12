@@ -25,8 +25,8 @@ class Registration extends Component {
                         <input type="text" placeholder="Nutzername" />
                         <input type="email" placeholder="Email" />
                         <div className={style.passwordInput}>
-                            <input type="password" placeholder="Passwort" />
-                            <input type="password" placeholder="Passwort wiederholen" />
+                            <input id="passwordConfirmLeft" type="password" placeholder="Passwort" />
+                            <input id="passwordConfirmRight" type="password" placeholder="Passwort wiederholen" />
                         </div>
                     </div>
                     <div className={style.submitButton}>
