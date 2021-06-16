@@ -24,27 +24,29 @@ class Startpage extends Component {
                         <div className={style.text}>
                             <p>Willkommen bei Twanimal</p>
                         </div>
-                        <div className={style.loginButton}>
-                            <Link to="/login">
-                                <button>
-                                    <FontAwesomeIcon 
-                                        className={style.buttonIcon} 
-                                        icon={faPaw} 
-                                    />
-                                    Anmelden
-                                </button>
-                            </Link>
-                        </div>
-                        <div className={style.registrationButton}>
-                            <Link to="/registration">
-                                <button>
-                                    <FontAwesomeIcon 
-                                        className={style.buttonIcon} 
-                                        icon={faPaw} 
-                                    />
-                                    Registrieren
-                                </button>
-                            </Link>
+                        <div className={style.startpageButtons}>
+                            <div className={style.loginButton}>
+                                <Link to="/login">
+                                    <button>
+                                        <FontAwesomeIcon 
+                                            className={style.buttonIcon} 
+                                            icon={faPaw} 
+                                        />
+                                        Anmelden
+                                    </button>
+                                </Link>
+                            </div>
+                            <div className={style.registrationButton}>
+                                <Link to="/registration">
+                                    <button>
+                                        <FontAwesomeIcon 
+                                            className={style.buttonIcon} 
+                                            icon={faPaw} 
+                                        />
+                                        Registrieren
+                                    </button>
+                                </Link>
+                            </div>
                         </div>
                         <div className={style.link}>
                             <a href="#">

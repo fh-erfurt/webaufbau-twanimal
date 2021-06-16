@@ -3,6 +3,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background-image: url(../../images/background-viecher.jpg);
+  background-size: cover;
 }
 .formTextContainer,
 .registrationTextContainer {
@@ -107,15 +109,17 @@
     }
 
     .passwordInput {
-      input[id="passwordConfirmLeft"] {
-        margin-left: unset;
-        margin-right: 10px;
-      }
+        display: flex;
+        margin: 10px 0;
 
-      input[id="passwordConfirmRight"] {
-        margin-right: unset;
-        margin-left: 10px;
-      }
+        input {
+          flex: 1;
+          margin: 0;
+
+          &:last-child {
+            margin-left: 20px;
+          }
+        }
     }
   }
 
