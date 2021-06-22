@@ -4,6 +4,8 @@ import { faSearch, faPaw } from "@fortawesome/free-solid-svg-icons";
 import style from "../assets/css/routes/form.module.scss";
 import { Link } from "react-router-dom";
 
+import Footer from "../components/Footer";
+
 class Login extends Component {
   render() {
     return (
@@ -35,6 +37,7 @@ class Login extends Component {
               </Link>
             </div>
           </div>
+          <Footer />
         </div>
       </React.Fragment>
     );

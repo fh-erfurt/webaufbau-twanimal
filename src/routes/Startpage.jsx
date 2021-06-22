@@ -1,8 +1,10 @@
-import React, { Component } from "react"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faPaw } from "@fortawesome/free-solid-svg-icons"
-import style from "../assets/css/routes/startpage.module.scss"
-import { Link } from "react-router-dom"
+import React, { Component } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPaw } from "@fortawesome/free-solid-svg-icons";
+import style from "../assets/css/routes/startpage.module.scss";
+import { Link } from "react-router-dom";
+
+import Footer from "../components/Footer";
 
 class Startpage extends Component {
     render() {
@@ -49,11 +51,12 @@ class Startpage extends Component {
                             </div>
                         </div>
                         <div className={style.link}>
-                            <a href="#">
+                            <Link to="/aboutus">
                                 Was ist Twanimal?
-                            </a>
+                            </Link>
                         </div>
                     </div>
+                    <Footer />
                 </div>
             </React.Fragment>
         )
