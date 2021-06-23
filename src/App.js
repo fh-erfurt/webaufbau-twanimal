@@ -10,6 +10,7 @@ import Home from "./routes/Home";
 import Registration from "./routes/Registration";
 import Profile from "./routes/Profile";
 import Startpage from "./routes/Startpage";
+import Page404 from "./routes/Page404";
 import Post from "./routes/Post";
 
 import { SecuredRoute } from "./components/SecuredRoute"
@@ -30,7 +31,8 @@ function App() {
           <Route path="/login" component={ Login } />
           <Route path="/registration" component={ Registration } />
           <Route path="/post" component={ Post } />
-          <StartpageRoute path="/" component={ Home } />
+          <StartpageRoute path="/" component={ Home } exact />
+          <Page404 />
         </Switch>
       </Router>
     </div>

@@ -4,6 +4,7 @@ import { faCircleNotch, faPaw } from "@fortawesome/free-solid-svg-icons";
 import style from "../assets/css/routes/form.module.scss";
 import { Link } from "react-router-dom";
 
+import Footer from "../components/Footer";
 import { authenticationService } from '../services/authenticationService'
 
 class Login extends Component {
@@ -73,6 +74,7 @@ class Login extends Component {
               </Link>
             </div>
           </div>
+          <Footer />
         </div>
       </React.Fragment>
     );
