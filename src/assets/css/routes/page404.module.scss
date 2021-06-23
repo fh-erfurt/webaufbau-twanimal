@@ -1,0 +1,40 @@
+.notFoundPage {
+    margin-top: 150px;
+    color: #3c3c3c;
+}
+
+.pugPictures {
+    display: flex;
+    justify-content: center;
+}
+
+.pugPictures img {
+    border-radius: 50%;
+    object-fit: cover;
+    height: 250px;
+    width: 250px;
+    margin: 20px;
+}
+
+.notFoundText,
+.notFoundLink {
+    text-align: center;
+}
+
+.notFoundLink a {
+    text-decoration: none;
+    font-size: 20px;
+    color: #3c3c3c;
+}
+
+.notFoundLink a:hover {
+    color: #1ead68;
+    font-weight: bold;
+}
+
+.icons {
+    font-size: 50px;
+    transform: rotate(-25deg);
+    color: #1ead68;
+    margin-top: 20px;
+}

@@ -10,6 +10,7 @@ import Home from "./routes/Home";
 import Registration from "./routes/Registration";
 import Profile from "./routes/Profile";
 import Startpage from "./routes/Startpage";
+import Page404 from "./routes/Page404";
 
 function App() {
   return (
@@ -28,8 +29,11 @@ function App() {
           <Route path="/registration">
             <Registration />
           </Route>
-          <Route path="/">
+          <Route path="/" exact>
             <Startpage />
+          </Route>
+          <Route>
+            <Page404 />
           </Route>
         </Switch>
       </Router>
