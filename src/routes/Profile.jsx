@@ -8,7 +8,7 @@ import Suggestions from "../components/Suggestions"
 class Profile extends Component {
     render() {
         return <React.Fragment>
-            <Navigation />
+            <Navigation history={this.props.history} />
            
             <div className={style.background}>
             <Suggestions/>
