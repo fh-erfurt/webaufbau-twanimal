@@ -47,18 +47,20 @@ class Navigation extends Component {
               <NavigationItem text="Mitteilungen" icon={faBell} target="/" />
             </div>
             <span onClick={ this.logout }>Abmelden</span>
-            <Link to="/profile" className={styles.profile}>
-              <div className={styles.profileName}>
-                <b>{this.state.user.username}</b>
-                <span>{this.state.user.displayName}</span>
-              </div>
-              <div
-                className={styles.profileImage}
-                style={{
-                  backgroundImage: `url(${this.state.user.profilePicture})`,
-                }}
-              ></div>
-            </Link>
+            { this.state.user && 
+              <Link to="/profile" className={styles.profile}>
+                <div className={styles.profileName}>
+                  <b>{this.state.user.username}</b>
+                  <span>{this.state.user.displayName}</span>
+                </div>
+                <div
+                  className={styles.profileImage}
+                  style={{
+                    backgroundImage: `url(${this.state.user.profilePicture})`,
+                  }}
+                ></div>
+              </Link>
+            }
           </div>
         </div>
       </React.Fragment>

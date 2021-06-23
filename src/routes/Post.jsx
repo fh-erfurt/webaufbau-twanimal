@@ -9,6 +9,7 @@ class Post extends Component {
       <React.Fragment>
         <header className="App-header">
           <Navigation
+            history={this.props.history}
             user={{
               username: "Hannelore",
               displayName: "@hanni_the_dog",

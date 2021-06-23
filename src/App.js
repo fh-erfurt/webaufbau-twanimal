@@ -12,11 +12,11 @@ import Profile from "./routes/Profile";
 import Startpage from "./routes/Startpage";
 import Page404 from "./routes/Page404";
 import Post from "./routes/Post";
+import Imprint from './routes/Imprint';
+import Privacy from './routes/Privacy';
 
 import { SecuredRoute } from "./components/SecuredRoute"
 import { StartpageRoute } from "./components/StartpageRoute"
-
-import { authenticationService } from './services/authenticationService'
 
 import { createBrowserHistory } from "history";
 
@@ -31,6 +31,8 @@ function App() {
           <Route path="/login" component={ Login } />
           <Route path="/registration" component={ Registration } />
           <Route path="/post" component={ Post } />
+          <Route path="/impressum" component={ Imprint } />
+          <Route path="/datenschutz" component={ Privacy } />
           <StartpageRoute path="/" component={ Home } exact />
           <Page404 />
         </Switch>

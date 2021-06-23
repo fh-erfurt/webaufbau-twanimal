@@ -15,7 +15,6 @@ class Profile extends Component {
                 
             </div>
             <div className={style.content}>
-                
                 <div className={style.profile}>
                     <div className={style.profileImage}>
                         <img

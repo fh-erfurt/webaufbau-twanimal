@@ -13,9 +13,9 @@ class Footer extends Component {
                     <p>
                         Copyright &copy; 2021 Twanimal UG (haftungsbeschränkt)
                         &nbsp;-&nbsp;
-                        <Link to="/imprint">Impressum</Link>
+                        <Link to="/impressum">Impressum</Link>
                         &nbsp;-&nbsp;
-                        <Link to="/privacy">Datenschutz</Link>
+                        <Link to="/datenschutz">Datenschutz</Link>
                     </p>
                 </footer>
               </div>
