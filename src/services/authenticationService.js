@@ -26,10 +26,7 @@ function getSession() {
     const data = localStorage.getItem('session');
     if(!data) return null;
 
-    console.log(data);
-
     const decrypted = decryptData(data);
-    console.log(decrypted);
     if(!decrypted) return null;
 
     return decrypted;
