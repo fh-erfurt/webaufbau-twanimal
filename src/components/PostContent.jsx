@@ -2,16 +2,22 @@ import React, { Component } from "react"
 import style from "../assets/css/components/postContent.module.scss"
 
 class PostContent extends Component {
+    constructor(props) {
+        super(props);
+    
+        this.state = {
+          user: this.props.user,
+        };
+      }
     state = {}
     render() {
         return (
             <React.Fragment>
                 <div className={style.postContent}>
                     <div className={style.profileImage}>
-                        <img
-                            src="https://images.unsplash.com/photo-1552053831-71594a27632d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80"
-                            alt="profileImage"
-                        />
+
+                        <img src={this.state.user.photo} alt="profileImage" />
+
                     </div>
 
                     <div className={style.status}>
@@ -24,30 +30,25 @@ class PostContent extends Component {
                 </div>
                 <div className={style.post}>
                     <div className={style.pImage}>
-                        <img
-                            src="https://cdn.discordapp.com/attachments/715508471293935669/851834287971631134/greg-rosenke-GGGOnJKb3KM-unsplash_1.jpg"
-                            alt="pImage"
-                        />
+
+                        <img src={this.state.user.picture} alt="pImage" />
+        
                     </div>
 
                     <div className={style.profileName}>
-                        <b>Schneckbert</b>
-                        <span>@Schneki_schneck</span>
+                        <b>{this.state.user.dName}</b>
+                        <span>{this.state.user.uName}</span>
                     </div>
                     <div className={style.info}>
-                            <b>2 Uhr</b> 
+                        <b>{this.state.user.time}</b> 
                     </div>
                     <div className={style.Neu}>
-                        <p>
-                        Hallo Leute!
-                        Hier ist Schneckbert, ich war heute mal wieder ganz fix unterwegs. Außerdem hatte ich heute mein neues Outfit an. 
-                        Wie findet ihr das? #schnecksi
-                        </p>
+                        <p>{this.state.user.text}</p>
                         <div className={style.Image}>
-                            <img
-                                src="https://cdn.discordapp.com/attachments/715508471293935669/851834468070588436/zdenek-machacek-_9bRrDyOQTQ-unsplash.jpg"
-                                alt="Schneckimage"
-                            />
+
+                        <img src={this.state.user.sPicture} alt="Schneckimage" />
+
+
                         </div>
                     </div>
                    
