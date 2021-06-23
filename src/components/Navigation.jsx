@@ -5,14 +5,16 @@ import { Link } from "react-router-dom";
 
 import styles from "../assets/css/components/navigation.module.scss";
 
+import { authenticationService } from '../services/authenticationService'
+
 class NavigationItem extends Component {
   state = {};
   render() {
     return (
-      <div className={styles.item}>
+      <Link to={this.props.target} className={styles.item}>
         <FontAwesomeIcon icon={this.props.icon} className={styles.itemIcon} />
         {this.props.text}
-      </div>
+      </Link>
     );
   }
 }
@@ -22,9 +24,15 @@ class Navigation extends Component {
     super(props);
 
     this.state = {
-      user: this.props.user,
+      user: authenticationService.getUser()
     };
   }
+
+  logout = () => {
+    authenticationService.logout()
+    this.props.history.push('/')
+  }
+
   state = {};
   render() {
     return (
@@ -35,9 +43,10 @@ class Navigation extends Component {
               <FontAwesomeIcon icon={faPaw} />
             </div>
             <div className={styles.items}>
-              <NavigationItem text="Home" icon={faHome} />
-              <NavigationItem text="Mitteilungen" icon={faBell} />
+              <NavigationItem text="Home" icon={faHome} target="/" />
+              <NavigationItem text="Mitteilungen" icon={faBell} target="/" />
             </div>
+            <span onClick={ this.logout }>Abmelden</span>
             <Link to="/profile" className={styles.profile}>
               <div className={styles.profileName}>
                 <b>{this.state.user.username}</b>
@@ -46,7 +55,7 @@ class Navigation extends Component {
               <div
                 className={styles.profileImage}
                 style={{
-                  backgroundImage: `url(${this.state.user.photo})`,
+                  backgroundImage: `url(${this.state.user.profilePicture})`,
                 }}
               ></div>
             </Link>
