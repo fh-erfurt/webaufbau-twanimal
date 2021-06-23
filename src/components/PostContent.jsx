@@ -6,7 +6,7 @@ class PostContent extends Component {
         super(props);
     
         this.state = {
-          friends: this.props.friends,
+          user: this.props.user,
         };
       }
     state = {}
@@ -31,22 +31,22 @@ class PostContent extends Component {
                 <div className={style.post}>
                     <div className={style.pImage}>
 
-                        <img src={this.state.friends.picture} alt="pImage" />
+                        <img src={this.state.user.picture} alt="pImage" />
         
                     </div>
 
                     <div className={style.profileName}>
-                        <b>{this.state.friends.dName}</b>
-                        <span>{this.state.friends.uName}</span>
+                        <b>{this.state.user.dName}</b>
+                        <span>{this.state.user.uName}</span>
                     </div>
                     <div className={style.info}>
-                            <b>{this.state.friends.time}</b> 
+                        <b>{this.state.user.time}</b> 
                     </div>
                     <div className={style.Neu}>
-                        <p>{this.state.friends.text}</p>
+                        <p>{this.state.user.text}</p>
                         <div className={style.Image}>
 
-                        <img src={this.state.friends.sPicture} alt="Schneckimage" />
+                        <img src={this.state.user.sPicture} alt="Schneckimage" />
 
 
                         </div>
