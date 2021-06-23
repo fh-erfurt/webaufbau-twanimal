@@ -10,6 +10,7 @@ import Home from "./routes/Home";
 import Registration from "./routes/Registration";
 import Profile from "./routes/Profile";
 import Startpage from "./routes/Startpage";
+import Post from "./routes/Post";
 
 function App() {
   return (
@@ -28,6 +29,9 @@ function App() {
           <Route path="/registration">
             <Registration />
           </Route>
+          <Route path="/post">
+            <Post />
+          </Route>
           <Route path="/">
             <Startpage />
           </Route>
@@ -37,4 +41,4 @@ function App() {
   );
 }
 
-export default App
+export default App;
