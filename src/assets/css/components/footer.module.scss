@@ -1,21 +1,30 @@
 .footer {
-    background-color: white;
-    color: #3c3c3c;
-    font-size: small;
-    box-shadow: 0 1px 3px rgb(0 0 0 / 6%), 0 1px 2px rgb(0 0 0 / 12%);
-    height: 60px;
-    width: 100%;
-    text-align: center;
-    position: absolute;
-    margin-top: auto;
-    bottom: 0;
-}
+  background-color: white;
+  color: #3c3c3c;
+  font-size: small;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 6%), 0 1px 2px rgb(0 0 0 / 12%);
+  height: 60px;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  margin-top: auto;
+  bottom: 0;
 
-.footer p {
+  p {
     margin-top: 20px;
-}
+  }
 
-.footer a {
+  a {
     text-decoration: none;
     color: #0000ff;
+  }
 }
+
+// .footer p {
+//     margin-top: 20px;
+// }
+
+// .footer a {
+//     text-decoration: none;
+//     color: #0000ff;
+// }

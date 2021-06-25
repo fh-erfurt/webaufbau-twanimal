@@ -99,3 +99,20 @@
     font-size: 35px;
   }
 }
+
+.footer {
+  background-color: white;
+  color: #3c3c3c;
+  font-size: small;
+  height: 40px;
+  text-align: center;
+
+  p {
+    margin-top: 15px;
+  }
+
+  a {
+    text-decoration: none;
+    color: #0000ff;
+  }
+}
