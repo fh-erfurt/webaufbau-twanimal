@@ -1,13 +1,16 @@
 .background{
 	height: 300px;
-	width:900px;
+	width:800px;
 	background-color: rgb(218, 216, 216) ;
 	border: 5px;
+	margin-left: 55px;
 }
 .content{
 	display: flex;
 	flex-direction: column;
-	transform: translateY(-50px);
+	transform: translateY(-55px);
+	text-align: justify;
+	padding-left: 10%;
 }
 .profile {
 	display: flex;
@@ -61,7 +64,7 @@
 	position:absolute;
 	overflow: hidden;
 	align-items: center;
-	margin-left: 650px;
+	margin-left: 475px;
 	margin-top: 80px;
 
 	button {
