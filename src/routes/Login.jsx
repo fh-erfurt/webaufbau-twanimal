@@ -1,84 +1,135 @@
-import React, { Component } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleNotch, faPaw } from "@fortawesome/free-solid-svg-icons";
-import style from "../assets/css/routes/form.module.scss";
-import { Link } from "react-router-dom";
+import React, { useState } from "react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCircleNotch, faPaw } from "@fortawesome/free-solid-svg-icons"
+import style from "../assets/css/routes/form.module.scss"
+import { Link } from "react-router-dom"
 
-import Footer from "../components/Footer";
-import { authenticationService } from '../services/authenticationService'
+import Footer from "../components/Footer"
+import { authenticationService } from "../services/authenticationService"
 
-class Login extends Component {
+import config from "../config"
 
-  constructor(props) {
-    super(props)
-    this.fakeLogin = this.fakeLogin.bind(this)
+export default function Login({ history }) {
+	const [loggingIn, setLoggingIn] = useState(false)
 
-    this.state = {
-      loggingIn: false
-    }
-  }
+	const [email, setEmail] = useState()
+	const [password, setPassword] = useState()
 
-  fakeLogin = (event) => {
-    event.preventDefault()
+	const [error, setError] = useState(null)
 
-    const history = this.props.history;
-    this.setState({
-      loggingIn: true
-    })
+	const login = async (event) => {
+		event.preventDefault()
 
-    window.setTimeout(() => {
-      authenticationService.storeSession({
-        user: {
-          id: -1,
-          username: 'Doggo',
-          displayName: 'Doggo the cat',
-          profilePicture: 'https://images.unsplash.com/photo-1552053831-71594a27632d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80'
-        },
-        apiToken: 'asdfasdfasfasdf'
-      })
+		if (loggingIn) return
 
-      history.push('/')
-    }, 1000);
-  }
+		//evtl validator einbauen
 
-  render() {
-    return (
-      <React.Fragment>
-        <div className={style.verticalCenter}>
-          <div className={style.formTextContainer}>
-            <div className={style.contentWraperImage}>
-              <div className={style.logo}>
-                <FontAwesomeIcon className={style.icons} icon={faPaw} />
-              </div>
-            </div>
-            <div className={style.text}>
-              <p>Melde dich bei Twanimal an</p>
-            </div>
-            <div className={style.form}>
-              <form onSubmit={this.fakeLogin}>
-                <div className={style.inputs}>
-                  <input type="email" placeholder="Email" />
-                  <input type="password" placeholder="Password" />
-                </div>
-                <div className={style.submitButton}>
-                  <button>
-                    { this.state.loggingIn && <span><FontAwesomeIcon spin={true} icon={faCircleNotch} />&nbsp;</span> }
-                    Login
-                    </button>
-                </div>
-              </form>
-            </div>
-            <div className={style.link}>
-              <Link to="/registration">
-                Noch nicht Teil der Crew? Hier geht's zur Registration
-              </Link>
-            </div>
-          </div>
-          <Footer />
-        </div>
-      </React.Fragment>
-    );
-  }
+		setLoggingIn(true)
+
+		const response = await fetch(`${config.apiHost}/user/login`, {
+			method: "post",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				username: email,
+				password: password,
+			}),
+		})
+
+		if (response.ok) {
+			const data = await response.json()
+			const apiToken = data.apiToken
+			delete data.apiToken
+
+			authenticationService.storeSession({
+				user: data,
+				apiToken: apiToken,
+			})
+
+			history.push("/")
+		} else {
+			let message = "Unbekannter Fehler"
+			const errorObject = await response.json()
+
+			switch (errorObject.error) {
+				case "unknown user":
+					message = "Unbekannte E-Mail Adresse"
+					break
+				case "invalid password":
+					message = "Ungültige Anmeldedaten"
+					break
+			}
+
+			setError(message)
+
+			setLoggingIn(false)
+		}
+	}
+
+	return (
+		<React.Fragment>
+			<div className={style.verticalCenter}>
+				<div className={style.formTextContainer}>
+					<div className={style.contentWraperImage}>
+						<div className={style.logo}>
+							<FontAwesomeIcon
+								className={style.icons}
+								icon={faPaw}
+							/>
+						</div>
+					</div>
+					<div className={style.text}>
+						<p>Melde dich bei Twanimal an</p>
+					</div>
+					<div className={style.form}>
+						<form onSubmit={login}>
+							{error && (
+								<div className={style.errorMessage}>
+									{error}
+								</div>
+							)}
+							<div className={style.inputs}>
+								<input
+									type="email"
+									placeholder="Email"
+									required
+									onChange={(e) => setEmail(e.target.value)}
+								/>
+								<input
+									type="password"
+									placeholder="Password"
+									required
+									onChange={(e) =>
+										setPassword(e.target.value)
+									}
+								/>
+							</div>
+							<div className={style.submitButton}>
+								<button>
+									{loggingIn && (
+										<span>
+											<FontAwesomeIcon
+												spin={true}
+												icon={faCircleNotch}
+											/>
+											&nbsp;
+										</span>
+									)}
+									Login
+								</button>
+							</div>
+						</form>
+					</div>
+					<div className={style.link}>
+						<Link to="/registration">
+							Noch nicht Teil der Crew? Hier geht's zur
+							Registration
+						</Link>
+					</div>
+				</div>
+				<Footer />
+			</div>
+		</React.Fragment>
+	)
 }
-
-export default Login;
