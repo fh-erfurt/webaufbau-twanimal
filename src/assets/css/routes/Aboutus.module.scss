@@ -1,0 +1,29 @@
+.aboutUsPage {
+    margin-top:150px;
+    color: #3c3c3c;
+}
+
+.aboutPics {
+    display: flex;
+    justify-content: center;
+
+}
+
+.aboutPics img {
+    border-radius: 50%;
+    object-fit: cover;
+    height: 250px;
+    width: 250px;
+    margin: 20px;
+
+}
+
+.aboutUsHeading {
+    text-align: center;
+    color: #1ead68;
+}
+
+.aboutUsText {
+    text-align: center;
+    color: #3c3c3c;
+}
