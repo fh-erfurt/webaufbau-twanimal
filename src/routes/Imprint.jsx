@@ -48,8 +48,6 @@ class Imprint extends Component {
 			Website Impressum erstellt durch <a href="https://www.impressum-generator.de">impressum-generator.de</a> von der <a href="https://www.kanzlei-hasselbach.de/" rel="nofollow">Kanzlei Hasselbach</a>
 		</div>
  
-
-
 		</React.Fragment>
     }
 }
