@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faPaw } from "@fortawesome/free-solid-svg-icons";
 import style from "../assets/css/components/profileCard.module.scss";
@@ -55,6 +56,15 @@ class ProfileCard extends Component {
         <div className={style.newPost}>
           <FontAwesomeIcon className={style.icons} icon={faPaw} />
           <button>Neuer Beitrag</button>
+        </div>
+
+        <div className={style.footer}>
+          <p>
+            Copyright &copy; 2021 Twanimal UG (haftungsbeschränkt) &nbsp;-&nbsp;
+            <Link to="/impressum">Impressum</Link>
+            &nbsp;-&nbsp;
+            <Link to="/datenschutz">Datenschutz</Link>
+          </p>
         </div>
       </React.Fragment>
     );
