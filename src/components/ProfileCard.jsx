@@ -17,54 +17,57 @@ class ProfileCard extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className={style.searchField}>
-          <form action="#">
-            <FontAwesomeIcon className={style.icons} icon={faSearch} />
-            <input
-              type="text"
-              placeholder="Twanimal durchsuchen..."
-              name="search"
-            />
-          </form>
-        </div>
-        <div className={style.profile}>
-          <div className={style.profileImage}>
-            <img src={this.state.user.photo} alt="profileImage" />
+        <div className={style.profileCard}>
+          <div className={style.searchField}>
+            <form action="#">
+              <FontAwesomeIcon className={style.icons} icon={faSearch} />
+              <input
+                type="text"
+                placeholder="Twanimal durchsuchen..."
+                name="search"
+              />
+            </form>
           </div>
-          <div className={style.profileName}>
-            <b>{this.state.user.displayName}</b>
-            <span>{this.state.user.username}</span>
+          <div className={style.profile}>
+            <div className={style.profileImage}>
+              <img src={this.state.user.photo} alt="profileImage" />
+            </div>
+            <div className={style.profileName}>
+              <b>{this.state.user.displayName}</b>
+              <span>{this.state.user.username}</span>
+            </div>
           </div>
-        </div>
 
-        <div className={style.info}>
-          <div className={style.posts}>
-            <b>{this.state.user.numberOfAllPosts} Beiträge</b>
+          <div className={style.info}>
+            <div className={style.posts}>
+              <b>{this.state.user.numberOfAllPosts} Beiträge</b>
+            </div>
+            <div className={style.posts}>
+              <b>{this.state.user.numberOfAllFollower} Follower</b>
+            </div>
+            <div className={style.posts}>
+              <b>{this.state.user.namberOfAllFriends} Freunde</b>
+            </div>
           </div>
-          <div className={style.posts}>
-            <b>{this.state.user.numberOfAllFollower} Follower</b>
+
+          <div className={style.status}>
+            <p>{this.state.user.status}</p>
           </div>
-          <div className={style.posts}>
-            <b>{this.state.user.namberOfAllFriends} Freunde</b>
+
+          <div className={style.newPost}>
+            <FontAwesomeIcon className={style.icons} icon={faPaw} />
+            <button>Neuer Beitrag</button>
           </div>
-        </div>
 
-        <div className={style.status}>
-          <p>{this.state.user.status}</p>
-        </div>
-
-        <div className={style.newPost}>
-          <FontAwesomeIcon className={style.icons} icon={faPaw} />
-          <button>Neuer Beitrag</button>
-        </div>
-
-        <div className={style.footer}>
-          <p>
-            Copyright &copy; 2021 Twanimal UG (haftungsbeschränkt) &nbsp;-&nbsp;
-            <Link to="/impressum">Impressum</Link>
-            &nbsp;-&nbsp;
-            <Link to="/datenschutz">Datenschutz</Link>
-          </p>
+          <div className={style.footer}>
+            <p>
+              Copyright &copy; 2021 Twanimal UG (haftungsbeschränkt)
+              &nbsp;-&nbsp;
+              <Link to="/impressum">Impressum</Link>
+              &nbsp;-&nbsp;
+              <Link to="/datenschutz">Datenschutz</Link>
+            </p>
+          </div>
         </div>
       </React.Fragment>
     );
