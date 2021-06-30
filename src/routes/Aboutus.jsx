@@ -8,6 +8,7 @@ import animals from "../assets/images/animals.jpg"
 import corgi from "../assets/images/corgi.jpg"
 import nemo from "../assets/images/nemo.jpg"
 import gecko from "../assets/images/gecko.jpg"
+import Footer from "../components/Footer";
 
 
 
@@ -51,12 +52,10 @@ class Aboutus extends Component {
                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
                     <br /> 
                     At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. 
-                    <br />
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. 
-                    <br />
-                    At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
                 </p>
                 </div>
+
+                <Footer />
                 </div>
 
             </React.Fragment>
