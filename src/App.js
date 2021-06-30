@@ -14,6 +14,7 @@ import Page404 from "./routes/Page404";
 import Post from "./routes/Post";
 import Imprint from './routes/Imprint';
 import Privacy from './routes/Privacy';
+import Aboutus from './routes/Aboutus';
 
 import { SecuredRoute } from "./components/SecuredRoute"
 import { StartpageRoute } from "./components/StartpageRoute"
@@ -33,6 +34,7 @@ function App() {
           <Route path="/post" component={ Post } />
           <Route path="/impressum" component={ Imprint } />
           <Route path="/datenschutz" component={ Privacy } />
+          <Route path="/überuns" component={ Aboutus } />
           <StartpageRoute path="/" component={ Home } exact />
           <Page404 />
         </Switch>
