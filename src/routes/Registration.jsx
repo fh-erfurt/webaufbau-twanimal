@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPaw } from "@fortawesome/free-solid-svg-icons";
+import { faCircleNotch, faPaw } from "@fortawesome/free-solid-svg-icons";
 import style from "../assets/css/routes/form.module.scss";
 import { Link } from "react-router-dom";
 
@@ -10,15 +10,27 @@ import { authenticationService } from "../services/authenticationService";
 import config from "../config";
 
 export default function Registration({ history }) {
+  const [inRegistration, setInRegistration] = useState(false);
+
   const [email, setEmail] = useState();
   const [username, setUsername] = useState();
   const [displayName, setDisplayName] = useState();
   const [password, setPassword] = useState();
+  const [passwordRepeat, setPasswordRepeat] = useState();
 
   const [error, setError] = useState(null);
 
   const registration = async (event) => {
     event.preventDefault();
+
+    if (inRegistration) return;
+
+    if (password !== passwordRepeat) {
+      setError("Passwörter müssen identisch sein");
+      return;
+    }
+
+    setInRegistration(true);
 
     const response = await fetch(`${config.apiHost}/user/registration`, {
       method: "post",
@@ -53,16 +65,17 @@ export default function Registration({ history }) {
           message = "Ungültige E-Mail Adresse";
           break;
         case "invalid username":
-          message = "Ungültige username";
+          message = "Ungültiger Nutzername";
           break;
         case "invalid displayName":
-          message = "Ungültige displayName";
+          message = "Ungültiger Name";
           break;
         case "invalid password":
-          message = "Ungültige password";
+          message = "Ungültiges Passwort";
           break;
       }
       setError(message);
+      setInRegistration(false);
     }
   };
 
@@ -82,24 +95,59 @@ export default function Registration({ history }) {
             <form onSubmit={registration}>
               {error && <div className={style.errorMessage}>{error}</div>}
               <div className={style.inputs}>
-                <input type="text" placeholder="Name des Haustieres" />
-                <input type="text" placeholder="Nutzername" />
-                <input type="email" placeholder="Email" />
+                <input
+                  type="text"
+                  placeholder="Name des Haustieres"
+                  onChange={(e) => setDisplayName(e.target.value)}
+                  required
+                  minLength="1"
+                  maxLength="120"
+                />
+                <input
+                  type="text"
+                  placeholder="Nutzername"
+                  onChange={(e) => setUsername(e.target.value)}
+                  required
+                  minLength="2"
+                  maxLength="40"
+                />
+                <input
+                  type="email"
+                  placeholder="Email"
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
                 <div className={style.passwordInput}>
                   <input
                     id="passwordConfirmLeft"
                     type="password"
                     placeholder="Passwort"
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                    minLength="8"
+                    maxLength="200"
                   />
                   <input
                     id="passwordConfirmRight"
                     type="password"
                     placeholder="Passwort wiederholen"
+                    onChange={(e) => setPasswordRepeat(e.target.value)}
+                    required
+                    minLength="8"
+                    maxLength="200"
                   />
                 </div>
               </div>
               <div className={style.submitButton}>
-                <button>Registrieren</button>
+                <button>
+                  {inRegistration && (
+                    <span>
+                      <FontAwesomeIcon spin={true} icon={faCircleNotch} />
+                      &nbsp;
+                    </span>
+                  )}
+                  Registrieren
+                </button>
               </div>
             </form>
           </div>
