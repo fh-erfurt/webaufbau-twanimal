@@ -1,81 +1,72 @@
-.background{
-	height: 300px;
-	width:800px;
-	background-color: rgb(218, 216, 216) ;
-	border: 5px;
-	margin-left: 55px;
+.background {
+  height: 300px;
+  width: 800px;
+  background-color: rgb(218, 216, 216);
+  border: 5px;
+  margin-left: 55px;
 }
-.content{
-	display: flex;
-	flex-direction: column;
-	transform: translateY(-55px);
-	text-align: justify;
-	padding-left: 10%;
+.content {
+  display: flex;
+  margin: 0 auto;
+  max-width: 1500px;
 }
-.profile {
-	display: flex;
-	align-items: center;
-	height: 150px;
-	padding: 0 15px;
-	cursor: pointer;
-	transition: background 0.2s ease;
-  }
-  
-  .profileName {
-	display: flex;
-	flex-direction: column;
-	font-size: larger;
-	padding: 0 15px 20px;
-	margin: auto 10px;
-  }
-  
-  .profileImage {
-	img {
-	  height: 100px;
-	  width: 100px;
-	  border-radius: 50%;
-	  object-fit: cover;
-	  margin-bottom: 30px;
-	}
-  }
-  
-  .info {
-	display: flex;
-	padding: 0 15px;
-	
-	.posts {
-	  margin: auto 10px;
-	}
-  }
-  
-  .status {
-	width: 448px;
-	padding: 0 30px;
-  }
-  
-  .editProfil {
-	padding:0 35px  ;
-	display: flex;
-	width: 220px;
-	height: 45px;
-	background-color: #1ead68;
-	border: solid 1px #e2e2e2;
-	border-radius: 51px;
-	position:absolute;
-	overflow: hidden;
-	align-items: center;
-	margin-left: 475px;
-	margin-top: 80px;
 
-	button {
-	  background: transparent;
-	  border: none;
-	  padding: 20px 0 45px;
-	  height: 100%;
-	  font-size: larger;
-	  color: #ffffff;
-	 
-	}
-	
+.profile {
+  margin-left: 70px;
+}
+
+.profileName {
+  display: flex;
+  flex-direction: column;
+  font-size: larger;
+  padding: 0 15px 20px;
+  margin: auto 10px;
+}
+
+.profileImage {
+  img {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 30px;
   }
-  
+}
+
+.info {
+  display: flex;
+  padding: 0 15px;
+
+  .posts {
+    margin: auto 10px;
+  }
+}
+
+.status {
+  width: 448px;
+  padding: 0 30px;
+}
+
+.editProfil {
+  padding: 0 35px;
+  display: flex;
+  width: 220px;
+  height: 45px;
+  background-color: #1ead68;
+  border: solid 1px #e2e2e2;
+  border-radius: 51px;
+  position: absolute;
+  overflow: hidden;
+  align-items: center;
+  margin-left: 475px;
+  margin-top: 80px;
+
+  button {
+    background: transparent;
+    border: none;
+    padding: 20px 0 45px;
+    height: 100%;
+    font-size: larger;
+    color: #ffffff;
+  }
+}
