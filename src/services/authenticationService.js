@@ -56,6 +56,7 @@ export const authenticationService = {
     storeSession,
     getSession,
     getUser,
+    getAPIToken,
     isAuthenticated,
     logout
 }
