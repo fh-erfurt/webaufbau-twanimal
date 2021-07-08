@@ -1,0 +1,79 @@
+.post {
+  color: #3c3c3c;
+  border: #e2e2e2 solid;
+  width: 800px;
+  margin-left: 160px;
+  padding: 0 50px;
+  margin-top: 10px;
+
+  .userInfo {
+    margin-top: 30px;
+
+    .pImage {
+      display: inline;
+      vertical-align: middle;
+
+      img {
+        height: 60px;
+        width: 60px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+    }
+    .profileName {
+      margin-left: 60px;
+      display: inline;
+      font-size: larger;
+
+      a {
+        margin-left: 10px;
+        color: #8c8c8c;
+        text-decoration: none;
+        font-size: smaller;
+      }
+
+      a:hover {
+        color: #3c3c3c;
+      }
+    }
+    
+    .postTime {
+      margin-left: 120px;
+      display: inline;
+      font-size: small;
+    }
+  }
+  
+  .postMessage {
+    p {
+      padding: 20px 30px;
+    }
+  
+    .postImage {
+      img {
+        width: 700px;
+        height: auto;
+        border-radius: 5%;
+        margin-top: 10px;
+        margin-bottom: 30px;
+      }
+    }
+  }
+
+  .postActions {
+    text-align: center;
+    margin-bottom: 20px;
+
+    .icons {
+      margin: 0 100px;
+      font-size: x-large;
+      color: #e2e2e2;
+    }
+
+    .icons:hover {
+      color: #3c3c3c;
+      cursor: pointer;
+    }
+  }
+}
+
