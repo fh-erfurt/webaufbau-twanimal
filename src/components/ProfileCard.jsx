@@ -54,11 +54,6 @@ class ProfileCard extends Component {
             <p>{this.state.user.status}</p>
           </div>
 
-          <div className={style.newPost}>
-            <FontAwesomeIcon className={style.icons} icon={faPaw} />
-            <button>Neuer Beitrag</button>
-          </div>
-
           <div className={style.footer}>
             <p>
               Copyright &copy; 2021 Twanimal UG (haftungsbeschränkt)

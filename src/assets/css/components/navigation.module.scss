@@ -1,7 +1,15 @@
+.navigationContainer {
+  height: 60px;
+}
+
 .navigation {
   background: white;
   box-shadow: 0 1px 3px rgb(0 0 0 / 6%), 0 1px 2px rgb(0 0 0 / 12%);
   height: 60px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
 }
 
 .container {
@@ -33,6 +41,7 @@
   transition: background 0.2s ease;
   display: flex;
   align-items: center;
+  text-decoration: none;
 }
 
 .item:hover {

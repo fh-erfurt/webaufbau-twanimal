@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHome, faPaw, faBell } from "@fortawesome/free-solid-svg-icons";
+import { faHome, faPaw, faBell, faSmile } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 import styles from "../assets/css/components/navigation.module.scss";
@@ -37,30 +37,32 @@ class Navigation extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className={styles.navigation}>
-          <div className={styles.container}>
-            <div className={styles.logo}>
-              <FontAwesomeIcon icon={faPaw} />
+        <div className={styles.navigationContainer}>
+          <div className={styles.navigation}>
+            <div className={styles.container}>
+              <div className={styles.logo}>
+                <FontAwesomeIcon icon={faPaw} />
+              </div>
+              <div className={styles.items}>
+                <NavigationItem text="Home" icon={faHome} target="/" />
+                <NavigationItem text="Über uns" icon={faSmile} target="/überuns" />
+              </div>
+              <span onClick={ this.logout }>Abmelden</span>
+              { this.state.user && 
+                <Link to="/profile" className={styles.profile}>
+                  <div className={styles.profileName}>
+                    <b>{this.state.user.username}</b>
+                    <span>{this.state.user.displayName}</span>
+                  </div>
+                  <div
+                    className={styles.profileImage}
+                    style={{
+                      backgroundImage: `url(${this.state.user.profilePictureUrl})`,
+                    }}
+                  ></div>
+                </Link>
+              }
             </div>
-            <div className={styles.items}>
-              <NavigationItem text="Home" icon={faHome} target="/" />
-              <NavigationItem text="Mitteilungen" icon={faBell} target="/" />
-            </div>
-            <span onClick={ this.logout }>Abmelden</span>
-            { this.state.user && 
-              <Link to="/profile" className={styles.profile}>
-                <div className={styles.profileName}>
-                  <b>{this.state.user.username}</b>
-                  <span>{this.state.user.displayName}</span>
-                </div>
-                <div
-                  className={styles.profileImage}
-                  style={{
-                    backgroundImage: `url(${this.state.user.profilePicture})`,
-                  }}
-                ></div>
-              </Link>
-            }
           </div>
         </div>
       </React.Fragment>

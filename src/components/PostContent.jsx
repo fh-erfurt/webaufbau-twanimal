@@ -107,7 +107,7 @@ class PostContent extends Component {
 					<div className={style.newPostRow}>
 						<img
 							className={style.profileImage}
-							src={this.state.user.profilePicture}
+							src={this.state.user.profilePictureUrl}
 							alt="profileImage"
 						/>
 						<div className={style.postContent}>

@@ -75,42 +75,13 @@
   padding: 0 30px;
 }
 
-.newPost {
-  padding: 0 35px;
-  display: inline-flex;
-  width: 273px;
-  height: 65px;
-  background-color: #1ead68;
-  border: solid 1px #e2e2e2;
-  border-radius: 51px;
-  position: relative;
-  overflow: hidden;
-  align-items: center;
-  margin-left: 15px;
-
-  button {
-    background: transparent;
-    border: none;
-    padding: 0 20px 0 45px;
-    height: 100%;
-    font-size: larger;
-    color: #ffffff;
-  }
-  .icons {
-    position: absolute;
-    left: 32px;
-    transform: rotate(-25deg);
-    color: #ffffff;
-    font-size: 35px;
-  }
-}
-
 .footer {
   background-color: white;
   color: #3c3c3c;
   font-size: small;
   height: 40px;
-  text-align: center;
+  text-align: left;
+  padding: 0 30px;
 
   p {
     margin-top: 15px;
