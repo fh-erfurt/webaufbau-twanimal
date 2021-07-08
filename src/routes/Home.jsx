@@ -6,7 +6,7 @@ import Post from "../components/Post";
 import style from "../assets/css/routes/home.module.scss";
 import { authenticationService } from "../services/authenticationService";
 import config from "../config";
-import PostContent from "../components/PostContent";
+import NewPost from "../components/NewPost";
 
 class Home extends Component {
 
@@ -69,7 +69,7 @@ class Home extends Component {
         </header>
         <div className={style.content}>
           <div className={style.postContent}>
-            <PostContent onNewPost={ this.appendNewPost } />
+            <NewPost onNewPost={ this.appendNewPost } />
             {this.state.timeline != null && this.state.timeline.map((post, index) => {
               return (<Post post={ post } key={ index } />)
             })}

@@ -5,11 +5,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import React, { Component } from "react"
-import style from "../assets/css/components/postContent.module.scss"
+import style from "../assets/css/components/newPost.module.scss"
 import config from "../config"
 import { authenticationService } from "../services/authenticationService"
 
-class PostContent extends Component {
+class NewPost extends Component {
 	constructor(props) {
 		super(props)
 
@@ -71,6 +71,8 @@ class PostContent extends Component {
 
 		const formData = new FormData()
 		formData.append("text", text)
+
+		if(this.props.replyToPost) formData.append("replyToId", this.props.replyToPost.id)
 
 		for (const attachement of attachements)
 			formData.append("attachements", attachement.file)
@@ -188,4 +190,4 @@ class PostContent extends Component {
 	}
 }
 
-export default PostContent
+export default NewPost
