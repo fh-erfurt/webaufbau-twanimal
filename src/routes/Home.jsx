@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Navigation from "../components/Navigation";
 import ProfileCard from "../components/ProfileCard";
-import PostContent from "../components/PostContent";
+import Posts from "../components/Posts";
 
 import style from "../assets/css/routes/home.module.scss";
 
@@ -22,17 +22,26 @@ class Home extends Component {
         </header>
         <div className={style.content}>
           <div className={style.postContent}>
-            <PostContent 
-            user={{
-                photo:  "https://images.unsplash.com/photo-1552053831-71594a27632d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80",
-                picture:"https://images.unsplash.com/photo-1598588414774-4bb069dbc05d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80",
-                uName: "@Schneki_Schneck",
-                dName: "Schneckbert",
-                text: "Hallo Leute! Hier ist Schneckbert, ich war heute mal wieder ganz fix unterwegs. Außerdem hatte ich heute mein neues Outfit an. Wie findet ihr das? #schnecksi",
-                time: "2 Uhr",
-
-                sPicture:"https://images.unsplash.com/photo-1567161291513-d8d58620c5ca?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1029&q=80",
-            }}
+            <Posts 
+              user={{
+                  "id": 8,
+                  "createdBy": {
+                      "id": 1,
+                      "username": "Schneki_Schneck",
+                      "displayName": "Schneckbert",
+                      "profilePictureUrl": "https://images.unsplash.com/photo-1598588414774-4bb069dbc05d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80",
+                      "description": "",
+                      "createdAt": 1624016077000,
+                      "followerCount": 1,
+                      "followingCount": 0,
+                      "postCount": 7
+                  },
+                  "createdAt": 1624453174000,
+                  "text": "Hallo Leute! Hier ist Schneckbert, ich war heute mal wieder ganz fix unterwegs. Außerdem hatte ich heute mein neues Outfit an. Wie findet ihr das? #schnecksi",
+                  "attachements": ["https://images.unsplash.com/photo-1567161291513-d8d58620c5ca?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1029&q=80"],
+                  "likeCount": 84,
+                  "hasLiked": false
+              }}
                 />
           </div>
           <div className={style.profileCard}>
@@ -57,3 +66,13 @@ class Home extends Component {
 }
 
 export default Home;
+
+/* user={{
+  picture:"https://images.unsplash.com/photo-1598588414774-4bb069dbc05d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80",
+  uName: "@Schneki_Schneck",
+  dName: "Schneckbert",
+  text: "Hallo Leute! Hier ist Schneckbert, ich war heute mal wieder ganz fix unterwegs. Außerdem hatte ich heute mein neues Outfit an. Wie findet ihr das? #schnecksi",
+  time: "2 Uhr",
+
+  sPicture:"https://images.unsplash.com/photo-1567161291513-d8d58620c5ca?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1029&q=80",
+}} */
