@@ -9,9 +9,7 @@ import Login from "./routes/Login";
 import Home from "./routes/Home";
 import Registration from "./routes/Registration";
 import Profile from "./routes/Profile";
-import Startpage from "./routes/Startpage";
 import Page404 from "./routes/Page404";
-import Post from "./routes/Post";
 import Imprint from './routes/Imprint';
 import Privacy from './routes/Privacy';
 import Aboutus from './routes/Aboutus';
@@ -31,7 +29,6 @@ function App() {
           <SecuredRoute path="/profile" component={ Profile } />
           <Route path="/login" component={ Login } />
           <Route path="/registration" component={ Registration } />
-          <Route path="/post" component={ Post } />
           <Route path="/impressum" component={ Imprint } />
           <Route path="/datenschutz" component={ Privacy } />
           <Route path="/überuns" component={ Aboutus } />

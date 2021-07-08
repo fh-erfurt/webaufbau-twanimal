@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import style from "../assets/css/components/posts.module.scss";
+import style from "../assets/css/components/post.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHeart,
@@ -8,17 +8,17 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
-class Posts extends Component {
+class Post extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      user: this.props.user,
+      post: this.props.post,
     };
   }
 
   getDate = () => {
-    const date = new Date(this.state.user.createdAt);
+    const date = new Date(this.state.post.createdAt);
     const months = [
       "Jan",
       "Feb",
@@ -34,16 +34,19 @@ class Posts extends Component {
       "Dez",
     ];
 
-    if (this.state.user.createdAt + 1000 * 60 * 60 * 24 < Date.now()) {
+    if (this.state.post.createdAt + 1000 * 60 * 60 * 24 < Date.now()) {
       const month = months[date.getMonth()];
       const day = date.getDate();
 
       return day + ". " + month;
     } else {
-      const hour = date.getHours();
-      const minute = date.getMinutes();
+      let hour = date.getHours();
+      let minute = date.getMinutes();
 
-      return hour + ":" + minute;
+      if(hour < 10) hour = '0' + hour;
+      if(minute < 10) minute = '0' + minute;
+
+      return hour + ":" + minute + " Uhr";
     }
   };
   render() {
@@ -53,14 +56,14 @@ class Posts extends Component {
           <div className={style.userInfo}>
             <div className={style.pImage}>
               <img
-                src={this.state.user.createdBy.profilePictureUrl}
+                src={this.state.post.createdBy.profilePictureUrl}
                 alt="pImage"
               />
             </div>
             <div className={style.profileName}>
-              <b>{this.state.user.createdBy.displayName}</b>
+              <b>{this.state.post.createdBy.displayName}</b>
               <Link to="/">
-                @<span>{this.state.user.createdBy.username}</span>
+                @<span>{this.state.post.createdBy.username}</span>
               </Link>
             </div>
             <div className={style.postTime}>
@@ -68,10 +71,15 @@ class Posts extends Component {
             </div>
           </div>
           <div className={style.postMessage}>
-            <p>{this.state.user.text}</p>
-            <div className={style.postImage}>
-              <img src={this.state.user.attachements} alt="Schneckimage" />
-            </div>
+            <p>{this.state.post.text}</p>
+            { this.state.post.attachements.length > 0 && <div className={style.postImages}>
+              { this.state.post.attachements.map((attachement, index) => {
+                return (
+                  <div className={style.postImage} key={ index }>
+                    <img src={attachement} />
+                  </div>
+                )
+              }) }</div>}
           </div>
           <div className={style.postActions}>
             <FontAwesomeIcon className={style.icons} icon={faHeart} />
@@ -84,4 +92,4 @@ class Posts extends Component {
   }
 }
 
-export default Posts;
+export default Post;

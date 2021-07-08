@@ -86,6 +86,8 @@ class PostContent extends Component {
 		if (response.ok) {
 			const post = await response.json()
 
+			this.props.onNewPost(post)
+
 			for (const attachement of attachements)
 				URL.revokeObjectURL(attachement.preview)
 
@@ -181,28 +183,6 @@ class PostContent extends Component {
 						</button>
 					</div>
 				</form>
-				<div className={style.post}>
-					<div className={style.pImage}>
-						<img src={this.state.user.picture} alt="pImage" />
-					</div>
-
-					<div className={style.profileName}>
-						<b>{this.state.user.dName}</b>
-						<span>{this.state.user.uName}</span>
-					</div>
-					<div className={style.info}>
-						<b>{this.state.user.time}</b>
-					</div>
-					<div className={style.Neu}>
-						<p>{this.state.user.text}</p>
-						<div className={style.Image}>
-							<img
-								src={this.state.user.sPicture}
-								alt="Schneckimage"
-							/>
-						</div>
-					</div>
-				</div>
 			</React.Fragment>
 		)
 	}

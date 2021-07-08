@@ -1,11 +1,58 @@
 import React, { Component } from "react";
 import Navigation from "../components/Navigation";
 import ProfileCard from "../components/ProfileCard";
-import Posts from "../components/Posts";
+import Post from "../components/Post";
 
 import style from "../assets/css/routes/home.module.scss";
+import { authenticationService } from "../services/authenticationService";
+import config from "../config";
+import PostContent from "../components/PostContent";
 
 class Home extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      user: authenticationService.getUser(),
+      loading: false,
+      page: 0,
+      timeline: null
+    };
+
+		this.apiToken = authenticationService.getAPIToken()
+
+    this.getHomeTimeline()
+  }
+
+  getHomeTimeline = async () => {
+    if(this.state.loading) return
+
+    this.setState({ loading: true })
+
+    const response = await fetch(`${config.apiHost}/home-timeline`, {
+      headers: {
+				Authorization: `Bearer ${this.apiToken}`
+      }
+    })
+
+    if(response.ok) {
+      const data = await response.json()
+      this.setState({ timeline: data.results, page: data.page })
+    }
+
+    this.setState({ loading: false })
+  } 
+
+  appendNewPost = (post) => {
+    console.log(post)
+    const timeline = this.state.timeline;
+    console.log(timeline.length, timeline);
+    timeline.unshift(post);
+    console.log(timeline.length, timeline);
+    this.setState({ timeline: timeline })
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -22,27 +69,10 @@ class Home extends Component {
         </header>
         <div className={style.content}>
           <div className={style.postContent}>
-            <Posts 
-              user={{
-                  "id": 8,
-                  "createdBy": {
-                      "id": 1,
-                      "username": "Schneki_Schneck",
-                      "displayName": "Schneckbert",
-                      "profilePictureUrl": "https://images.unsplash.com/photo-1598588414774-4bb069dbc05d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80",
-                      "description": "",
-                      "createdAt": 1624016077000,
-                      "followerCount": 1,
-                      "followingCount": 0,
-                      "postCount": 7
-                  },
-                  "createdAt": 1624453174000,
-                  "text": "Hallo Leute! Hier ist Schneckbert, ich war heute mal wieder ganz fix unterwegs. Außerdem hatte ich heute mein neues Outfit an. Wie findet ihr das? #schnecksi",
-                  "attachements": ["https://images.unsplash.com/photo-1567161291513-d8d58620c5ca?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1029&q=80"],
-                  "likeCount": 84,
-                  "hasLiked": false
-              }}
-                />
+            <PostContent onNewPost={ this.appendNewPost } />
+            {this.state.timeline != null && this.state.timeline.map((post, index) => {
+              return (<Post post={ post } key={ index } />)
+            })}
           </div>
           <div className={style.profileCard}>
             <ProfileCard
