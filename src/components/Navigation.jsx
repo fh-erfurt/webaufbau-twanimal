@@ -49,10 +49,10 @@ class Navigation extends Component {
               </div>
               <span onClick={ this.logout }>Abmelden</span>
               { this.state.user && 
-                <Link to="/profile" className={styles.profile}>
+                <Link to={"/profile/" + this.state.user.username} className={styles.profile}>
                   <div className={styles.profileName}>
-                    <b>{this.state.user.username}</b>
-                    <span>{this.state.user.displayName}</span>
+                    <b>{this.state.user.displayName}</b>
+                    <span>@{this.state.user.username}</span>
                   </div>
                   <div
                     className={styles.profileImage}

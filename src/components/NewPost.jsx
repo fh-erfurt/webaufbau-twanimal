@@ -11,6 +11,7 @@ import {
 	faTimes,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from "react-router-dom";
 import React, { Component } from 'react';
 import style from '../assets/css/components/newPost.module.scss';
 import config from '../config';
@@ -210,11 +211,13 @@ class NewPost extends Component {
 			<React.Fragment>
 				<form className={style.newPost} onSubmit={this.submitPost}>
 					<div className={style.newPostRow}>
-						<img
-							className={style.profileImage}
-							src={this.state.user.profilePictureUrl}
-							alt="profileImage"
-						/>
+            <Link to={`/profile/${this.state.user.username}`}>
+              <img
+                className={style.profileImage}
+                src={this.state.user.profilePictureUrl}
+                alt="profileImage"
+              />
+            </Link>
 						<div className={style.postContent}>
 							<textarea
 								placeholder="Was gibts neues?"
@@ -345,6 +348,5 @@ class NewPost extends Component {
 			</React.Fragment>
 		);
 	}
-}
 
 export default NewPost;
