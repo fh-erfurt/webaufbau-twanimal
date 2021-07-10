@@ -54,10 +54,10 @@ class Post extends Component {
       <React.Fragment>
         <div className={style.post}>
           <div className={style.userInfo}>
-            <div className={style.pImage}>
+            <div className={style.profileImage}>
               <img
                 src={this.state.post.createdBy.profilePictureUrl}
-                alt="pImage"
+                alt="profileImage"
               />
             </div>
             <div className={style.profileName}>
