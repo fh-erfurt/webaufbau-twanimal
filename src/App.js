@@ -27,14 +27,14 @@ function App() {
     <div className="App">
       <Router history={history}>
         <Switch>
-          <SecuredRoute path="/profile" component={Profile} />
-          <Route path="/login" component={Login} />
-          <Route path="/registration" component={Registration} />
-          <Route path="/impressum" component={Imprint} />
-          <Route path="/datenschutz" component={Privacy} />
-          <Route path="/überuns" component={Aboutus} />
+          <SecuredRoute path="/profile/:id" exact component={ Profile } />
+          <Route path="/login" component={ Login } />
+          <Route path="/registration" component={ Registration } />
+          <Route path="/impressum" component={ Imprint } />
+          <Route path="/datenschutz" component={ Privacy } />
+          <Route path="/überuns" component={ Aboutus } />
           <Route path="/post" component={Post} />
-          <StartpageRoute path="/" component={Home} exact />
+          <StartpageRoute path="/" component={ Home } exact />
           <Page404 />
         </Switch>
       </Router>

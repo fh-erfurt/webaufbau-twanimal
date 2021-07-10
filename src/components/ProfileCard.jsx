@@ -10,7 +10,7 @@ class ProfileCard extends Component {
     super(props);
 
     this.state = {
-      user: authenticationService.getUser()
+      user: authenticationService.getUser(),
     };
   }
 
@@ -31,7 +31,12 @@ class ProfileCard extends Component {
           </div>
           <div className={style.profile}>
             <div className={style.profileImage}>
-              <img src={this.state.user.profilePictureUrl} alt="profileImage" />
+              <Link to={`/profile/${this.state.user.username}`}>
+                <img
+                  src={this.state.user.profilePictureUrl}
+                  alt="profileImage"
+                />
+              </Link>
             </div>
             <div className={style.profileName}>
               <b>{this.state.user.displayName}</b>
