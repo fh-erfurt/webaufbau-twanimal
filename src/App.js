@@ -10,14 +10,15 @@ import Home from "./routes/Home";
 import Registration from "./routes/Registration";
 import Profile from "./routes/Profile";
 import Page404 from "./routes/Page404";
-import Imprint from './routes/Imprint';
-import Privacy from './routes/Privacy';
-import Aboutus from './routes/Aboutus';
+import Imprint from "./routes/Imprint";
+import Privacy from "./routes/Privacy";
+import Aboutus from "./routes/Aboutus";
 
-import { SecuredRoute } from "./components/SecuredRoute"
-import { StartpageRoute } from "./components/StartpageRoute"
+import { SecuredRoute } from "./components/SecuredRoute";
+import { StartpageRoute } from "./components/StartpageRoute";
 
 import { createBrowserHistory } from "history";
+import Post from "./routes/Post";
 
 const history = createBrowserHistory();
 
@@ -32,6 +33,7 @@ function App() {
           <Route path="/impressum" component={ Imprint } />
           <Route path="/datenschutz" component={ Privacy } />
           <Route path="/überuns" component={ Aboutus } />
+          <Route path="/post" component={Post} />
           <StartpageRoute path="/" component={ Home } exact />
           <Page404 />
         </Switch>
