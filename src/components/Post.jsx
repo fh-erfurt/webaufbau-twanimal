@@ -43,8 +43,8 @@ class Post extends Component {
       let hour = date.getHours();
       let minute = date.getMinutes();
 
-      if(hour < 10) hour = '0' + hour;
-      if(minute < 10) minute = '0' + minute;
+      if (hour < 10) hour = "0" + hour;
+      if (minute < 10) minute = "0" + minute;
 
       return hour + ":" + minute + " Uhr";
     }
@@ -54,11 +54,13 @@ class Post extends Component {
       <React.Fragment>
         <div className={style.post}>
           <div className={style.userInfo}>
-            <div className={style.profileImage}>
-              <img
-                src={this.state.post.createdBy.profilePictureUrl}
-                alt="profileImage"
-              />
+            <div className={style.pImage}>
+              <Link to={`/profile/${this.state.post.createdBy.username}`}>
+                <img
+                  src={this.state.post.createdBy.profilePictureUrl}
+                  alt="pImage"
+                />
+              </Link>
             </div>
             <div className={style.profileName}>
               <b>{this.state.post.createdBy.displayName}</b>
@@ -72,14 +74,17 @@ class Post extends Component {
           </div>
           <div className={style.postMessage}>
             <p>{this.state.post.text}</p>
-            { this.state.post.attachements.length > 0 && <div className={style.postImages}>
-              { this.state.post.attachements.map((attachement, index) => {
-                return (
-                  <div className={style.postImage} key={ index }>
-                    <img src={attachement} />
-                  </div>
-                )
-              }) }</div>}
+            {this.state.post.attachements.length > 0 && (
+              <div className={style.postImages}>
+                {this.state.post.attachements.map((attachement, index) => {
+                  return (
+                    <div className={style.postImage} key={index}>
+                      <img src={attachement} />
+                    </div>
+                  );
+                })}
+              </div>
+            )}
           </div>
           <div className={style.postActions}>
             <FontAwesomeIcon className={style.icons} icon={faHeart} />
