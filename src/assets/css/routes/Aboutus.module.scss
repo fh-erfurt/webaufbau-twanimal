@@ -27,3 +27,28 @@
     text-align: center;
     color: #3c3c3c;
 }
+
+.returnHolder {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+
+    a {
+        display: flex;
+        align-items: center;
+        padding: 0 28px;
+        height: 56px;
+        background-color: #1ead68;
+        border: solid 1px #e2e2e2;
+        border-radius: 51px;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background 0.2s ease, opacity 0.2s ease;
+
+        &:hover {
+            background: darken(#1ead68, 5%);
+        }
+    }
+}

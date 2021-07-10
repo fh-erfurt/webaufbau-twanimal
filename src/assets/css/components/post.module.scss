@@ -48,6 +48,16 @@
   
   .postMessage {
     p {
+      b {
+        display: block;
+        margin-bottom: 20px;
+        
+        a {
+          color: inherit;
+          text-decoration: none;
+        }
+      }
+
       padding: 20px 30px;
     }
 
@@ -68,6 +78,14 @@
           height: 100%;
           object-fit: cover;
           border-radius: 5px;
+        }
+      }
+
+      &.largeImages .postImage {
+        height: auto;
+
+        img {
+          height: auto;
         }
       }
     }
@@ -97,6 +115,16 @@
       margin: 0 100px;
       font-size: x-large;
       color: #e2e2e2;
+
+      &.like {
+        &:hover {
+          color: #ff434367;
+        }
+
+        &.active {
+          color: #FF4343;
+        }
+      }
     }
 
     .icons:hover {

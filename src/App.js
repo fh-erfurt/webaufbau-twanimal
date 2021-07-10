@@ -12,13 +12,13 @@ import Profile from "./routes/Profile";
 import Page404 from "./routes/Page404";
 import Imprint from "./routes/Imprint";
 import Privacy from "./routes/Privacy";
-import Aboutus from "./routes/Aboutus";
+import AboutUs from "./routes/AboutUs";
+import PostPage from "./routes/PostPage";
 
 import { SecuredRoute } from "./components/SecuredRoute";
 import { StartpageRoute } from "./components/StartpageRoute";
 
 import { createBrowserHistory } from "history";
-import Post from "./routes/Post";
 
 const history = createBrowserHistory();
 
@@ -32,8 +32,8 @@ function App() {
           <Route path="/registration" component={ Registration } />
           <Route path="/impressum" component={ Imprint } />
           <Route path="/datenschutz" component={ Privacy } />
-          <Route path="/überuns" component={ Aboutus } />
-          <Route path="/post" component={Post} />
+          <Route path="/ueber-uns" component={ AboutUs } />
+          <Route path="/post/:id" component={PostPage} />
           <StartpageRoute path="/" component={ Home } exact />
           <Page404 />
         </Switch>

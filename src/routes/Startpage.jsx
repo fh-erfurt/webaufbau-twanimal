@@ -48,7 +48,7 @@ class Startpage extends Component {
               </div>
             </div>
             <div className={style.link}>
-              <Link to="/überuns">Was ist Twanimal?</Link>
+              <Link to="/ueber-uns">Was ist Twanimal?</Link>
             </div>
           </div>
           <Footer />

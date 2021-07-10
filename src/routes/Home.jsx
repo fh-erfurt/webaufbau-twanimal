@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Navigation from "../components/Navigation";
 import ProfileCard from "../components/ProfileCard";
 import Post from "../components/Post";
-import SinglePost from "../components/SinglePost";
 
 import style from "../assets/css/routes/home.module.scss";
 import { authenticationService } from "../services/authenticationService";
@@ -72,9 +71,8 @@ class Home extends Component {
             <NewPost onNewPost={this.appendNewPost} />
             {this.state.timeline != null &&
               this.state.timeline.map((post, index) => {
-                return <Post post={post} key={index} />;
+                return <Post post={post} key={post.id + '-' + index} />;
               })}
-            {/* <SinglePost /> */}
           </div>
           <div className={style.profileCard}>
             <ProfileCard
