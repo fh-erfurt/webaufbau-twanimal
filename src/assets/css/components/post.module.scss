@@ -1,4 +1,6 @@
-.post {
+.post,
+.singlePost,
+.comment {
   color: #3c3c3c;
   border: #e2e2e2 solid;
   width: 800px;
@@ -9,7 +11,7 @@
   .userInfo {
     margin-top: 30px;
 
-    .pImage {
+    .profileImage {
       display: inline;
       vertical-align: middle;
 
@@ -71,6 +73,22 @@
     }
   }
 
+  .commentMessage {
+    p {
+      padding: 10px 30px;
+    }
+
+    a {
+      color: #8c8c8c;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #3c3c3c;
+    }
+
+  }
+
   .postActions {
     text-align: center;
     margin-bottom: 20px;
@@ -85,6 +103,21 @@
       color: #3c3c3c;
       cursor: pointer;
     }
+
+    .postStatistics {
+      display: inline;
+      margin: 0 80px;
+      font-size: large;
+      color: #3c3c3c;
+    }
   }
+}
+
+.singlePost {
+  margin-top: 50px;
+}
+
+.comment {
+  background-color: #f8f8f8;
 }
 

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Navigation from "../components/Navigation";
 import ProfileCard from "../components/ProfileCard";
 import Post from "../components/Post";
+import SinglePost from "../components/SinglePost";
 
 import style from "../assets/css/routes/home.module.scss";
 import { authenticationService } from "../services/authenticationService";
@@ -9,7 +10,6 @@ import config from "../config";
 import NewPost from "../components/NewPost";
 
 class Home extends Component {
-
   constructor(props) {
     super(props);
 
@@ -17,41 +17,41 @@ class Home extends Component {
       user: authenticationService.getUser(),
       loading: false,
       page: 0,
-      timeline: null
+      timeline: null,
     };
 
-		this.apiToken = authenticationService.getAPIToken()
+    this.apiToken = authenticationService.getAPIToken();
 
-    this.getHomeTimeline()
+    this.getHomeTimeline();
   }
 
   getHomeTimeline = async () => {
-    if(this.state.loading) return
+    if (this.state.loading) return;
 
-    this.setState({ loading: true })
+    this.setState({ loading: true });
 
     const response = await fetch(`${config.apiHost}/home-timeline`, {
       headers: {
-				Authorization: `Bearer ${this.apiToken}`
-      }
-    })
+        Authorization: `Bearer ${this.apiToken}`,
+      },
+    });
 
-    if(response.ok) {
-      const data = await response.json()
-      this.setState({ timeline: data.results, page: data.page })
+    if (response.ok) {
+      const data = await response.json();
+      this.setState({ timeline: data.results, page: data.page });
     }
 
-    this.setState({ loading: false })
-  } 
+    this.setState({ loading: false });
+  };
 
   appendNewPost = (post) => {
-    console.log(post)
+    console.log(post);
     const timeline = this.state.timeline;
     console.log(timeline.length, timeline);
     timeline.unshift(post);
     console.log(timeline.length, timeline);
-    this.setState({ timeline: timeline })
-  }
+    this.setState({ timeline: timeline });
+  };
 
   render() {
     return (
@@ -69,10 +69,12 @@ class Home extends Component {
         </header>
         <div className={style.content}>
           <div className={style.postContent}>
-            <NewPost onNewPost={ this.appendNewPost } />
-            {this.state.timeline != null && this.state.timeline.map((post, index) => {
-              return (<Post post={ post } key={ index } />)
-            })}
+            <NewPost onNewPost={this.appendNewPost} />
+            {this.state.timeline != null &&
+              this.state.timeline.map((post, index) => {
+                return <Post post={post} key={index} />;
+              })}
+            {/* <SinglePost /> */}
           </div>
           <div className={style.profileCard}>
             <ProfileCard

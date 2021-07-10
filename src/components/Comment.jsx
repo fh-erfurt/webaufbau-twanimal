@@ -1,24 +1,8 @@
 import React, { Component } from "react";
-import style from "../assets/css/components/post.module.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faHeart,
-  faComment,
-  faRetweet,
-} from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import NewComment from "../components/NewComment";
-import Comment from "../components/Comment";
+import style from "../assets/css/components/post.module.scss";
 
-class Post extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      post: this.props.post,
-    };
-  }
-
+class Comment extends Component {
   getDate = () => {
     const date = new Date();
     const months = [
@@ -45,16 +29,17 @@ class Post extends Component {
       let hour = date.getHours();
       let minute = date.getMinutes();
 
-      if(hour < 10) hour = '0' + hour;
-      if(minute < 10) minute = '0' + minute;
+      if (hour < 10) hour = "0" + hour;
+      if (minute < 10) minute = "0" + minute;
 
       return hour + ":" + minute + " Uhr";
     }
   };
+
   render() {
     return (
       <React.Fragment>
-        <div className={style.singlePost}>
+        <div className={style.comment}>
           <div className={style.userInfo}>
             <div className={style.profileImage}>
               <img
@@ -71,10 +56,20 @@ class Post extends Component {
             <div className={style.postTime}>
               <b>{this.getDate()}</b>
             </div>
-          </div>
-          <div className={style.postMessage}>
-            <p>Hannelore hat gepostet!</p>
-            {/* { this.state.post.attachements.length > 0 && <div className={style.postImages}>
+            <div className={style.commentMessage}>
+              <p>
+                <b>
+                  Kommentar zum Post von{" "}
+                  <Link to="/">
+                    @<span>the_dog</span>
+                  </Link>
+                  :{" "}
+                </b>
+              </p>
+              <p>
+                Klasse Post liebe Hannelore! Herzliche Grüße, deine Hannelore.
+              </p>
+              {/* { this.state.post.attachements.length > 0 && <div className={style.postImages}>
               { this.state.post.attachements.map((attachement, index) => {
                 return (
                   <div className={style.postImage} key={ index }>
@@ -82,18 +77,12 @@ class Post extends Component {
                   </div>
                 )
               }) }</div>} */}
-          </div>
-          <div className={style.postActions}>
-            <p className={style.postStatistics}><FontAwesomeIcon icon={faHeart} /> 1000</p>
-            <p className={style.postStatistics}><FontAwesomeIcon icon={faComment} /> 0</p>
-            <p className={style.postStatistics}><FontAwesomeIcon icon={faRetweet} /> 23</p>
+            </div>
           </div>
         </div>
-        <NewComment />
-        <Comment />
       </React.Fragment>
     );
   }
 }
 
-export default Post;
+export default Comment;
