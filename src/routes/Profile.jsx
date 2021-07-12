@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Navigation from "../components/Navigation";
 import style from "../assets/css/routes/profile.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, faPaw } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faPaw, faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 import Suggestions from "../components/Suggestions";
 import config from "../config";
 import { authenticationService } from "../services/authenticationService";
@@ -15,9 +15,11 @@ class Profile extends Component {
     this.state = {
       user: null,
       posts: null,
+      loadFollow: false
     };
 
     this.apiToken = authenticationService.getAPIToken();
+    this.currentUser = authenticationService.getUser();
   }
 
   componentDidMount() {
@@ -31,11 +33,11 @@ class Profile extends Component {
 
   getUser = async () => {
     const id = this.props.match.params.id;
-    const response = await fetch(`${config.apiHost}/user/${id}`, {
+    const response = await fetch(`${config.apiHost}/user/${id}`, this.apiToken ? {
       headers: {
         Authorization: `Bearer ${this.apiToken}`,
       },
-    });
+    } : null);
 
     if (response.ok) {
       const user = await response.json();
@@ -46,17 +48,37 @@ class Profile extends Component {
 
   getPosts = async () => {
     const id = this.props.match.params.id;
-    const response = await fetch(`${config.apiHost}/user/${id}/posts`, {
+    const response = await fetch(`${config.apiHost}/user/${id}/posts`, this.apiToken ? {
       headers: {
         Authorization: `Bearer ${this.apiToken}`,
       },
-    });
+    } : null);
 
     if (response.ok) {
       const data = await response.json();
       this.setState({ posts: data.results });
     }
   };
+
+  toggleFollow = async () => {
+    if(this.state.loadFollow) return;
+    this.setState({ loadFollow: true })
+
+    const id = this.props.match.params.id;
+    const response = await fetch(`${config.apiHost}/user/${id}/${ this.state.user.isFollowing ? 'unfollow' : 'follow' }`, {
+      method: 'post',
+      headers: {
+        Authorization: `Bearer ${this.apiToken}`
+      },
+    });
+
+    if(response.ok) {
+      const user = await response.json();
+      this.setState({ user: user });
+    }
+
+    this.setState({ loadFollow: false })
+  }
 
   render() {
     return (
@@ -70,9 +92,24 @@ class Profile extends Component {
               </div>
 
               <div className={style.profile}>
-                <div className={style.editProfil}>
-                  <button>Profil bearbeiten</button>
-                </div>
+                { this.currentUser != null &&
+                  <div className={style.editProfil}>
+                    { this.currentUser.id !== this.state.user.id ?
+                      <button onClick={ this.toggleFollow }>
+                        {this.state.loadFollow && (
+                          <span>
+                            <FontAwesomeIcon
+                              spin={true}
+                              icon={faCircleNotch}
+                            />
+                            &nbsp;
+                          </span>
+                        )}
+                        { this.state.user.isFollowing ? 'Folge ich' : 'Folgen' }
+                      </button> :
+                      <button>Profil bearbeiten</button> }
+                  </div>
+                }
                 <div className={style.profileImage}>
                   <img
                     src={this.state.user.profilePictureUrl}

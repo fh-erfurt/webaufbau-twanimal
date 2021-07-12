@@ -27,7 +27,7 @@ function App() {
     <div className="App">
       <Router history={history}>
         <Switch>
-          <SecuredRoute path="/profile/:id" exact component={ Profile } />
+          <Route path="/profile/:id" exact component={ Profile } />
           <Route path="/login" component={ Login } />
           <Route path="/registration" component={ Registration } />
           <Route path="/impressum" component={ Imprint } />
