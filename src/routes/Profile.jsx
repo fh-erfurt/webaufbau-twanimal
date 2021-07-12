@@ -7,6 +7,7 @@ import Suggestions from "../components/Suggestions";
 import config from "../config";
 import { authenticationService } from "../services/authenticationService";
 import Post from "../components/Post";
+import EditProfile from './../components/EditProfile';
 
 class Profile extends Component {
   constructor(props) {
@@ -15,7 +16,9 @@ class Profile extends Component {
     this.state = {
       user: null,
       posts: null,
-      loadFollow: false
+      loadFollow: false,
+      showEditPopup: false,
+      navigationUser: null
     };
 
     this.apiToken = authenticationService.getAPIToken();
@@ -80,12 +83,23 @@ class Profile extends Component {
     this.setState({ loadFollow: false })
   }
 
+  updateUser = (user) => {
+    this.setState({ user: user, navigationUser: user })
+  }
+
   render() {
     return (
       <React.Fragment>
-        <Navigation history={this.props.history} />
+        <Navigation history={this.props.history} user={ this.state.navigationUser } />
         {this.state.user ? (
           <div className={style.content}>
+            { this.state.showEditPopup && 
+              <EditProfile 
+                user={ this.state.user } 
+                onUpdate={ this.updateUser }
+                onClose={ () => this.setState({ showEditPopup: false }) }
+              /> 
+            }
             <div className={style.leftContent}>
               <div className={style.background}>
                 <Suggestions />
@@ -107,7 +121,7 @@ class Profile extends Component {
                         )}
                         { this.state.user.isFollowing ? 'Folge ich' : 'Folgen' }
                       </button> :
-                      <button>Profil bearbeiten</button> }
+                      <button onClick={ () => this.setState({ showEditPopup: true }) }>Profil bearbeiten</button> }
                   </div>
                 }
                 <div className={style.profileImage}>

@@ -73,6 +73,12 @@ export default function Registration({ history }) {
         case "invalid password":
           message = "Ungültiges Passwort";
           break;
+        case "email in use":
+          message = "E-Mail Adresse wird bereits verwendet";
+          break;
+        case "username in use":
+          message = "Benutzername wird bereits verwendet";
+          break;
       }
       setError(message);
       setInRegistration(false);
