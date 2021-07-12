@@ -1,94 +1,99 @@
 /* profileCard */
 
 .profileCard {
-  position: fixed;
-  left: 67%;
+	position: fixed;
+	left: 67%;
 }
 
 .searchField {
-  display: inline-flex;
-  height: 40px;
-  border-radius: 20px;
-  background: #f8f8f8;
-  border: solid 1px #e2e2e2;
-  position: relative;
-  overflow: hidden;
-  align-items: center;
-  margin-left: 80px;
-  margin-top: 15px;
-  width: 350px;
-  max-width: 350px;
-  padding: 0 15px;
-  input {
-    background: transparent;
-    border: none;
-    padding: 0 20px 0 35px;
-    height: 100%;
-  }
-  input:focus {
-    outline: none;
-  }
-  .icons {
-    position: absolute;
-    left: 12px;
-    color: #7c7c7c;
-  }
+	display: inline-flex;
+	height: 40px;
+	border-radius: 20px;
+	background: #f8f8f8;
+	border: solid 1px #e2e2e2;
+	position: relative;
+	overflow: hidden;
+	align-items: center;
+	margin-left: 80px;
+	margin-top: 15px;
+	width: 350px;
+	max-width: 350px;
+	padding: 0 15px;
+	input {
+		background: transparent;
+		border: none;
+		padding: 0 20px 0 35px;
+		height: 100%;
+	}
+	input:focus {
+		outline: none;
+	}
+	.icons {
+		position: absolute;
+		left: 12px;
+		color: #7c7c7c;
+	}
 }
 .profile {
-  display: flex;
-  align-items: center;
-  height: 150px;
-  padding: 0 15px;
-  cursor: pointer;
-  transition: background 0.2s ease;
+	display: flex;
+	align-items: center;
+	height: 150px;
+	padding: 0 15px;
+	cursor: pointer;
+	transition: background 0.2s ease;
 }
 
 .profileName {
-  display: flex;
-  flex-direction: column;
-  font-size: larger;
-  padding: 0 15px;
+	display: flex;
+	flex-direction: column;
+	font-size: larger;
+	padding: 0 15px;
 }
 
 .profileImage {
-  img {
-    height: 93px;
-    width: 91px;
-    border-radius: 50%;
-    background-size: cover;
-    background-position: center;
-    margin-left: 10px;
-    object-fit: Cover;
-  }
+	img {
+		height: 93px;
+		width: 91px;
+		border-radius: 50%;
+		background-size: cover;
+		background-position: center;
+		margin-left: 10px;
+		object-fit: Cover;
+	}
 }
 
 .info {
-  display: flex;
-  padding: 0 50px;
-  .posts {
-    margin: auto;
-  }
+	display: flex;
+	padding: 0 50px;
+	.posts {
+		margin: auto;
+	}
 }
 
 .status {
-  width: 448px;
-  padding: 0 30px;
+	width: 448px;
+	padding: 0 30px;
 }
 
 .footer {
-  background-color: white;
-  color: #3c3c3c;
-  font-size: small;
-  height: 40px;
-  text-align: left;
-  padding: 0 30px;
+	background-color: white;
+	color: #3c3c3c;
+	font-size: small;
+	height: 40px;
+	text-align: left;
+	padding: 0 30px;
 
-  p {
-    margin-top: 15px;
-  }
+	p {
+		margin-top: 15px;
+	}
 
-  a {
-    text-decoration: none;
-    color: #0000ff;
-  }
+	a {
+		text-decoration: none;
+		color: #0000ff;
+	}
+}
+
+// to submit (search) with enter on keypord
+.enter {
+	display: none;
 }

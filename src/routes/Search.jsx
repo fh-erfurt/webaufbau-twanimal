@@ -6,7 +6,6 @@ import Post from '../components/Post';
 import style from '../assets/css/routes/home.module.scss';
 import { authenticationService } from '../services/authenticationService';
 import config from '../config';
-import NewPost from '../components/NewPost';
 
 class Search extends Component {
 	constructor(props) {
@@ -43,6 +42,7 @@ class Search extends Component {
 		this.setState({ loading: false });
 	};
 
+	// todo: search result
 	appendNewPost = (post) => {
 		console.log(post);
 		const timeline = this.state.timeline;

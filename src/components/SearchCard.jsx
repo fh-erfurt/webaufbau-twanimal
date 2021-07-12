@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faPaw } from '@fortawesome/free-solid-svg-icons';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import style from '../assets/css/components/profileCard.module.scss';
 import { authenticationService } from '../services/authenticationService';
 
@@ -20,9 +19,10 @@ class SearchCard extends Component {
 			<React.Fragment>
 				<div className={style.profileCard}>
 					<div className={style.searchField}>
-						<form action="#" method="GET">
+						<form action="/suche" method="GET">
 							<FontAwesomeIcon className={style.icons} icon={faSearch} />
 							<input type="text" placeholder="Twanimal durchsuchen..." name="search" />
+							<input className={style.enter} type="submit" />
 						</form>
 					</div>
 					<div className={style.profile}>
