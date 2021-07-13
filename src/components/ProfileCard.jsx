@@ -19,13 +19,6 @@ class ProfileCard extends Component {
 		return (
 			<React.Fragment>
 				<div className={style.profileCard}>
-					<div className={style.searchField}>
-						<form action="/suche" method="GET">
-							<FontAwesomeIcon className={style.icons} icon={faSearch} />
-							<input type="text" placeholder="Twanimal durchsuchen..." name="search" />
-							<input className={style.enter} type="submit" />
-						</form>
-					</div>
 					<div className={style.profile}>
 						<div className={style.profileImage}>
 							<Link to={`/profile/${this.state.user.username}`}>

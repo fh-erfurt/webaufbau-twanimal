@@ -1,0 +1,30 @@
+.searchField {
+	display: inline-flex;
+	height: 40px;
+	border-radius: 20px;
+	background: #f8f8f8;
+	border: solid 1px #e2e2e2;
+	position: relative;
+	overflow: hidden;
+	align-items: center;
+	margin-left: 80px;
+	margin-top: 15px;
+	width: 350px;
+	max-width: 350px;
+	padding: 0 15px;
+
+	input {
+		background: none;
+		border: none;
+		padding: 0 20px 0 35px;
+		height: 100%;
+	}
+	input:focus {
+		outline: none;
+	}
+	.icons {
+		position: absolute;
+		left: 12px;
+		color: #7c7c7c;
+	}
+}

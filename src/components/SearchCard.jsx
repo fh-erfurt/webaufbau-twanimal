@@ -9,7 +9,7 @@ class SearchCard extends Component {
 		super(props);
 
 		this.state = {
-			user: authenticationService.getUser(),
+			users: this.props.users,
 		};
 	}
 
@@ -17,62 +17,24 @@ class SearchCard extends Component {
 	render() {
 		return (
 			<React.Fragment>
-				<div className={style.profileCard}>
-					<div className={style.searchField}>
-						<form action="/suche" method="GET">
-							<FontAwesomeIcon className={style.icons} icon={faSearch} />
-							<input type="text" placeholder="Twanimal durchsuchen..." name="search" />
-							<input className={style.enter} type="submit" />
-						</form>
-					</div>
-					<div className={style.profile}>
-						<div className={style.profileImage}>
-							<img src={this.state.user.profilePictureUrl /* todo: search result */} alt="profileImage" />
+				{this.state.users.map((user) => {
+					return (
+						<div className={style.profileCard}>
+							<div className={style.profile}>
+								<div className={style.profileImage}>
+									<img
+										src={user.profilePictureUrl /* todo: search result */}
+										alt="profileImage"
+									/>
+								</div>
+								<div className={style.profileName /* todo: search result */}>
+									<b>{user.displayName /* todo: search result */}</b>
+									<span>@{user.username /* todo: search result */}</span>
+								</div>
+							</div>
 						</div>
-						<div className={style.profileName /* todo: search result */}>
-							<b>{this.state.user.displayName /* todo: search result */}</b>
-							<span>@{this.state.user.username /* todo: search result */}</span>
-						</div>
-					</div>
-
-					<div className={style.status}>{<p>{this.state.user.description}</p> /* todo: search result */}</div>
-
-					<div className={style.profile}>
-						<div className={style.profileImage}>
-							<img src={this.state.user.profilePictureUrl /* todo: search result */} alt="profileImage" />
-						</div>
-						<div className={style.profileName /* todo: search result */}>
-							<b>{this.state.user.displayName /* todo: search result */}</b>
-							<span>@{this.state.user.username /* todo: search result */}</span>
-						</div>
-					</div>
-
-					<div className={style.status}>{<p>{this.state.user.description}</p> /* todo: search result */}</div>
-
-					<div className={style.profile}>
-						<div className={style.profileImage}>
-							<img src={this.state.user.profilePictureUrl /* todo: search result */} alt="profileImage" />
-						</div>
-						<div className={style.profileName /* todo: search result */}>
-							<b>{this.state.user.displayName /* todo: search result */}</b>
-							<span>@{this.state.user.username /* todo: search result */}</span>
-						</div>
-					</div>
-
-					<div className={style.status}>{<p>{this.state.user.description}</p> /* todo: search result */}</div>
-
-					<div className={style.profile}>
-						<div className={style.profileImage}>
-							<img src={this.state.user.profilePictureUrl /* todo: search result */} alt="profileImage" />
-						</div>
-						<div className={style.profileName /* todo: search result */}>
-							<b>{this.state.user.displayName /* todo: search result */}</b>
-							<span>@{this.state.user.username /* todo: search result */}</span>
-						</div>
-					</div>
-
-					<div className={style.status}>{<p>{this.state.user.description}</p> /* todo: search result */}</div>
-				</div>
+					);
+				})}
 			</React.Fragment>
 		);
 	}
