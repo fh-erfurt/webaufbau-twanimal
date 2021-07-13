@@ -1,43 +1,104 @@
-.searchField {
-  display: inline-flex;
-  height: 40px;
-  border-radius: 20px;
-  background: #f8f8f8;
-  border: solid 1px #e2e2e2;
-  position: relative;
-  align-items: center;
-  margin-left: 920px;
-  margin-top: 15px;
-  width: 350px;
-  padding: 0 15px;
-
-  input {
-    background: transparent;
-    border: none;
-    padding: 0 20px 0 35px;
-    height: 100%;
-  }
-  .icons {
-    position: absolute;
-    left: 12px;
-    color: #7c7c7c;
-  }
-}
 .box {
-  max-width: 1500px;
-  background-color: #e7e4e4;
-  width: 400px;
-  height: 400px;
-  margin-left: 900px;
-  margin-top: 20px;
+  border-radius: 5px;
+  background-color: white;
+  border: solid 2px #e2e2e2;
+  width: 100%;
 
-  input {
-    background: transparent;
-    border: none;
-    padding: 0 20px 0 35px;
-    height: 100%;
-    width: 100%;
-    bottom: 180px;
-    right: 20px;
+  .loading {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #3c3c3c;
+    font-size: 25px;
+  }
+
+  .noSuggestions {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #3c3c3c;
+    font-size: 15px;
+    text-align: center;
+  }
+
+  h3 {
+    color: #3c3c3c;
+    font-size: 17px;
+    margin: 0 0 5px;
+    padding: 20px 15px;
+    text-align: center;
+  }
+  
+  .user {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+
+    & + .user {
+      border-top: solid 1px #e2e2e2;
+    }
+
+    img {
+      height: 60px;
+      width: 60px;
+      border-radius: 30px;
+      margin-right: 10px;
+    }
+
+    .info {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      flex: 1;
+
+      b {
+        font-size: 16px;
+      }
+
+      span {
+        font-size: 14px;
+      }
+    }
+
+    button {
+			padding: 0 20px;
+			height: 40px;
+			background-color: #1ead68;
+      border: none;
+			border-radius: 20px;
+			color: white;
+			font-size: 18px;
+			cursor: pointer;
+			transition: background 0.2s ease, opacity 0.2s ease;
+
+			&:hover {
+				background: darken(#1ead68, 5%);
+			}
+    }
+  }
+
+  .loadMoreHolder {
+    display: flex;
+    justify-content: center;
+    padding: 20px 15px;
+
+    .loadMore {
+      background: #f1f1f1;
+      border: solid 1px #e2e2e2;
+      color: #3c3c3c;
+      height: 50px;
+      border-radius: 5px;
+      padding: 0 25px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      transition: background .2s ease;
+
+      &:hover {
+        background: #e2e2e2;
+      }
+    }
   }
 }

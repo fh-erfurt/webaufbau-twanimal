@@ -58,12 +58,6 @@ class Home extends Component {
         <header className="App-header">
           <Navigation
             history={this.props.history}
-            user={{
-              username: "Hannelore",
-              displayName: "@hanni_the_dog",
-              photo:
-                "https://images.unsplash.com/photo-1552053831-71594a27632d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80",
-            }}
           />
         </header>
         <div className={style.content}>

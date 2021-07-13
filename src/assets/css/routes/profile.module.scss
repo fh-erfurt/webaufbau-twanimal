@@ -1,78 +1,94 @@
-.background {
-  height: 200px;
-  width: 800px;
-  background-image: url(../../images/profile-background.png);
-  background-size: 100px;
-  border: 5px;
-  margin-left: 55px;
-}
 .content {
-  display: flex;
-  margin: 0 auto;
-  max-width: 1500px;
+	display: flex;
+	margin: 25px auto;
+	max-width: 1500px;
+	padding: 0 15px;
+
+	.profileContent {
+		flex: 2;
+    padding: 0 15px;
+	}
+
+	.suggestionContent {
+		flex: 1;
+    padding: 0 15px;
+	}
+}
+
+.background {
+	height: 200px;
+	background-image: url(../../images/profile-background.png);
+	background-size: 100px;
+	border: 5px;
+  border-radius: 15px;
 }
 
 .profile {
-  margin-left: 70px;
-  transform: translateY(-30px);
-}
+	transform: translateY(-30px);
+	padding: 0 25px;
 
-.profileName {
-  display: flex;
-  flex-direction: column;
-  font-size: larger;
-  padding: 0 15px 20px;
-  margin: auto 10px;
-}
+	.profileDetails {
+		.profileName {
+			display: flex;
+			flex-direction: column;
+			font-size: larger;
+			margin-bottom: 20px;
+			padding: 0 10px;
+		}
 
-.profileImage {
-  border: solid 2px white;
-  margin-bottom: 30px;
-  height: 100px;
-  width: 100px;
-  border-radius: 50%;
-  overflow: hidden;
+		.stats {
+			display: flex;
 
-  img {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-  }
-}
+			div {
+				margin: 0 10px;
+			}
+		}
 
-.info {
-  display: flex;
-  padding: 0 15px;
+		.description {
+      margin-top: 10px;
+      margin-bottom: 30px;
+			padding: 0 10px;
+		}
+	}
 
-  .posts {
-    margin: auto 10px;
-  }
-}
+	.profileRow {
+		display: flex;
+		align-items: center;
+		margin-bottom: 30px;
 
-.status {
-  width: 448px;
-  padding: 0 30px;
-}
+		.profileImage {
+			border: solid 2px white;
+			height: 100px;
+			width: 100px;
+			border-radius: 50%;
+			overflow: hidden;
 
-.editProfil {
-  padding: 0 35px;
-  display: flex;
-  height: 45px;
-  background-color: #1ead68;
-  border: solid 1px #e2e2e2;
-  border-radius: 51px;
-  position: absolute;
-  overflow: hidden;
-  align-items: center;
-  margin-left: 475px;
-  margin-top: 80px;
+			img {
+				height: 100%;
+				width: 100%;
+				object-fit: cover;
+			}
+		}
 
-  button {
-    background: transparent;
-    border: none;
-    padding: 20px 0 45px;
-    height: 100%;
-    font-size: larger;
-    color: #ffffff;
-  }
+		.spacer {
+			flex: 1;
+		}
+
+		button {
+			padding: 0 20px;
+			height: 40px;
+			background-color: #1ead68;
+			border: none;
+			border-radius: 20px;
+			color: white;
+			font-size: 18px;
+			cursor: pointer;
+			margin-top: 30px;
+			transition: background 0.2s ease, opacity 0.2s ease;
+
+			&:hover {
+				background: darken(#1ead68, 5%);
+			}
+		}
+	}
 }

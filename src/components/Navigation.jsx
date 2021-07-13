@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import styles from '../assets/css/components/navigation.module.scss';
 
 import { authenticationService } from '../services/authenticationService';
+import config from '../config';
 
 class NavigationItem extends Component {
 	state = {};
@@ -24,8 +25,43 @@ class Navigation extends Component {
 		super(props);
 
 		this.state = {
-			user: authenticationService.getUser(),
+			user: props.user || authenticationService.getUser(),
 		};
+	}
+
+	componentDidMount() {
+		const user = authenticationService.getUser();
+
+		if(user)
+			this.validateSession();
+	}
+
+	componentDidUpdate(prevProps) {
+		if(this.props.user !== prevProps.user)
+			this.setState({ user: this.props.user });
+	}
+
+	validateSession = async () => {
+		const response = await fetch(`${ config.apiHost }/validate-session`, {
+			headers: {
+				Authorization: `Bearer ${authenticationService.getAPIToken()}`,
+			}
+		});
+
+		if(response.ok) {
+			const data = await response.json();
+			const apiToken = data.apiToken;
+			delete data.apiToken;
+	  
+			authenticationService.storeSession({
+			  user: data,
+			  apiToken: apiToken,
+			});
+
+			this.setState({ user: data });
+		} else {
+			this.logout();
+		}
 	}
 
 	logout = () => {
