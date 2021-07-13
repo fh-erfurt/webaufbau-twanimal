@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import Navigation from '../components/Navigation';
 import SearchCard from '../components/SearchCard';
 import Post from '../components/Post';
@@ -6,6 +6,35 @@ import Post from '../components/Post';
 import style from '../assets/css/routes/home.module.scss';
 import { authenticationService } from '../services/authenticationService';
 import config from '../config';
+
+// export default function Search({history}) {
+// 	const [inSearching, setInSearching] = useState(false);
+
+// 	const [search, setSearch] = useState();
+
+// 	const [error, setError] = useState(null);
+
+// 	const search = async (event) => {
+// 		event.preventDefault();
+
+// 		if (inSearching) return;
+
+// 		setInSearching(true);
+
+// 		const response = await fetch(`${config.apiHost}/search/user/:query`,
+// 		{
+// 			method: "get",
+// 			headers:
+// 			{
+// 				"Content-Type": "application/json",
+// 			},
+// 			body: JSON.stringify(
+// 			{
+// 				search: search,
+// 			}),
+
+// 		});
+// 	};
 
 class Search extends Component {
 	constructor(props) {
