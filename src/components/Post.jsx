@@ -75,19 +75,22 @@ class Post extends Component {
 						</div>
 						<div className={style.profileName}>
 							<b>{this.state.post.createdBy.displayName}</b>
-							<Link to="/">
-								@<span>{this.state.post.createdBy.username}</span>
-							</Link>
+							<span>@{this.state.post.createdBy.username}</span>
 						</div>
-						<div className={style.postTime}>
+						<Link to={`/post/${this.state.post.id}`} className={style.postTime}>
 							<b>{this.getDate()}</b>
-						</div>
+						</Link>
 					</div>
 					<div className={style.postMessage}>
-						<p>
-							{ this.state.post.replyTo && <b>Kommentar zum <Link to={`/post/${this.state.post.replyTo.id}`}>Post</Link> von <Link to={`/profile/${this.state.post.replyTo.createdBy.username}`}>@{ this.state.post.replyTo.createdBy.username }</Link></b> }
-							{this.state.post.text}
-							</p>
+						{this.state.post.replyTo && (
+							<b>
+								Kommentar zum <Link to={`/post/${this.state.post.replyTo.id}`}>Post</Link> von{' '}
+								<Link to={`/profile/${this.state.post.replyTo.createdBy.username}`}>
+									@{this.state.post.replyTo.createdBy.username}
+								</Link>
+							</b>
+						)}
+						<div className={style.text}>{this.state.post.text}</div>
 						{this.state.post.attachements.length > 0 && (
 							<div
 								className={
@@ -106,14 +109,21 @@ class Post extends Component {
 						)}
 					</div>
 					<div className={style.postActions}>
-						<FontAwesomeIcon
-							onClick={this.likePost}
-							className={`${style.icons} ${style.like} ${this.state.post.hasLiked ? style.active : ''}`}
-							icon={this.state.isLiking ? faCircleNotch : faHeart}
-							spin={this.state.isLiking}
-						/>
-						<Link to={`/post/${this.state.post.id}`}><FontAwesomeIcon className={style.icons} icon={faComment} /></Link>
-						<FontAwesomeIcon className={style.icons} icon={faRetweet} />
+						<div
+							className={`${style.action} ${style.like} ${this.state.post.hasLiked ? style.active : ''}`}>
+							<FontAwesomeIcon
+								onClick={this.likePost}
+								icon={this.state.isLiking ? faCircleNotch : faHeart}
+								spin={this.state.isLiking}
+							/>
+							{ this.state.post.likeCount > 0 && <span>{ this.state.post.likeCount }</span> }
+						</div>
+						<Link to={`/post/${this.state.post.id}`} className={style.action}>
+							<FontAwesomeIcon className={style.icons} icon={faComment} />
+						</Link>
+						<div className={style.action}>
+							<FontAwesomeIcon className={style.icons} icon={faRetweet} />
+						</div>
 					</div>
 				</div>
 			</React.Fragment>

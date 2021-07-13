@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import Navigation from '../components/Navigation';
 import ProfileCard from '../components/ProfileCard';
-import style from '../assets/css/routes/home.module.scss';
+import style from '../assets/css/routes/post.module.scss';
 import { authenticationService } from '../services/authenticationService';
 import config from '../config';
 import Post from './../components/Post';
 import NewPost from './../components/NewPost';
+import SearchForm from '../components/SearchForm';
+import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class PostPage extends Component {
 	constructor(props) {
@@ -13,7 +16,7 @@ class PostPage extends Component {
 
 		this.state = {
 			post: null,
-			replies: []
+			replies: null,
 		};
 
 		this.apiToken = authenticationService.getAPIToken();
@@ -24,13 +27,12 @@ class PostPage extends Component {
 	}
 
 	componentDidUpdate(prevProps) {
-		console.log("hi")
 		if (prevProps.match.params.id === this.props.match.params.id) return;
 		this.getPost();
 	}
 
 	getPost = async () => {
-		this.setState({ post: null, replies: [] })
+		this.setState({ post: null, replies: [] });
 
 		const id = this.props.match.params.id;
 		const response = await fetch(`${config.apiHost}/post/${id}`, {
@@ -46,12 +48,12 @@ class PostPage extends Component {
 	};
 
 	onNewPost = (post) => {
-		const replies = this.state.replies
+		const replies = this.state.replies;
 
 		replies.unshift(post);
 
-		this.setState({ replies: replies })
-	}
+		this.setState({ replies: replies });
+	};
 
 	state = {};
 	render() {
@@ -63,29 +65,30 @@ class PostPage extends Component {
 				<body>
 					{this.state.post ? (
 						<div className={style.content}>
-							<div className={style.postContent}>
-                				<Post post={ this.state.post } largeImages={ true } />
-								<NewPost replyToPost={ this.state.post } onNewPost={this.onNewPost} />
-								{ this.state.replies.map((post, index) => {
-									return <Post post={post} key={post.id + '-' + index} />;
-								}) }
+							<div className={`${style.leftContent} ${style.extraPadding}`}>
+								<Post post={this.state.post} largeImages={true} />
+								<NewPost replyToPost={this.state.post} onNewPost={this.onNewPost} />
+								{this.state.replies != null ? (
+									this.state.replies.map((post, index) => {
+										return <Post post={post} key={post.id + '-' + index} />;
+									})
+								) : (
+									<div className={style.loadingPosts}>
+										<FontAwesomeIcon spin={true} icon={faCircleNotch} />
+										<span>Antworten werden geladen</span>
+									</div>
+								)}
 							</div>
-							<div className={style.profileCard}>
-								<ProfileCard
-									user={{
-										photo: 'https://images.unsplash.com/photo-1552053831-71594a27632d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80',
-										username: 'Hanni',
-										displayName: 'the dog',
-										numberOfAllPosts: 12,
-										numberOfAllFollower: 400,
-										namberOfAllFriends: 40,
-										status: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purus non enim praesent elementum facilisis leo, vel',
-									}}
-								/>
+							<div className={style.rightContent}>
+								<SearchForm />
+								<ProfileCard user={this.state.post.createdBy} />
 							</div>
 						</div>
 					) : (
-						<div>wird geladen</div>
+						<div className={style.loading}>
+							<FontAwesomeIcon spin={true} icon={faCircleNotch} />
+							<span>Beitrag wird geladen</span>
+						</div>
 					)}
 				</body>
 			</React.Fragment>

@@ -1,59 +1,50 @@
 /* profileCard */
 
 .profileCard {
-	position: fixed;
-	left: 67%;
-}
+	padding: 0 25px;
 
+	.profile {
+		display: flex;
+		align-items: center;
+		height: 150px;
+		cursor: pointer;
+		transition: background 0.2s ease;
 
-.profile {
-	display: flex;
-	align-items: center;
-	height: 150px;
-	padding: 0 15px;
-	cursor: pointer;
-	transition: background 0.2s ease;
-}
-
-.profileName {
-	display: flex;
-	flex-direction: column;
-	font-size: larger;
-	padding: 0 15px;
-}
-
-.profileImage {
-	img {
-		height: 93px;
-		width: 91px;
-		border-radius: 50%;
-		background-size: cover;
-		background-position: center;
-		margin-left: 10px;
-		object-fit: Cover;
+		.profileName {
+			display: flex;
+			flex-direction: column;
+			font-size: larger;
+			padding: 0 15px;
+		}
 	}
-}
 
-.info {
-	display: flex;
-	padding: 0 50px;
-	.posts {
-		margin: auto;
+	.profileImage {
+		img {
+			height: 80px;
+			width: 80px;
+			border-radius: 50%;
+			object-fit: cover;
+			object-position: center;
+		}
 	}
-}
 
-.status {
-	width: 448px;
-	padding: 0 30px;
+	.info {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+
+		.stat + .stat {
+			margin-left: 15px;
+		}
+	}
 }
 
 .footer {
-	background-color: white;
+	margin-top: 30px;
+	border-top: solid 1px #e2e2e2;
+	padding-top: 30px;
 	color: #3c3c3c;
 	font-size: small;
-	height: 40px;
-	text-align: left;
-	padding: 0 30px;
 
 	p {
 		margin-top: 15px;
@@ -61,6 +52,6 @@
 
 	a {
 		text-decoration: none;
-		color: #0000ff;
+		color: #1EAD68;
 	}
 }

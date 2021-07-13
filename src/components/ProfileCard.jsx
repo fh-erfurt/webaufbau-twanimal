@@ -10,7 +10,7 @@ class ProfileCard extends Component {
 		super(props);
 
 		this.state = {
-			user: authenticationService.getUser(),
+			user: props.user || authenticationService.getUser()
 		};
 	}
 
@@ -32,13 +32,13 @@ class ProfileCard extends Component {
 					</div>
 
 					<div className={style.info}>
-						<div className={style.posts}>
+						<div className={style.stat}>
 							<b>{this.state.user.postCount} Beiträge</b>
 						</div>
-						<div className={style.posts}>
+						<div className={style.stat}>
 							<b>{this.state.user.followerCount} Follower</b>
 						</div>
-						<div className={style.posts}>
+						<div className={style.stat}>
 							<b>{this.state.user.followingCount} Freunde</b>
 						</div>
 					</div>
@@ -48,12 +48,10 @@ class ProfileCard extends Component {
 					</div>
 
 					<div className={style.footer}>
-						<p>
-							Copyright &copy; 2021 Twanimal UG (haftungsbeschränkt) &nbsp;-&nbsp;
-							<Link to="/impressum">Impressum</Link>
-							&nbsp;-&nbsp;
-							<Link to="/datenschutz">Datenschutz</Link>
-						</p>
+						Copyright &copy; 2021 Twanimal UG (haftungsbeschränkt) &nbsp;-&nbsp;
+						<Link to="/impressum">Impressum</Link>
+						&nbsp;-&nbsp;
+						<Link to="/datenschutz">Datenschutz</Link>
 					</div>
 				</div>
 			</React.Fragment>

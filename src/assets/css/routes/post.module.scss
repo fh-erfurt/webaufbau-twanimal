@@ -1,0 +1,45 @@
+.content {
+	display: flex;
+	margin: 0 auto 15px;
+	max-width: 1300px;
+	padding: 0 15px;
+}
+
+.leftContent {
+	flex: 2;
+	padding: 0 15px;
+
+	&.extraPadding {
+		padding-top: 15px;
+	}
+}
+
+.rightContent {
+	flex: 1;
+	padding: 25px 15px 0;
+	max-width: 500px;
+
+	.sticky {
+		position: sticky;
+		top: 85px;
+	}
+}
+
+
+.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	margin: 0 auto;
+	max-width: 1500px;
+    font-size: 40px;
+    min-height: 300px;
+    flex-direction: column;
+    color: #1ead68;
+
+    span {
+        font-size: 20px;
+        color: #3c3c3c;
+        margin-top: 20px;
+    }
+}

@@ -1,13 +1,42 @@
 .content {
-  display: flex;
-  margin: 0 auto;
-  max-width: 1500px;
+	display: flex;
+	margin: 0 auto 15px;
+	max-width: 1300px;
+	padding: 0 15px;
 }
 
-.postContent {
-  flex: 3;
+.leftContent {
+	flex: 2;
+	padding: 0 15px;
+
+	&.extraPadding {
+		padding-top: 15px;
+	}
+
+	.loadingPosts {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 30px;
+		min-height: 150px;
+		flex-direction: column;
+		color: #1ead68;
+	
+		span {
+			font-size: 15px;
+			color: #3c3c3c;
+			margin-top: 20px;
+		}
+	}
 }
 
-.profileCard {
-  flex: 1;
+.rightContent {
+	flex: 1;
+	padding: 25px 15px 0;
+	max-width: 500px;
+
+	.sticky {
+		position: sticky;
+		top: 85px;
+	}
 }

@@ -9,6 +9,7 @@ import { authenticationService } from '../services/authenticationService';
 import Post from '../components/Post';
 import EditProfile from './../components/EditProfile';
 import { utilityService } from './../services/utilityService';
+import SearchForm from '../components/SearchForm';
 
 class Profile extends Component {
 	constructor(props) {
@@ -122,28 +123,35 @@ class Profile extends Component {
 										<img src={this.state.user.profilePictureUrl} alt="profileImage" />
 									</div>
 									<div className={style.spacer}></div>
-									{ this.currentUser && (this.currentUser.id !== this.state.user.id ? (
-										<button onClick={this.toggleFollow}>
-											{this.state.loadFollow && (
-												<span>
-													<FontAwesomeIcon spin={true} icon={faCircleNotch} />
-													&nbsp;
-												</span>
-											)}
-											{this.state.user.isFollowing ? 'Folge ich' : 'Folgen'}
-										</button>
-									) : (
-										<button onClick={() => this.setState({ showEditPopup: true })}>
-											Profil bearbeiten
-										</button>
-									))}
+									{this.currentUser &&
+										(this.currentUser.id !== this.state.user.id ? (
+											<button onClick={this.toggleFollow}>
+												{this.state.loadFollow && (
+													<span>
+														<FontAwesomeIcon spin={true} icon={faCircleNotch} />
+														&nbsp;
+													</span>
+												)}
+												{this.state.user.isFollowing ? 'Folge ich' : 'Folgen'}
+											</button>
+										) : (
+											<button onClick={() => this.setState({ showEditPopup: true })}>
+												Profil bearbeiten
+											</button>
+										))}
 								</div>
 								<div className={style.profileDetails}>
 									<div className={style.profileName}>
 										<b>{this.state.user.displayName}</b>
 										<span>@{this.state.user.username}</span>
 									</div>
-									<div className={style.description} dangerouslySetInnerHTML={{ __html: utilityService.nl2br(utilityService.stripTags(this.state.user.description)) }}></div>
+									<div
+										className={style.description}
+										dangerouslySetInnerHTML={{
+											__html: utilityService.nl2br(
+												utilityService.stripTags(this.state.user.description)
+											),
+										}}></div>
 									<div className={style.stats}>
 										<div>
 											<b>{this.state.user.postCount} Beiträge</b>
@@ -157,17 +165,29 @@ class Profile extends Component {
 									</div>
 								</div>
 							</div>
-							{this.state.posts != null &&
+							{this.state.posts != null ? (
 								this.state.posts.map((post, index) => {
 									return <Post post={post} key={index} />;
-								})}
+								})
+							) : (
+								<div className={style.loadingPosts}>
+									<FontAwesomeIcon spin={true} icon={faCircleNotch} />
+									<span>Beiträge werden geladen</span>
+								</div>
+							)}
 						</div>
 						<div className={style.suggestionContent}>
-							<Suggestions />
+							<div className={style.sticky}>
+								<SearchForm />
+								<Suggestions currentUser={this.state.user} />
+							</div>
 						</div>
 					</div>
 				) : (
-					<div>wird geladen</div>
+					<div className={style.loading}>
+						<FontAwesomeIcon spin={true} icon={faCircleNotch} />
+						<span>Profil wird geladen</span>
+					</div>
 				)}
 			</React.Fragment>
 		);

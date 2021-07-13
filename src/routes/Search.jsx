@@ -145,40 +145,45 @@ class Search extends Component {
 								))}
 						</div>
 						<div className={style.rightContent}>
-							<SearchForm />
-							<div className={style.profileResults}>
-								{this.state.users != null &&
-									(this.state.users.length > 0 ? (
-										this.state.users.map((user, index) => {
-											return (
-												<div key={index} className={style.user}>
-													<Link to={`/profile/${user.username}`}>
-														<img src={user.profilePictureUrl} />
-													</Link>
-													<div className={style.info}>
-														<b>{user.displayName}</b>
-														<span>@{user.username}</span>
+							<div className={style.sticky}>
+								<SearchForm />
+								<div className={style.profileResults}>
+									{this.state.users != null &&
+										(this.state.users.length > 0 ? (
+											this.state.users.map((user, index) => {
+												return (
+													<div key={index} className={style.user}>
+														<Link to={`/profile/${user.username}`}>
+															<img src={user.profilePictureUrl} />
+														</Link>
+														<div className={style.info}>
+															<b>{user.displayName}</b>
+															<span>@{user.username}</span>
+														</div>
+														{(!this.currentUser || this.currentUser.id !== user.id) && (
+															<button onClick={() => this.toggleFollow(index)}>
+																{user.loadFollow && (
+																	<span>
+																		<FontAwesomeIcon
+																			spin={true}
+																			icon={faCircleNotch}
+																		/>
+																		&npsp;
+																	</span>
+																)}
+																{user.isFollowing ? 'Folge ich' : 'Folgen'}
+															</button>
+														)}
 													</div>
-													{(!this.currentUser || this.currentUser.id !== user.id) && (
-														<button onClick={() => this.toggleFollow(index)}>
-															{user.loadFollow && (
-																<span>
-																	<FontAwesomeIcon spin={true} icon={faCircleNotch} />
-																	&npsp;
-																</span>
-															)}
-															{user.isFollowing ? 'Folge ich' : 'Folgen'}
-														</button>
-													)}
-												</div>
-											);
-										})
-									) : (
-										<div className={style.noResults}>
-											<img src={noUsers} alt="Glücklicher Hund" />
-											<span>Der Hund hat leider alle Profile verjagt</span>
-										</div>
-									))}
+												);
+											})
+										) : (
+											<div className={style.noResults}>
+												<img src={noUsers} alt="Glücklicher Hund" />
+												<span>Der Hund hat leider alle Profile verjagt</span>
+											</div>
+										))}
+								</div>
 							</div>
 						</div>
 					</div>
