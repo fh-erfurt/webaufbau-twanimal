@@ -1,0 +1,125 @@
+.content {
+	display: flex;
+	margin: 0 auto;
+	max-width: 1500px;
+}
+
+.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	margin: 0 auto;
+	max-width: 1500px;
+    font-size: 40px;
+    min-height: 300px;
+    flex-direction: column;
+    color: #1ead68;
+
+    span {
+        font-size: 20px;
+        color: #3c3c3c;
+        margin-top: 20px;
+    }
+}
+
+.leftContent {
+	flex: 3;
+
+    .noResults {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 80px 20px;
+
+        img {
+            height: 160px;
+            width: 160px;
+            border-radius: 80px;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        span {
+            font-size: 25px;
+            color: #3c3c3c;
+            margin-top: 40px;
+        }
+    }
+}
+
+.rightContent {
+	flex: 1;
+
+    .noResults {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 60px 20px;
+
+        img {
+            height: 120px;
+            width: 120px;
+            border-radius: 60px;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        span {
+            font-size: 20px;
+            color: #3c3c3c;
+            margin-top: 30px;
+        }
+    }
+}
+
+.profileResults {
+	.user {
+		display: flex;
+		align-items: center;
+		padding: 10px 15px;
+
+		& + .user {
+			border-top: solid 1px #e2e2e2;
+		}
+
+		img {
+			height: 60px;
+			width: 60px;
+			border-radius: 30px;
+			margin-right: 10px;
+		}
+
+		.info {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			flex: 1;
+
+			b {
+				font-size: 16px;
+			}
+
+			span {
+				font-size: 14px;
+			}
+		}
+
+		button {
+			padding: 0 20px;
+			height: 40px;
+			background-color: #1ead68;
+			border: none;
+			border-radius: 20px;
+			color: white;
+			font-size: 18px;
+			cursor: pointer;
+			transition: background 0.2s ease, opacity 0.2s ease;
+
+			&:hover {
+				background: darken(#1ead68, 5%);
+			}
+		}
+	}
+}

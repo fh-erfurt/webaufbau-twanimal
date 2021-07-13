@@ -3,9 +3,16 @@ import Navigation from '../components/Navigation';
 import SearchCard from '../components/SearchCard';
 import Post from '../components/Post';
 
-import style from '../assets/css/routes/home.module.scss';
+import style from '../assets/css/routes/search.module.scss';
 import { authenticationService } from '../services/authenticationService';
 import config from '../config';
+import SearchForm from '../components/SearchForm';
+import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'react-router-dom';
+
+import mopsBraun from '../assets/images/mops-braun.jpg';
+import noUsers from '../assets/images/no-users.jpg';
 
 // export default function Search({history}) {
 // 	const [inSearching, setInSearching] = useState(false);
@@ -40,24 +47,35 @@ class Search extends Component {
 	constructor(props) {
 		super(props);
 
+		const splittedSearch = props.location.search.split('=');
+		if (splittedSearch.length > 2) return props.history.push('/');
+
 		this.state = {
+			query: splittedSearch[1],
 			user: authenticationService.getUser(),
 			loading: false,
 			page: 0,
+
+			posts: null,
+			users: null,
+
 			timeline: null,
 		};
 
+		this.currentUser = authenticationService.getUser();
 		this.apiToken = authenticationService.getAPIToken();
-
-		this.getHomeTimeline();
 	}
 
-	getHomeTimeline = async () => {
+	componentDidMount() {
+		this.searchCombined();
+	}
+
+	searchCombined = async () => {
 		if (this.state.loading) return;
 
 		this.setState({ loading: true });
 
-		const response = await fetch(`${config.apiHost}/home-timeline`, {
+		const response = await fetch(`${config.apiHost}/search/combined/${this.state.query}`, {
 			headers: {
 				Authorization: `Bearer ${this.apiToken}`,
 			},
@@ -65,20 +83,39 @@ class Search extends Component {
 
 		if (response.ok) {
 			const data = await response.json();
-			this.setState({ timeline: data.results, page: data.page });
+
+			this.setState({
+				posts: data.posts.results,
+				users: data.users.results,
+			});
 		}
 
 		this.setState({ loading: false });
 	};
 
-	// todo: search result
-	appendNewPost = (post) => {
-		console.log(post);
-		const timeline = this.state.timeline;
-		console.log(timeline.length, timeline);
-		timeline.unshift(post);
-		console.log(timeline.length, timeline);
-		this.setState({ timeline: timeline });
+	toggleFollow = async (index) => {
+		const users = this.state.users;
+		let user = users[index];
+		if (user.loadFollow) return;
+
+		user.loadFollow = true;
+		this.setState({ users: [...users] });
+
+		const response = await fetch(`${config.apiHost}/user/${user.id}/${user.isFollowing ? 'unfollow' : 'follow'}`, {
+			method: 'post',
+			headers: {
+				Authorization: `Bearer ${this.apiToken}`,
+			},
+		});
+
+		if (response.ok) {
+			user = await response.json();
+		}
+
+		user.loadFollow = false;
+		users[index] = user;
+
+		this.setState({ users: [...users] });
 	};
 
 	render() {
@@ -87,28 +124,65 @@ class Search extends Component {
 				<header className="App-header">
 					<Navigation history={this.props.history} />
 				</header>
-				<div className={style.content}>
-					<div className={style.postContent}>
-						{/* hier kommt search logik  */}
-						{this.state.timeline != null &&
-							this.state.timeline.map((post, index) => {
-								return <Post post={post} key={index} />;
-							})}
+				{this.state.loading ? (
+					<div className={style.loading}>
+						<FontAwesomeIcon spin={true} icon={faCircleNotch} />
+						<span>Ergebnisse werden geladen</span>
 					</div>
-					<div className={style.profileCard}>
-						<SearchCard
-							user={{
-								photo: 'https://images.unsplash.com/photo-1552053831-71594a27632d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80',
-								username: 'Hanni',
-								displayName: 'the dog',
-								numberOfAllPosts: 12,
-								numberOfAllFollower: 400,
-								namberOfAllFriends: 40,
-								status: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purus non enim praesent elementum facilisis leo, vel',
-							}}
-						/>
+				) : (
+					<div className={style.content}>
+						<div className={style.leftContent}>
+							{this.state.posts != null &&
+								(this.state.posts.length > 0 ? (
+									this.state.posts.map((post) => {
+										return <Post post={post} key={post.id} />;
+									})
+								) : (
+									<div className={style.noResults}>
+										<img src={mopsBraun} alt="Mops braune Decke" />
+										<span>Der Mops hat leider die Beiträge gefressen</span>
+									</div>
+								))}
+						</div>
+						<div className={style.rightContent}>
+							<SearchForm />
+							<div className={style.profileResults}>
+								{this.state.users != null &&
+									(this.state.users.length > 0 ? (
+										this.state.users.map((user, index) => {
+											return (
+												<div key={index} className={style.user}>
+													<Link to={`/profile/${user.username}`}>
+														<img src={user.profilePictureUrl} />
+													</Link>
+													<div className={style.info}>
+														<b>{user.displayName}</b>
+														<span>@{user.username}</span>
+													</div>
+													{(!this.currentUser || this.currentUser.id !== user.id) && (
+														<button onClick={() => this.toggleFollow(index)}>
+															{user.loadFollow && (
+																<span>
+																	<FontAwesomeIcon spin={true} icon={faCircleNotch} />
+																	&npsp;
+																</span>
+															)}
+															{user.isFollowing ? 'Folge ich' : 'Folgen'}
+														</button>
+													)}
+												</div>
+											);
+										})
+									) : (
+										<div className={style.noResults}>
+											<img src={noUsers} alt="Glücklicher Hund" />
+											<span>Der Hund hat leider alle Profile verjagt</span>
+										</div>
+									))}
+							</div>
+						</div>
 					</div>
-				</div>
+				)}
 			</React.Fragment>
 		);
 	}

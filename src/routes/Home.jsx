@@ -7,6 +7,7 @@ import style from "../assets/css/routes/home.module.scss";
 import { authenticationService } from "../services/authenticationService";
 import config from "../config";
 import NewPost from "../components/NewPost";
+import SearchForm from "../components/SearchForm";
 
 class Home extends Component {
   constructor(props) {
@@ -75,6 +76,7 @@ class Home extends Component {
               })}
           </div>
           <div className={style.profileCard}>
+					  <SearchForm />
             <ProfileCard
               user={{
                 photo:
