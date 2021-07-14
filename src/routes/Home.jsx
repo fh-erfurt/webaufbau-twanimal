@@ -11,6 +11,8 @@ import SearchForm from '../components/SearchForm';
 import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import timelineEmpty from '../assets/images/timeline-empty.jpg';
+
 class Home extends Component {
 	constructor(props) {
 		super(props);
@@ -54,6 +56,12 @@ class Home extends Component {
 		this.setState({ timeline: timeline });
 	};
 
+	removePost = (index) => {
+		const timeline = this.state.timeline;
+		timeline.splice(index, 1);
+		this.setState({ timeline: [...timeline] });
+	};
+
 	render() {
 		return (
 			<React.Fragment>
@@ -62,9 +70,22 @@ class Home extends Component {
 					<div className={style.leftContent}>
 						<NewPost onNewPost={this.appendNewPost} />
 						{this.state.timeline != null ? (
-							this.state.timeline.map((post, index) => {
-								return <Post post={post} key={post.id + '-' + index} />;
-							})
+							this.state.timeline.length === 0 ? (
+								<div className={style.noResults}>
+									<img src={timelineEmpty} alt="Fressende Meerschweinchen" />
+									<span>Du folgst noch keinem Profil</span>
+								</div>
+							) : (
+								this.state.timeline.map((post, index) => {
+									return (
+										<Post
+											post={post}
+											key={post.id + '-' + index}
+											onDelete={() => this.removePost(index)}
+										/>
+									);
+								})
+							)
 						) : (
 							<div className={style.loadingPosts}>
 								<FontAwesomeIcon spin={true} icon={faCircleNotch} />

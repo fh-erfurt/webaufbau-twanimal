@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import style from '../assets/css/components/post.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart, faComment, faRetweet } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faComment, faRetweet, faEnvelope, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import config from '../config';
 import { authenticationService } from '../services/authenticationService';
@@ -17,6 +17,8 @@ class Post extends Component {
 			post: this.props.post,
 			isLiking: false,
 		};
+
+		this.currentUser = authenticationService.getUser();
 	}
 
 	getDate = () => {
@@ -40,7 +42,7 @@ class Post extends Component {
 	};
 
 	likePost = async () => {
-		if (this.state.isLiking) return;
+		if (this.state.isLiking || !this.currentUser) return;
 		this.setState({ isLiking: true });
 
 		let post = this.state.post;
@@ -63,6 +65,26 @@ class Post extends Component {
 		this.setState({ isLiking: false });
 	};
 
+	deletePost = async () => {
+		if(!window.confirm("Möchtest du den Beitrag wirklich löschen?")) return;
+
+		const response = await fetch(`${config.apiHost}/post/${this.state.post.id}/delete`, {
+			method: 'post',
+			headers: {
+				Authorization: `Bearer ${this.apiToken}`,
+			},
+		});
+
+		if(!response.ok)
+			alert("Der Beitrag konnte nicht gelöscht werden.");
+
+		this.props.onDelete();
+	}
+
+	getPostMessage = () => {
+		return `Schau dir den Beitrag von ${this.state.post.createdBy.displayName} an: https://twanimal.de/${this.state.post.id}`;
+	}
+
 	render() {
 		return (
 			<React.Fragment>
@@ -77,9 +99,14 @@ class Post extends Component {
 							<b>{this.state.post.createdBy.displayName}</b>
 							<span>@{this.state.post.createdBy.username}</span>
 						</div>
-						<Link to={`/post/${this.state.post.id}`} className={style.postTime}>
-							<b>{this.getDate()}</b>
-						</Link>
+						<div className={style.right}>
+							<Link to={`/post/${this.state.post.id}`} className={style.postTime}>
+								<b>{this.getDate()}</b>
+							</Link>
+							{ this.currentUser != null && this.currentUser.id === this.state.post.createdBy.id && <div className={style.delete} onClick={this.deletePost}>
+								<FontAwesomeIcon className={style.icons} icon={faTrash} />
+							</div> }
+						</div>
 					</div>
 					<div className={style.postMessage}>
 						{this.state.post.replyTo && (
@@ -121,9 +148,9 @@ class Post extends Component {
 						<Link to={`/post/${this.state.post.id}`} className={style.action}>
 							<FontAwesomeIcon className={style.icons} icon={faComment} />
 						</Link>
-						<div className={style.action}>
-							<FontAwesomeIcon className={style.icons} icon={faRetweet} />
-						</div>
+						<a href={`mailto:?body=${this.getPostMessage()}`} className={style.action}>
+							<FontAwesomeIcon className={style.icons} icon={faEnvelope} />
+						</a>
 					</div>
 				</div>
 			</React.Fragment>

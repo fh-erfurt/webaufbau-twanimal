@@ -14,35 +14,6 @@ import { Link } from 'react-router-dom';
 import mopsBraun from '../assets/images/mops-braun.jpg';
 import noUsers from '../assets/images/no-users.jpg';
 
-// export default function Search({history}) {
-// 	const [inSearching, setInSearching] = useState(false);
-
-// 	const [search, setSearch] = useState();
-
-// 	const [error, setError] = useState(null);
-
-// 	const search = async (event) => {
-// 		event.preventDefault();
-
-// 		if (inSearching) return;
-
-// 		setInSearching(true);
-
-// 		const response = await fetch(`${config.apiHost}/search/user/:query`,
-// 		{
-// 			method: "get",
-// 			headers:
-// 			{
-// 				"Content-Type": "application/json",
-// 			},
-// 			body: JSON.stringify(
-// 			{
-// 				search: search,
-// 			}),
-
-// 		});
-// 	};
-
 class Search extends Component {
 	constructor(props) {
 		super(props);
@@ -118,6 +89,12 @@ class Search extends Component {
 		this.setState({ users: [...users] });
 	};
 
+	removePost = (index) => {
+		const posts = this.state.posts;
+		posts.splice(index, 1);
+		this.setState({ posts: [...posts] })
+	}
+
 	render() {
 		return (
 			<React.Fragment>
@@ -134,8 +111,8 @@ class Search extends Component {
 						<div className={style.leftContent}>
 							{this.state.posts != null &&
 								(this.state.posts.length > 0 ? (
-									this.state.posts.map((post) => {
-										return <Post post={post} key={post.id} />;
+									this.state.posts.map((post, index) => {
+										return <Post post={post} key={post.id} onDelete={ () => this.removePost(index) } />;
 									})
 								) : (
 									<div className={style.noResults}>

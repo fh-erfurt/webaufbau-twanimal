@@ -39,11 +39,27 @@
 			}
 		}
 
-		.postTime {
-			display: inline;
-			font-size: small;
-			text-decoration: none;
-			color: #3c3c3c;
+		.right {
+			display: flex;
+			align-items: center;
+
+			.postTime {
+				display: inline;
+				font-size: small;
+				text-decoration: none;
+				color: #3c3c3c;
+			}
+
+			.delete {
+				color: #a7a7a7;
+				cursor: pointer;
+				margin-left: 10px;
+				transition: color 0.2s ease;
+
+				&:hover {
+					color: #3c3c3c;
+				}
+			}
 		}
 	}
 
@@ -142,6 +158,10 @@
 				margin-left: 10px;
 				font-weight: 600;
 			}
+
+			&.right {
+				justify-content: flex-end;
+			}
 		}
 
 		.postStatistics {
@@ -175,7 +195,7 @@
 	.post .userInfo {
 		flex-wrap: wrap;
 
-		.postTime {
+		.right {
 			min-width: 100%;
 			margin-top: 20px;
 		}

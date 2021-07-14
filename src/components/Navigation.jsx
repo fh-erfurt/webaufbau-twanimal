@@ -43,24 +43,28 @@ class Navigation extends Component {
 	}
 
 	validateSession = async () => {
-		const response = await fetch(`${ config.apiHost }/validate-session`, {
-			headers: {
-				Authorization: `Bearer ${authenticationService.getAPIToken()}`,
-			}
-		});
-
-		if(response.ok) {
-			const data = await response.json();
-			const apiToken = data.apiToken;
-			delete data.apiToken;
-	  
-			authenticationService.storeSession({
-			  user: data,
-			  apiToken: apiToken,
+		try {
+			const response = await fetch(`${ config.apiHost }/validate-session`, {
+				headers: {
+					Authorization: `Bearer ${authenticationService.getAPIToken()}`,
+				}
 			});
 
-			this.setState({ user: data });
-		} else {
+			if(response.ok) {
+				const data = await response.json();
+				const apiToken = data.apiToken;
+				delete data.apiToken;
+		
+				authenticationService.storeSession({
+				user: data,
+				apiToken: apiToken,
+				});
+
+				this.setState({ user: data });
+			} else {
+				this.logout();
+			}
+		} catch(e) {
 			this.logout();
 		}
 	}

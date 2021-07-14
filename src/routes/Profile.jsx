@@ -11,6 +11,9 @@ import EditProfile from './../components/EditProfile';
 import { utilityService } from './../services/utilityService';
 import SearchForm from '../components/SearchForm';
 
+import sadCat from '../assets/images/sad-cat.jpg';
+import noContent from '../assets/images/no-content.jpg';
+
 class Profile extends Component {
 	constructor(props) {
 		super(props);
@@ -21,6 +24,7 @@ class Profile extends Component {
 			loadFollow: false,
 			showEditPopup: false,
 			navigationUser: null,
+			noUser: false,
 		};
 
 		this.apiToken = authenticationService.getAPIToken();
@@ -36,7 +40,9 @@ class Profile extends Component {
 		this.getUser();
 	}
 
-	getUser = async () => {
+	getUser = async (resetState = true, loadPosts = true) => {
+		if (resetState) this.setState({ user: null, posts: null, noUser: false });
+
 		const id = this.props.match.params.id;
 		const response = await fetch(
 			`${config.apiHost}/user/${id}`,
@@ -52,8 +58,8 @@ class Profile extends Component {
 		if (response.ok) {
 			const user = await response.json();
 			this.setState({ user: user });
-			await this.getPosts();
-		}
+			if (loadPosts) await this.getPosts();
+		} else if (response.status === 404) this.setState({ noUser: true });
 	};
 
 	getPosts = async () => {
@@ -102,11 +108,23 @@ class Profile extends Component {
 		this.setState({ user: user, navigationUser: user });
 	};
 
+	removePost = (index) => {
+		const posts = this.state.posts;
+		posts.splice(index, 1);
+		this.setState({ posts: [...posts] });
+		this.getUser(false, false);
+	};
+
 	render() {
 		return (
 			<React.Fragment>
 				<Navigation history={this.props.history} user={this.state.navigationUser} />
-				{this.state.user ? (
+				{this.state.noUser ? (
+					<div className={style.noResults}>
+						<img src={noContent} alt="Ängstliche Katze" />
+						<span>Dieses Profil hat Angst und hat sich versteckt</span>
+					</div>
+				) : this.state.user ? (
 					<div className={style.content}>
 						{this.state.showEditPopup && (
 							<EditProfile
@@ -166,9 +184,18 @@ class Profile extends Component {
 								</div>
 							</div>
 							{this.state.posts != null ? (
-								this.state.posts.map((post, index) => {
-									return <Post post={post} key={index} />;
-								})
+								this.state.posts.length === 0 ? (
+									<div className={style.noResults}>
+										<img src={sadCat} alt="Traurige Katze" />
+										<span>{this.state.user.displayName} hat noch lieber geschlafen als Beiträge zu erstellen...</span>
+									</div>
+								) : (
+									this.state.posts.map((post, index) => {
+										return (
+											<Post post={post} key={post.id} onDelete={() => this.removePost(index)} />
+										);
+									})
+								)
 							) : (
 								<div className={style.loadingPosts}>
 									<FontAwesomeIcon spin={true} icon={faCircleNotch} />

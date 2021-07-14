@@ -117,6 +117,29 @@
 	}
 }
 
+.noResults {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 80px 20px;
+
+	img {
+		height: 160px;
+		width: 160px;
+		border-radius: 80px;
+		object-fit: cover;
+		object-position: center;
+	}
+
+	span {
+		font-size: 25px;
+		color: #3c3c3c;
+		margin-top: 40px;
+		text-align: center;
+	}
+}
+
 .loadingPosts {
 	display: flex;
     align-items: center;
