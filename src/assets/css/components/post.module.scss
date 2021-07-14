@@ -1,166 +1,183 @@
-.post,
-.singlePost,
-.comment {
-  color: #3c3c3c;
-  border: #e2e2e2 solid 2px;
-  border-radius: 5px;
-  padding: 30px 50px;
-  margin-top: 10px;
+.post {
+	color: #3c3c3c;
+	border: #e2e2e2 solid 2px;
+	border-radius: 5px;
+	padding: 30px 50px;
+	margin-top: 10px;
 
-  .userInfo {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
+	.userInfo {
+		display: flex;
+		align-items: center;
+		margin-bottom: 15px;
 
-    .profileImage {
-      display: inline;
-      vertical-align: middle;
+		.profileImage {
+			display: inline;
+			vertical-align: middle;
 
-      img {
-        height: 60px;
-        width: 60px;
-        border-radius: 50%;
-        object-fit: cover;
-      }
-    }
-    .profileName {
-      display: flex;
-      flex-direction: column;
-      margin-left: 15px;
-      flex: 1;
+			img {
+				height: 60px;
+				width: 60px;
+				border-radius: 50%;
+				object-fit: cover;
+			}
+		}
 
-      a {
-        color: #8c8c8c;
-        text-decoration: none;
-        font-size: smaller;
-      }
+		.profileName {
+			display: flex;
+			flex-direction: column;
+			margin-left: 15px;
+			flex: 1;
 
-      a:hover {
-        color: #3c3c3c;
-      }
-    }
-    
-    .postTime {
-      display: inline;
-      font-size: small;
-      text-decoration: none;
-      color: #3c3c3c;
-    }
-  }
-  
-  .postMessage {
+			a {
+				color: #8c8c8c;
+				text-decoration: none;
+				font-size: smaller;
+			}
 
-    b {
-      display: block;
-      margin-bottom: 10px;
+			a:hover {
+				color: #3c3c3c;
+			}
+		}
 
-      a {
-        color: #1EAD68;
-        text-decoration: none;
-      }
-    }
+		.postTime {
+			display: inline;
+			font-size: small;
+			text-decoration: none;
+			color: #3c3c3c;
+		}
+	}
 
-    .text {
-      margin-bottom: 30px;
-    }
+	.postMessage {
+		b {
+			display: block;
+			margin-bottom: 10px;
 
-    .postImages {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: flex-start;
-      margin: -5px 0 20px;
-  
-      .postImage {
-        flex: 1;
-        min-width: 250px;
-        margin: 5px;
-        height: 220px;
+			a {
+				color: #1ead68;
+				text-decoration: none;
+			}
+		}
 
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          border-radius: 5px;
-        }
-      }
+		.text {
+			margin-bottom: 30px;
+		}
 
-      &.largeImages .postImage {
-        height: auto;
+		.postImages {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: flex-start;
+			margin: -5px 0 20px;
 
-        img {
-          height: auto;
-        }
-      }
-    }
-  }
+			.postImage {
+				flex: 1;
+				min-width: 250px;
+				margin: 5px;
+				height: 220px;
 
-  .commentMessage {
-    p {
-      padding: 10px 30px;
-    }
+				img {
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+					border-radius: 5px;
+				}
+			}
 
-    a {
-      color: #8c8c8c;
-      text-decoration: none;
-    }
+			&.largeImages .postImage {
+				height: auto;
 
-    a:hover {
-      color: #3c3c3c;
-    }
+				img {
+					height: auto;
+				}
+			}
+		}
+	}
 
-  }
+	.commentMessage {
+		p {
+			padding: 10px 30px;
+		}
 
-  .postActions {
-    display: flex;
-    align-items: center;
-    margin-top: 30px;
+		a {
+			color: #8c8c8c;
+			text-decoration: none;
+		}
 
-    .action {
-      flex: 1;
-      font-size: 25px;
-      color: #e2e2e2;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: color .2s ease;
+		a:hover {
+			color: #3c3c3c;
+		}
+	}
 
-      &:hover {
-        color: #3c3c3c;
-        cursor: pointer;
-      }
+	.postActions {
+		display: flex;
+		align-items: center;
+		margin-top: 30px;
 
-      &.like {
-        &:hover {
-          color: #ff434367;
-        }
+		.action {
+			flex: 1;
+			font-size: 25px;
+			color: #e2e2e2;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			transition: color 0.2s ease;
 
-        &.active {
-          color: #FF4343;
-        }
-      }
+			&:hover {
+				color: #3c3c3c;
+				cursor: pointer;
+			}
 
-      span {
-        color: #7c7c7c;
-        font-size: 18px;
-        margin-left: 10px;
-        font-weight: 600;
-      }
-    }
+			&.like {
+				&:hover {
+					color: #ff434367;
+				}
 
-    .postStatistics {
-      display: inline;
-      margin: 0 80px;
-      font-size: large;
-      color: #3c3c3c;
-    }
-  }
+				&.active {
+					color: #ff4343;
+				}
+			}
+
+			span {
+				color: #7c7c7c;
+				font-size: 18px;
+				margin-left: 10px;
+				font-weight: 600;
+			}
+		}
+
+		.postStatistics {
+			display: inline;
+			margin: 0 80px;
+			font-size: large;
+			color: #3c3c3c;
+		}
+	}
 }
 
-.singlePost {
-  margin-top: 50px;
+@media (max-width: 550px) {
+	.post {
+		padding: 20px 30px;
+
+		.postActions {
+			margin-top: 20px;
+
+			.action {
+				font-size: 20px;
+
+				span {
+					font-size: 15px;
+				}
+			}
+		}
+	}
 }
 
-.comment {
-  background-color: #f8f8f8;
-}
+@media (max-width: 480px) {
+	.post .userInfo {
+		flex-wrap: wrap;
 
+		.postTime {
+			min-width: 100%;
+			margin-top: 20px;
+		}
+	}
+}

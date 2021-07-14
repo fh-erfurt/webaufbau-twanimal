@@ -40,3 +40,23 @@
 		top: 85px;
 	}
 }
+
+@media (max-width: 1100px) {
+	.content {
+		flex-direction: column-reverse;
+		align-items: center;
+		width: 100%;
+		
+		.leftContent {
+			width: 100%;
+		}
+
+		.rightContent {
+			width: 100%;
+
+			.sticky .profileCard {
+				display: none;
+			}
+		}
+	}
+}

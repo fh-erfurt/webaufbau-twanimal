@@ -57,9 +57,7 @@ class Home extends Component {
 	render() {
 		return (
 			<React.Fragment>
-				<header className="App-header">
-					<Navigation history={this.props.history} />
-				</header>
+				<Navigation history={this.props.history} />
 				<div className={style.content}>
 					<div className={style.leftContent}>
 						<NewPost onNewPost={this.appendNewPost} />
@@ -77,7 +75,9 @@ class Home extends Component {
 					<div className={style.rightContent}>
 						<div className={style.sticky}>
 							<SearchForm />
-							<ProfileCard />
+							<div className={style.profileCard}>
+								<ProfileCard />
+							</div>
 						</div>
 					</div>
 				</div>

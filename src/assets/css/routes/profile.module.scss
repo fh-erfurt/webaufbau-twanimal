@@ -132,3 +132,52 @@
         margin-top: 20px;
     }
 }
+
+@media (max-width: 1100px) {
+	.content {
+		flex-direction: column-reverse;
+		align-items: center;
+		width: 100%;
+		
+		.profileContent {
+			width: 100%;
+			padding: 0;
+		}
+	
+		.suggestionContent {
+			width: 100%;
+			padding: 0;
+			margin-bottom: 25px;
+	
+			.sticky .suggestions {
+				display: none;
+			}
+		}
+	}
+
+	.profile .profileDetails .stats {
+		flex-wrap: wrap;
+
+		div {
+			white-space: nowrap;
+			margin: 10px;
+		}
+	}
+}
+
+@media (max-width: 500px) {
+	.profile {
+		padding: 0 15px;
+	}
+}
+
+@media (max-width: 450px) {
+	.profile .profileRow {
+		flex-direction: column;
+		align-items: center;
+
+		button {
+			margin-top: 20px;
+		}
+	}
+}

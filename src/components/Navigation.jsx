@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faPaw, faBell, faSmile, faDoorOpen } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faPaw, faBell, faSmile, faDoorOpen, faBars } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
 import styles from '../assets/css/components/navigation.module.scss';
@@ -26,6 +26,7 @@ class Navigation extends Component {
 
 		this.state = {
 			user: props.user || authenticationService.getUser(),
+			toggleMenu: false
 		};
 	}
 
@@ -79,7 +80,7 @@ class Navigation extends Component {
 							<div className={styles.logo}>
 								<FontAwesomeIcon icon={faPaw} />
 							</div>
-							<div className={styles.items}>
+							<div className={this.state.toggleMenu ? `${styles.items} ${styles.reveal}` : styles.items}>
 								<NavigationItem text="Home" icon={faHome} target="/" />
 								<NavigationItem text="Über uns" icon={faSmile} target="/ueber-uns" />
 								<div className={styles.spacer}></div>
@@ -87,6 +88,9 @@ class Navigation extends Component {
 									<FontAwesomeIcon icon={faDoorOpen} className={styles.itemIcon} />
 									Abmelden
 								</div>
+							</div>
+							<div className={styles.mobileToggle} onClick={ () => this.setState({ toggleMenu: !this.state.toggleMenu }) }>
+								<FontAwesomeIcon icon={faBars} />
 							</div>
 							{this.state.user && (
 								<Link to={'/profile/' + this.state.user.username} className={styles.profile}>

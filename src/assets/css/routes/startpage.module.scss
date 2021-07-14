@@ -1,10 +1,16 @@
-.verticalCenter {
+.page {
+    min-height: 100vh;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-image: url(../../images/background-viecher.jpg);
-    background-size: cover;
+    flex-direction: column;
+
+    .verticalCenter {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-image: url(../../images/background-viecher.jpg);
+        background-size: cover;
+    }
 }
 
 .formTextContainer {
@@ -34,10 +40,12 @@
 
     .heading {
         color: #1ead68;
+        text-align: center;
     }
 
     .text {
         font-size: 20px;
+        text-align: center;
     }
 
     .startpageButtons {
@@ -102,5 +110,11 @@
           color: #0000ff;
           text-decoration: none;
         }
+    }
+}
+
+@media (max-width: 500px) {
+    .formTextContainer .startpageButtons {
+        flex-direction: column;
     }
 }

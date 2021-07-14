@@ -179,7 +179,9 @@ class Profile extends Component {
 						<div className={style.suggestionContent}>
 							<div className={style.sticky}>
 								<SearchForm />
-								<Suggestions currentUser={this.state.user} />
+								<div className={style.suggestions}>
+									<Suggestions currentUser={this.state.user} />
+								</div>
 							</div>
 						</div>
 					</div>

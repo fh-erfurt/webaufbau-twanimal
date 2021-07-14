@@ -1,143 +1,174 @@
-.verticalCenter {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-image: url(../../images/background-viecher.jpg);
-  background-size: cover;
+.page {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+
+	.verticalCenter {
+		flex: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-image: url(../../images/background-viecher.jpg);
+		background-size: cover;
+		padding: 15px 0;
+	}
 }
+
 .formTextContainer,
 .registrationTextContainer {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
 
-  width: 100%;
-  max-width: 350px;
-  border-radius: 5px;
-  margin: 0 auto;
-  box-shadow: 0 9px 50px hsla(24, 26%, 4%, 0.548);
-  padding: 20px;
-  background-color: #ffffff;
+	max-width: 100%;
+	width: 350px;
+	border-radius: 5px;
+	margin: 0 auto;
+	box-shadow: 0 9px 50px hsla(24, 26%, 4%, 0.548);
+	padding: 20px;
+	background-color: #ffffff;
 
-  .contentWraperImage {
-    align-self: baseline;
-    width: auto;
-    height: auto;
+	.contentWraperImage {
+		align-self: baseline;
+		width: auto;
+		height: auto;
 
-    .logo {
-      font-size: 35px;
-      transform: rotate(-25deg);
-      color: #1ead68;
-    }
-  }
+		.logo {
+			font-size: 35px;
+			transform: rotate(-25deg);
+			color: #1ead68;
+		}
+	}
 
-  .text p {
-    color: #1ead68;
-  }
+	.text p {
+		color: #1ead68;
+	}
 
-  .errorMessage {
-    background: #FF4343;
-    padding: 10px;
-    border-radius: 5px;
-    color: white;
-    width: 100%;
-    text-align: center;
-    font-size: 15px;
-    margin: 10px 0 5px;
-  }
+	.errorMessage {
+		background: #ff4343;
+		padding: 10px;
+		border-radius: 5px;
+		color: white;
+		width: 100%;
+		text-align: center;
+		font-size: 15px;
+		margin: 10px 0 5px;
+	}
 
-  .inputs {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 5px;
+	.inputs {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 5px;
 
-    input[type="text"],
-    input[type="email"],
-    input[type="password"] {
-      width: auto;
-      height: 50px;
-      background-color: #ffffff;
-      border-radius: 25px;
-      border: solid 1px #bcb7b7;
-      padding: 15px;
-      margin: 10px;
-      font-size: 16px;
-      color: #5e6472;
-      outline: none;
-      border-width: 2px;
-      transition: 0.2s ease;
-    }
+		input[type='text'],
+		input[type='email'],
+		input[type='password'] {
+			width: auto;
+			height: 50px;
+			background-color: #ffffff;
+			border-radius: 25px;
+			border: solid 1px #bcb7b7;
+			padding: 15px;
+			margin: 10px;
+			font-size: 16px;
+			color: #5e6472;
+			outline: none;
+			border-width: 2px;
+			transition: 0.2s ease;
+		}
 
-    /* focus */
+		/* focus */
 
-    input:focus {
-      border-radius: 5px;
-      border-color: #1ead68;
-    }
-  }
-  .submitButton {
-    display: flex;
-    justify-content: center;
+		input:focus {
+			border-radius: 5px;
+			border-color: #1ead68;
+		}
+	}
+	.submitButton {
+		display: flex;
+		justify-content: center;
 
-    button {
-      width: 100%;
-      max-width: 200px;
-      border-radius: 51px;
-      border: solid 1px #e2e2e2;
-      background-color: #1ead68;
-      height: 55px;
-      font-size: larger;
-      color: #ffffff;
-    }
-  }
+		button {
+			width: 100%;
+			max-width: 200px;
+			border-radius: 51px;
+			border: solid 1px #e2e2e2;
+			background-color: #1ead68;
+			height: 55px;
+			font-size: larger;
+			color: #ffffff;
+		}
+	}
 
-  .submitButton button:hover {
-    cursor: pointer;
-  }
+	.submitButton button:hover {
+		cursor: pointer;
+	}
 
-  .link {
-    width: 225px;
-    text-align: center;
-    font-size: small;
-    padding-top: 10px;
+	.link {
+		width: 225px;
+		text-align: center;
+		font-size: small;
+		padding-top: 10px;
 
-    a {
-      color: #0000ff;
-      text-decoration: none;
-    }
-  }
+		a {
+			color: #0000ff;
+			text-decoration: none;
+		}
+	}
 }
 
 .registrationTextContainer {
-  max-width: 550px;
+	width: 550px;
 
-  .inputs {
-    input[type="text"],
-    input[type="email"] {
-      width: 100%;
-    }
+	.inputs {
+		input[type='text'],
+		input[type='email'] {
+			width: 100%;
+		}
 
-    .passwordInput {
-        display: flex;
-        margin: 10px 0;
+		.passwordInput {
+			display: flex;
+			margin: 10px 0;
 
-        input {
-          flex: 1;
-          margin: 0;
+			input {
+				flex: 1;
+				margin: 0;
 
-          &:last-child {
-            margin-left: 20px;
-          }
-        }
-    }
-  }
+				&:last-child {
+					margin-left: 20px;
+				}
+			}
+		}
+	}
 
-  .submitButton {
-    button {
-      padding: unset;
-      width: 100%;
-    }
-  }
+	.submitButton {
+		button {
+			padding: unset;
+			width: 100%;
+		}
+	}
+}
+
+@media (max-width: 750px) {
+	.registrationTextContainer {
+		.form {
+			width: 100%;
+
+			form {
+				width: 100%;
+			}
+		}
+
+		.inputs .passwordInput {
+			flex-direction: column;
+			width: 100%;
+
+			input:last-child {
+				margin-left: 0;
+				margin-top: 20px;
+			}
+		}
+	}
 }

@@ -12,7 +12,7 @@ import Profile from './routes/Profile';
 import Page404 from './routes/Page404';
 import Imprint from './routes/Imprint';
 import Privacy from './routes/Privacy';
-// import AboutUs from './routes/AboutUs';
+import AboutUs from './routes/AboutUs';
 import PostPage from './routes/PostPage';
 import Search from './routes/Search';
 
@@ -33,7 +33,7 @@ function App() {
 					<Route path="/registration" component={Registration} />
 					<Route path="/impressum" component={Imprint} />
 					<Route path="/datenschutz" component={Privacy} />
-					{/* <Route path="/ueber-uns" component={AboutUs} /> */}
+					<Route path="/ueber-uns" component={AboutUs} />
 					<Route path="/post/:id" component={PostPage} />
 					<Route path="/suche" component={Search} />
 					<StartpageRoute path="/" component={Home} exact />

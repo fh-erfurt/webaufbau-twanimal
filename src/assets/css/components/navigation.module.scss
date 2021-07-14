@@ -1,93 +1,173 @@
 .navigationContainer {
-  height: 60px;
+	height: 60px;
+
+	.navigation {
+		background: white;
+		box-shadow: 0 1px 3px rgb(0 0 0 / 6%), 0 1px 2px rgb(0 0 0 / 12%);
+		height: 60px;
+		position: fixed;
+		top: 0;
+		width: 100%;
+		z-index: 10;
+
+		.container {
+			max-width: 1400px;
+			margin: 0 auto;
+			display: flex;
+			align-items: center;
+			height: 100%;
+
+			.logo {
+				font-size: 35px;
+				transform: rotate(-25deg);
+				color: #1ead68;
+				padding: 0 15px;
+			}
+
+			.items {
+				display: flex;
+				height: 100%;
+				flex: 1;
+				padding: 0 25px;
+
+				.spacer {
+					flex: 1;
+				}
+
+				.item {
+					height: 100%;
+					padding: 0 15px;
+					cursor: pointer;
+					color: #3c3c3c;
+					transition: background 0.2s ease;
+					display: flex;
+					align-items: center;
+					text-decoration: none;
+
+					&:hover {
+						background: #f1f1f1;
+					}
+
+					.itemIcon {
+						font-size: 18px;
+						margin-right: 5px;
+					}
+				}
+			}
+
+			.mobileToggle {
+				display: none;
+			}
+
+			.profile {
+				display: flex;
+				align-items: center;
+				height: 100%;
+				padding: 0 15px;
+				cursor: pointer;
+				text-decoration: none;
+				color: #3c3c3c;
+				transition: background 0.2s ease;
+
+				&:hover {
+					background: #f1f1f1;
+				}
+
+				.profileName {
+					display: flex;
+					flex-direction: column;
+					align-items: flex-end;
+					font-size: 14px;
+
+					b {
+						font-size: 18px;
+					}
+				}
+
+				.profileImage {
+					height: 45px;
+					width: 45px;
+					border-radius: 50%;
+					background-size: cover;
+					background-position: center;
+					margin-left: 10px;
+				}
+			}
+		}
+	}
 }
 
-.navigation {
-  background: white;
-  box-shadow: 0 1px 3px rgb(0 0 0 / 6%), 0 1px 2px rgb(0 0 0 / 12%);
-  height: 60px;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 10;
-}
+@media (max-width: 900px) {
+	.navigationContainer .navigation .container {
+		position: relative;
 
-.container {
-  max-width: 1400px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  height: 100%;
-}
+		.items {
+			position: absolute;
+			background: white;
+			box-shadow: 0 1px 3px rgb(0 0 0 / 6%), 0 1px 2px rgb(0 0 0 / 12%);
+			top: 100%;
+			left: 5px;
+			margin-top: 5px;
+			flex-direction: column;
+			height: auto;
+			padding: 0;
+			border-radius: 5px;
+			overflow: hidden;
+			opacity: 0;
+			pointer-events: none;
+			transition: opacity .2s ease;
 
-.logo {
-  font-size: 35px;
-  transform: rotate(-25deg);
-  color: #1ead68;
-}
+			.item {
+				height: 40px;
 
-.items {
-  display: flex;
-  height: 100%;
-  flex: 1;
-  padding: 0 25px;
+				.itemIcon {
+					width: 30px;
+					text-align: center;
+					margin-right: 10px;
+				}
+			}
 
-  .spacer {
-    flex: 1;
-  }
-}
+			&.reveal {
+				opacity: 1;
+				pointer-events: auto;
+			}
+		}
 
-.item {
-  height: 100%;
-  padding: 0 15px;
-  cursor: pointer;
-  color: #3c3c3c;
-  transition: background 0.2s ease;
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-}
+		.mobileToggle {
+			height: 100%;
+			width: 60px;
+			font-size: 20px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: #525252;
+			transition: background 0.2s ease;
 
-.item:hover {
-  background: #f1f1f1;
-}
+			&:hover {
+				background: #f1f1f1;
+			}
+		}
 
-.itemIcon {
-  font-size: 18px;
-  margin-right: 5px;
-}
+		.logo {
+			position: absolute;
+			width: 70px;
+			text-align: center;
+			left: 50%;
+			margin-left: -35px;
+		}
 
-.profile {
-  display: flex;
-  align-items: center;
-  height: 100%;
-  padding: 0 15px;
-  cursor: pointer;
-  text-decoration: none;
-  color: #3c3c3c;
-  transition: background 0.2s ease;
-}
+		.profile {
+			padding: 10px;
+			position: absolute;
+			right: 0;
 
-.profile:hover {
-  background: #f1f1f1;
-}
-
-.profileName {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  font-size: 14px;
-
-  b {
-    font-size: 18px;
-  }
-}
-
-.profileImage {
-  height: 45px;
-  width: 45px;
-  border-radius: 50%;
-  background-size: cover;
-  background-position: center;
-  margin-left: 10px;
+			.profileImage {
+				margin: 0;
+			}
+			
+			.profileName {
+				display: none;
+			}
+		}
+	}
 }

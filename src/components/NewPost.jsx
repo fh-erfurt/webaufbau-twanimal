@@ -147,6 +147,7 @@ class NewPost extends Component {
 	};
 
 	handleGiphyKeyDown = async (event) => {
+		event.preventDefault();
 		if (event.key === 'Enter') await this.searchGiphy();
 	};
 

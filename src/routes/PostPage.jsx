@@ -80,8 +80,12 @@ class PostPage extends Component {
 								)}
 							</div>
 							<div className={style.rightContent}>
-								<SearchForm />
-								<ProfileCard user={this.state.post.createdBy} />
+								<div className={style.sticky}>
+									<SearchForm />
+									<div className={style.profileCard}>
+										<ProfileCard user={this.state.post.createdBy} />
+									</div>
+								</div>
 							</div>
 						</div>
 					) : (

@@ -3,25 +3,25 @@
 	margin: 0 auto 15px;
 	max-width: 1300px;
 	padding: 0 15px;
-}
 
-.leftContent {
-	flex: 2;
-	padding: 0 15px;
-
-	&.extraPadding {
-		padding-top: 15px;
+	.leftContent {
+		flex: 2;
+		padding: 0 15px;
+	
+		&.extraPadding {
+			padding-top: 15px;
+		}
 	}
-}
-
-.rightContent {
-	flex: 1;
-	padding: 25px 15px 0;
-	max-width: 500px;
-
-	.sticky {
-		position: sticky;
-		top: 85px;
+	
+	.rightContent {
+		flex: 1;
+		padding: 25px 15px 0;
+		max-width: 500px;
+	
+		.sticky {
+			position: sticky;
+			top: 85px;
+		}
 	}
 }
 
@@ -42,4 +42,24 @@
         color: #3c3c3c;
         margin-top: 20px;
     }
+}
+
+@media (max-width: 1100px) {
+	.content {
+		flex-direction: column-reverse;
+		align-items: center;
+		width: 100%;
+		
+		.leftContent {
+			width: 100%;
+		}
+
+		.rightContent {
+			width: 100%;
+
+			.sticky .profileCard {
+				display: none;
+			}
+		}
+	}
 }
