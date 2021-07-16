@@ -1,33 +1,51 @@
-# Getting Started with Create React App
+# Twanimal frontend Server
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Ein Web-Aufbau Projekt von Anna Lisa Merkel, Salma Alkhaiyal, Sarah Schelle, Luca Voges, Molham Al-khodari  <br>
+link zu [Backend Server](https://github.com/fh-erfurt/webaufbau-twanimal-backend)
 
-## Available Scripts
+## Soziales Netzwerk für Haustiere auf Basis von Twitter
 
-In the project directory, you can run:
+Wir möchten einen Client erstellen, welches sich an das Netzwerk Twitter orientiert, wo Haustiere die Nutzer sind.
 
-### `yarn start`
+Was wir damit meinen ist, dass Haustierbesitzer im Namen ihrer Haustiere Accounts erstellen können und Beiträge teilen können. Man hat die Möglichkeit Bilder, Texte und Videos hochzuladen und andere können diese Beiträge kommentieren, liken, teilen und im schlimmsten Falle melden. Accounts können auf der Plattform anderen Accounts folgen und mit ihnen interagieren.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Eine Besonderheit an der Plattform ist, dass die am häufigsten bewerteten Haustiere auf einer Unterseite präsentiert werden, kategorisiert nach der Art des Hautieres und eventuell Rasse. Zusätzlich können Haustierbesitzer unter ihrem Profil angeben, dass die Haustiere einen Spielpartner oder Gassipartner benötigen. Somit haben andere Accounts die Möglichkeit eine Anfrage zum gemeinsamen Spielen oder Gassigehen zu erstellen.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Projektteam
 
-### `yarn test`
+* **Anna Lisa Merkel** - [Profil](https://github.com/anna-lisa1404)
+* **Salma Alkhaiyal** - [Profil](https://github.com/salma-alkhaiyal)
+* **Sarah Schelle** - [Profil](https://github.com/sarahschelle)
+* **Luca voges** - [Profil](https://github.com/Vogeslu)
+* **Molham Al-Khodari** - [Profil](https://github.com/Molham321)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+## Workflow
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Wie wird gearbeitet?
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Wöchentliche Meetings
+2. Vorstellung der erledigten Aufgaben
+3. Verteilung von neuen Aufgaben
+4. Besprechung von Ideen und Vorschlägen
+5. “Team Programming”
+6. Weitere Meetings in kleineren Gruppen
+7. Pair Programming
+8. Branch erstellen
+9.  Branch pushen & Pull Request
+10. Branch mergen & löschen
+	
+## tools
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* Git
+* GitHub
+* Discord
+* Visual Studio Code 
+* Figma
+* Postman
+* fontawesome
+
+	
 
 ### `yarn eject`
 
