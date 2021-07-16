@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import style from '../assets/css/components/profileCard.module.scss';
-import { authenticationService } from '../services/authenticationService';
 
 class SearchCard extends Component {
 	constructor(props) {
@@ -13,7 +10,6 @@ class SearchCard extends Component {
 		};
 	}
 
-	state = {};
 	render() {
 		return (
 			<React.Fragment>
@@ -22,14 +18,11 @@ class SearchCard extends Component {
 						<div className={style.profileCard}>
 							<div className={style.profile}>
 								<div className={style.profileImage}>
-									<img
-										src={user.profilePictureUrl /* todo: search result */}
-										alt="profileImage"
-									/>
+									<img src={user.profilePictureUrl} alt="profileImage" />
 								</div>
-								<div className={style.profileName /* todo: search result */}>
-									<b>{user.displayName /* todo: search result */}</b>
-									<span>@{user.username /* todo: search result */}</span>
+								<div className={style.profileName}>
+									<b>{user.displayName}</b>
+									<span>@{user.username}</span>
 								</div>
 							</div>
 						</div>

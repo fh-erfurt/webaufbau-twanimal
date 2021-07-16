@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import style from '../assets/css/components/post.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart, faComment, faRetweet, faEnvelope, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faComment, faEnvelope, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import config from '../config';
 import { authenticationService } from '../services/authenticationService';
@@ -66,7 +66,7 @@ class Post extends Component {
 	};
 
 	deletePost = async () => {
-		if(!window.confirm("Möchtest du den Beitrag wirklich löschen?")) return;
+		if (!window.confirm('Möchtest du den Beitrag wirklich löschen?')) return;
 
 		const response = await fetch(`${config.apiHost}/post/${this.state.post.id}/delete`, {
 			method: 'post',
@@ -75,15 +75,14 @@ class Post extends Component {
 			},
 		});
 
-		if(!response.ok)
-			alert("Der Beitrag konnte nicht gelöscht werden.");
+		if (!response.ok) alert('Der Beitrag konnte nicht gelöscht werden.');
 
 		this.props.onDelete();
-	}
+	};
 
 	getPostMessage = () => {
 		return `Schau dir den Beitrag von ${this.state.post.createdBy.displayName} an: https://twanimal.de/${this.state.post.id}`;
-	}
+	};
 
 	render() {
 		return (
@@ -103,9 +102,11 @@ class Post extends Component {
 							<Link to={`/post/${this.state.post.id}`} className={style.postTime}>
 								<b>{this.getDate()}</b>
 							</Link>
-							{ this.currentUser != null && this.currentUser.id === this.state.post.createdBy.id && <div className={style.delete} onClick={this.deletePost}>
-								<FontAwesomeIcon className={style.icons} icon={faTrash} />
-							</div> }
+							{this.currentUser != null && this.currentUser.id === this.state.post.createdBy.id && (
+								<div className={style.delete} onClick={this.deletePost}>
+									<FontAwesomeIcon className={style.icons} icon={faTrash} />
+								</div>
+							)}
 						</div>
 					</div>
 					<div className={style.postMessage}>
@@ -128,7 +129,7 @@ class Post extends Component {
 								{this.state.post.attachements.map((attachement, index) => {
 									return (
 										<div className={style.postImage} key={index}>
-											<img src={attachement} />
+											<img src={attachement} alt="Anhang" />
 										</div>
 									);
 								})}
@@ -143,7 +144,7 @@ class Post extends Component {
 								icon={this.state.isLiking ? faCircleNotch : faHeart}
 								spin={this.state.isLiking}
 							/>
-							{ this.state.post.likeCount > 0 && <span>{ this.state.post.likeCount }</span> }
+							{this.state.post.likeCount > 0 && <span>{this.state.post.likeCount}</span>}
 						</div>
 						<Link to={`/post/${this.state.post.id}`} className={style.action}>
 							<FontAwesomeIcon className={style.icons} icon={faComment} />

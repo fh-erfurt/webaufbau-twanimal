@@ -306,6 +306,7 @@ class NewPost extends Component {
 																	src={item.images.preview_gif.url}
 																	onClick={() => this.selectGif(item)}
 																	key={index}
+																	alt={item.title}
 																/>
 															);
 														})}

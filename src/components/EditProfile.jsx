@@ -24,82 +24,74 @@ class EditProfile extends Component {
 			repeatNewPassword: '',
 			updatingProfile: false,
 			error: null,
-			success: null
+			success: null,
 		};
 	}
 
 	handleFile = (event) => {
 		const files = event.target.files;
-		if(files.length < 1) return;
+		if (files.length < 1) return;
 
 		const file = files.item(0);
 
-		if(file.type.indexOf('image/') === -1) return;
+		if (file.type.indexOf('image/') === -1) return;
 
-		if(this.state.profilePicture)
-			URL.revokeObjectURL(this.state.profilePictureUrl);
+		if (this.state.profilePicture) URL.revokeObjectURL(this.state.profilePictureUrl);
 
 		this.setState({
 			profilePicture: file,
-			profilePictureUrl: URL.createObjectURL(file)
+			profilePictureUrl: URL.createObjectURL(file),
 		});
-	}
+	};
 
 	updateProfile = async (event) => {
 		event.preventDefault();
 
-		if(this.state.updatingProfile) return;
-		this.setState({ updateProfile: true })
-		
+		if (this.state.updatingProfile) return;
+		this.setState({ updateProfile: true });
+
 		const currentUser = this.state.user;
 
 		const formData = new FormData();
 
-		if(this.state.profilePicture)
-			formData.append('profilePicture', this.state.profilePicture);
-		
-		if(this.state.displayName !== currentUser.displayName)
-			formData.append('displayName', this.state.displayName);
-		
-		if(this.state.username !== currentUser.username)
-			formData.append('username', this.state.username);
+		if (this.state.profilePicture) formData.append('profilePicture', this.state.profilePicture);
 
-		if(this.state.description !== currentUser.description)
-			formData.append('description', this.state.description);
+		if (this.state.displayName !== currentUser.displayName) formData.append('displayName', this.state.displayName);
 
-		if(this.state.email !== currentUser.email)
-			formData.append('email', this.state.email);
+		if (this.state.username !== currentUser.username) formData.append('username', this.state.username);
 
-		if(this.state.newPassword.length > 0)
-			if(this.state.newPassword !== this.state.repeatNewPassword)
+		if (this.state.description !== currentUser.description) formData.append('description', this.state.description);
+
+		if (this.state.email !== currentUser.email) formData.append('email', this.state.email);
+
+		if (this.state.newPassword.length > 0)
+			if (this.state.newPassword !== this.state.repeatNewPassword)
 				return this.setState({
 					updateProfile: false,
-					error: "Passwörter müssen identisch sein",
-					success: null
+					error: 'Passwörter müssen identisch sein',
+					success: null,
 				});
-			else
-				formData.append('password', this.state.newPassword);
+			else formData.append('password', this.state.newPassword);
 
 		const response = await fetch(`${config.apiHost}/user/update`, {
 			method: 'post',
 			headers: {
 				Authorization: `Bearer ${this.apiToken}`,
 			},
-			body: formData
+			body: formData,
 		});
 
-		if(response.ok) {
+		if (response.ok) {
 			const data = await response.json();
 			const apiToken = data.apiToken;
 			delete data.apiToken;
-	  
+
 			authenticationService.storeSession({
-			  user: data,
-			  apiToken: apiToken,
+				user: data,
+				apiToken: apiToken,
 			});
 
-			if(this.state.profilePicture)
-				URL.revokeObjectURL(this.state.profilePictureUrl);
+			if (this.state.profilePicture) URL.revokeObjectURL(this.state.profilePictureUrl);
 
 			this.setState({
 				user: data,
@@ -113,45 +105,47 @@ class EditProfile extends Component {
 				repeatNewPassword: '',
 				updatingProfile: false,
 				error: null,
-				success: "Änderungen wurden gespeichert"
+				success: 'Änderungen wurden gespeichert',
 			});
 
 			this.props.onUpdate(data);
 		} else {
-			let message = "Unbekannter Fehler";
+			let message = 'Unbekannter Fehler';
 			const errorObject = await response.json();
-	  
+
 			switch (errorObject.error) {
-				case "invalid email":
-					message = "Ungültige E-Mail Adresse";
+				case 'invalid email':
+					message = 'Ungültige E-Mail Adresse';
 					break;
-				case "invalid username":
-					message = "Ungültiger Nutzername";
+				case 'invalid username':
+					message = 'Ungültiger Nutzername';
 					break;
-				case "invalid displayName":
-					message = "Ungültiger Name";
+				case 'invalid displayName':
+					message = 'Ungültiger Name';
 					break;
-				case "invalid password":
-					message = "Ungültiges Passwort";
+				case 'invalid password':
+					message = 'Ungültiges Passwort';
 					break;
-				case "invalid description":
-					message = "Ungültige Beschreibung";
+				case 'invalid description':
+					message = 'Ungültige Beschreibung';
 					break;
-				case "email in use":
-					message = "E-Mail Adresse wird bereits verwendet";
+				case 'email in use':
+					message = 'E-Mail Adresse wird bereits verwendet';
 					break;
-				case "username in use":
-					message = "Benutzername wird bereits verwendet";
+				case 'username in use':
+					message = 'Benutzername wird bereits verwendet';
 					break;
+				default:
+					message = 'Unbekanter Fehler';
 			}
 
 			return this.setState({
 				updateProfile: false,
 				error: message,
-				success: null
+				success: null,
 			});
 		}
-	}
+	};
 
 	render() {
 		return (
@@ -159,27 +153,19 @@ class EditProfile extends Component {
 				<div className={style.overlay}>
 					<div className={style.inner}>
 						<div className={style.content}>
-							<form className={style.box} onSubmit={ this.updateProfile }>
-								<div className={style.close} onClick={ () => this.props.onClose() }>
+							<form className={style.box} onSubmit={this.updateProfile}>
+								<div className={style.close} onClick={() => this.props.onClose()}>
 									<FontAwesomeIcon icon={faTimes} />
 								</div>
 								<h3>Profil bearbeiten</h3>
-								{this.state.error && (
-									<div className={style.errorMessage}>
-										{this.state.error}
-									</div>
-								)}
-								{this.state.success && (
-									<div className={style.successMessage}>
-										{this.state.success}
-									</div>
-								)}
+								{this.state.error && <div className={style.errorMessage}>{this.state.error}</div>}
+								{this.state.success && <div className={style.successMessage}>{this.state.success}</div>}
 								<div className={style.inputField}>
 									<label className={style.profilePicture}>
 										<span>Profilbild</span>
 										<div>
 											<img src={this.state.profilePictureUrl} alt="profilePicture" />
-											<input type="file" accept="image/*" onChange={ this.handleFile } />
+											<input type="file" accept="image/*" onChange={this.handleFile} />
 										</div>
 									</label>
 								</div>
@@ -216,8 +202,7 @@ class EditProfile extends Component {
 											placeholder="Stelle dich hier vor"
 											defaultValue={this.state.description}
 											maxLength="280"
-											onChange={(e) => this.setState({ description: e.target.value })}>
-										</textarea>
+											onChange={(e) => this.setState({ description: e.target.value })}></textarea>
 									</label>
 								</div>
 								<div className={style.inputField}>
@@ -257,8 +242,8 @@ class EditProfile extends Component {
 									<button>
 										{this.state.updatingProfile && (
 											<span>
-											<FontAwesomeIcon spin={true} icon={faCircleNotch} />
-											&nbsp;
+												<FontAwesomeIcon spin={true} icon={faCircleNotch} />
+												&nbsp;
 											</span>
 										)}
 										Absenden

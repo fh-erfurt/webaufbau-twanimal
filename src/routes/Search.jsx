@@ -1,6 +1,5 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import Navigation from '../components/Navigation';
-import SearchCard from '../components/SearchCard';
 import Post from '../components/Post';
 
 import style from '../assets/css/routes/search.module.scss';
@@ -92,8 +91,8 @@ class Search extends Component {
 	removePost = (index) => {
 		const posts = this.state.posts;
 		posts.splice(index, 1);
-		this.setState({ posts: [...posts] })
-	}
+		this.setState({ posts: [...posts] });
+	};
 
 	render() {
 		return (
@@ -112,7 +111,9 @@ class Search extends Component {
 							{this.state.posts != null &&
 								(this.state.posts.length > 0 ? (
 									this.state.posts.map((post, index) => {
-										return <Post post={post} key={post.id} onDelete={ () => this.removePost(index) } />;
+										return (
+											<Post post={post} key={post.id} onDelete={() => this.removePost(index)} />
+										);
 									})
 								) : (
 									<div className={style.noResults}>
@@ -131,7 +132,10 @@ class Search extends Component {
 												return (
 													<div key={index} className={style.user}>
 														<Link to={`/profile/${user.username}`}>
-															<img src={user.profilePictureUrl} />
+															<img
+																src={user.profilePictureUrl}
+																alt={`Profilbild von ${user.displayName}`}
+															/>
 														</Link>
 														<div className={style.info}>
 															<b>{user.displayName}</b>

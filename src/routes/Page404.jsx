@@ -9,7 +9,6 @@ import mopsKariert from '../assets/images/mops-kariert.jpg';
 import mopsPluesch from '../assets/images/mops-pluesch.jpg';
 
 class Page404 extends Component {
-	state = {};
 	render() {
 		return (
 			<React.Fragment>

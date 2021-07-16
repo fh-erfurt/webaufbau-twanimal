@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Navigation from '../components/Navigation';
 import style from '../assets/css/routes/profile.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faPaw, faCircleNotch } from '@fortawesome/free-solid-svg-icons';
+import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
 import Suggestions from '../components/Suggestions';
 import config from '../config';
 import { authenticationService } from '../services/authenticationService';
@@ -187,7 +187,10 @@ class Profile extends Component {
 								this.state.posts.length === 0 ? (
 									<div className={style.noResults}>
 										<img src={sadCat} alt="Traurige Katze" />
-										<span>{this.state.user.displayName} hat noch lieber geschlafen als Beiträge zu erstellen...</span>
+										<span>
+											{this.state.user.displayName} hat noch lieber geschlafen als Beiträge zu
+											erstellen...
+										</span>
 									</div>
 								) : (
 									this.state.posts.map((post, index) => {
@@ -206,9 +209,11 @@ class Profile extends Component {
 						<div className={style.suggestionContent}>
 							<div className={style.sticky}>
 								<SearchForm />
-								{ this.currentUser != null && <div className={style.suggestions}>
-									<Suggestions currentUser={this.state.user} />
-								</div> }
+								{this.currentUser != null && (
+									<div className={style.suggestions}>
+										<Suggestions currentUser={this.state.user} />
+									</div>
+								)}
 							</div>
 						</div>
 					</div>

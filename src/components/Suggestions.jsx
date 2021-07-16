@@ -35,9 +35,7 @@ class Suggestions extends Component {
 			const data = await response.json();
 			let results = data.results;
 
-            if(this.props.currentUser)
-                results = results.filter(user => user.id !== this.props.currentUser.id);
-
+			if (this.props.currentUser) results = results.filter((user) => user.id !== this.props.currentUser.id);
 
 			if (page > 0) results = [...this.state.suggestions, ...results];
 
@@ -71,8 +69,7 @@ class Suggestions extends Component {
 			},
 		});
 
-		if (response.ok)
-			user = await response.json();
+		if (response.ok) user = await response.json();
 
 		user.loadFollow = false;
 		suggestions[index] = user;
@@ -95,7 +92,10 @@ class Suggestions extends Component {
 								return (
 									<div key={index} className={style.user}>
 										<Link to={`/profile/${user.username}`}>
-											<img src={user.profilePictureUrl} />
+											<img
+												src={user.profilePictureUrl}
+												alt={`Profilbild von ${user.displayName}`}
+											/>
 										</Link>
 										<div className={style.info}>
 											<b>{user.displayName}</b>

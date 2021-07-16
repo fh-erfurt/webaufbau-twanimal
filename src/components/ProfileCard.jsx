@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faPaw } from '@fortawesome/free-solid-svg-icons';
 import style from '../assets/css/components/profileCard.module.scss';
 import { authenticationService } from '../services/authenticationService';
 
@@ -10,11 +8,10 @@ class ProfileCard extends Component {
 		super(props);
 
 		this.state = {
-			user: props.user || authenticationService.getUser()
+			user: props.user || authenticationService.getUser(),
 		};
 	}
 
-	state = {};
 	render() {
 		return (
 			<React.Fragment>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faPaw, faBell, faSmile, faDoorOpen, faBars } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faPaw, faSmile, faDoorOpen, faBars } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
 import styles from '../assets/css/components/navigation.module.scss';
@@ -9,7 +9,6 @@ import { authenticationService } from '../services/authenticationService';
 import config from '../config';
 
 class NavigationItem extends Component {
-	state = {};
 	render() {
 		return (
 			<Link to={this.props.target} className={styles.item}>
@@ -26,48 +25,46 @@ class Navigation extends Component {
 
 		this.state = {
 			user: props.user || authenticationService.getUser(),
-			toggleMenu: false
+			toggleMenu: false,
 		};
 	}
 
 	componentDidMount() {
 		const user = authenticationService.getUser();
 
-		if(user)
-			this.validateSession();
+		if (user) this.validateSession();
 	}
 
 	componentDidUpdate(prevProps) {
-		if(this.props.user !== prevProps.user)
-			this.setState({ user: this.props.user });
+		if (this.props.user !== prevProps.user) this.setState({ user: this.props.user });
 	}
 
 	validateSession = async () => {
 		try {
-			const response = await fetch(`${ config.apiHost }/validate-session`, {
+			const response = await fetch(`${config.apiHost}/validate-session`, {
 				headers: {
 					Authorization: `Bearer ${authenticationService.getAPIToken()}`,
-				}
+				},
 			});
 
-			if(response.ok) {
+			if (response.ok) {
 				const data = await response.json();
 				const apiToken = data.apiToken;
 				delete data.apiToken;
-		
+
 				authenticationService.storeSession({
-				user: data,
-				apiToken: apiToken,
+					user: data,
+					apiToken: apiToken,
 				});
 
 				this.setState({ user: data });
 			} else {
 				this.logout();
 			}
-		} catch(e) {
+		} catch (e) {
 			this.logout();
 		}
-	}
+	};
 
 	logout = () => {
 		authenticationService.logout();
@@ -93,7 +90,9 @@ class Navigation extends Component {
 									Abmelden
 								</div>
 							</div>
-							<div className={styles.mobileToggle} onClick={ () => this.setState({ toggleMenu: !this.state.toggleMenu }) }>
+							<div
+								className={styles.mobileToggle}
+								onClick={() => this.setState({ toggleMenu: !this.state.toggleMenu })}>
 								<FontAwesomeIcon icon={faBars} />
 							</div>
 							{this.state.user && (

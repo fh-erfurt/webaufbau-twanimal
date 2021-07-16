@@ -47,7 +47,7 @@ class Startpage extends Component {
 							</div>
 						</div>
 					</div>
-          <Footer />
+					<Footer />
 				</div>
 			</React.Fragment>
 		);

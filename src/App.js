@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-
 import './assets/fonts/Inter/font.css';
 import './assets/css/App.scss';
 
@@ -16,9 +14,8 @@ import AboutUs from './routes/AboutUs';
 import PostPage from './routes/PostPage';
 import Search from './routes/Search';
 
-import { SecuredRoute } from './components/SecuredRoute';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { StartpageRoute } from './components/StartpageRoute';
-
 import { createBrowserHistory } from 'history';
 
 const history = createBrowserHistory();

@@ -12,7 +12,6 @@ import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
 
 class AboutUs extends Component {
-	state = {};
 	render() {
 		return (
 			<React.Fragment>

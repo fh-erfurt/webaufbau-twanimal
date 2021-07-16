@@ -63,6 +63,8 @@ class Login extends Component {
 				case 'invalid password':
 					message = 'Ungültige Anmeldedaten';
 					break;
+				default:
+					message = 'Unbekanter Fehler';
 			}
 
 			this.setState({

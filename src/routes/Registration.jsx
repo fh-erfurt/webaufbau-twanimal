@@ -83,6 +83,8 @@ class Registration extends Component {
 				case 'username in use':
 					message = 'Benutzername wird bereits verwendet';
 					break;
+				default:
+					message = 'Unbekanter Fehler';
 			}
 			this.setState({
 				error: message,
