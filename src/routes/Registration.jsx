@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleNotch, faPaw } from '@fortawesome/free-solid-svg-icons';
 import style from '../assets/css/routes/form.module.scss';
@@ -9,28 +9,32 @@ import { authenticationService } from '../services/authenticationService';
 
 import config from '../config';
 
-export default function Registration({ history }) {
-	const [inRegistration, setInRegistration] = useState(false);
+class Registration extends Component {
+	constructor(props) {
+		super(props);
 
-	const [email, setEmail] = useState();
-	const [username, setUsername] = useState();
-	const [displayName, setDisplayName] = useState();
-	const [password, setPassword] = useState();
-	const [passwordRepeat, setPasswordRepeat] = useState();
+		this.state = {
+			inRegistration: false,
+			email: '',
+			username: '',
+			displayName: '',
+			password: '',
+			passwordRepeat: '',
+			error: null,
+		};
+	}
 
-	const [error, setError] = useState(null);
-
-	const registration = async (event) => {
+	registration = async (event) => {
 		event.preventDefault();
 
-		if (inRegistration) return;
+		if (this.state.inRegistration) return;
 
-		if (password !== passwordRepeat) {
-			setError('Passwörter müssen identisch sein');
+		if (this.state.password !== this.state.passwordRepeat) {
+			this.setState({ error: 'Passwörter müssen identisch sein' });
 			return;
 		}
 
-		setInRegistration(true);
+		this.setState({ inRegistration: true });
 
 		const response = await fetch(`${config.apiHost}/user/registration`, {
 			method: 'post',
@@ -38,10 +42,10 @@ export default function Registration({ history }) {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
-				email: email,
-				username: username,
-				displayName: displayName,
-				password: password,
+				email: this.state.email,
+				username: this.state.username,
+				displayName: this.state.displayName,
+				password: this.state.password,
 			}),
 		});
 
@@ -55,7 +59,7 @@ export default function Registration({ history }) {
 				apiToken: apiToken,
 			});
 
-			history.push('/');
+			this.props.history.push('/');
 		} else {
 			let message = 'Unbekannter Fehler';
 			const errorObject = await response.json();
@@ -80,91 +84,101 @@ export default function Registration({ history }) {
 					message = 'Benutzername wird bereits verwendet';
 					break;
 			}
-			setError(message);
-			setInRegistration(false);
+			this.setState({
+				error: message,
+				inRegistration: false,
+			});
 		}
 	};
 
-	return (
-		<React.Fragment>
-			<div className={style.page}>
-				<div className={style.verticalCenter}>
-					<div className={style.registrationTextContainer}>
-						<div className={style.contentWraperImage}>
-							<div className={style.logo}>
-								<FontAwesomeIcon className={style.icons} icon={faPaw} />
+	render() {
+		return (
+			<React.Fragment>
+				<div className={style.page}>
+					<div className={style.verticalCenter}>
+						<div className={style.registrationTextContainer}>
+							<div className={style.contentWraperImage}>
+								<div className={style.logo}>
+									<FontAwesomeIcon className={style.icons} icon={faPaw} />
+								</div>
+							</div>
+							<div className={style.text}>
+								<p>Erstelle einen neuen Account bei Twanimal</p>
+							</div>
+							<div className={style.form}>
+								<form onSubmit={this.registration}>
+									{this.state.error && <div className={style.errorMessage}>{this.state.error}</div>}
+									<div className={style.inputs}>
+										<input
+											type="text"
+											placeholder="Name des Haustieres"
+											value={this.state.displayName}
+											onChange={(e) => this.setState({ displayName: e.target.value })}
+											required
+											minLength="1"
+											maxLength="120"
+										/>
+										<input
+											type="text"
+											placeholder="Nutzername"
+											value={this.state.username}
+											onChange={(e) => this.setState({ username: e.target.value })}
+											required
+											minLength="2"
+											maxLength="40"
+										/>
+										<input
+											type="email"
+											placeholder="Email"
+											value={this.state.email}
+											onChange={(e) => this.setState({ email: e.target.value })}
+											required
+										/>
+										<div className={style.passwordInput}>
+											<input
+												id="passwordConfirmLeft"
+												type="password"
+												placeholder="Passwort"
+												value={this.state.password}
+												onChange={(e) => this.setState({ password: e.target.value })}
+												required
+												minLength="8"
+												maxLength="200"
+											/>
+											<input
+												id="passwordConfirmRight"
+												type="password"
+												placeholder="Passwort wiederholen"
+												value={this.state.passwordRepeat}
+												onChange={(e) => this.setState({ passwordRepeat: e.target.value })}
+												required
+												minLength="8"
+												maxLength="200"
+											/>
+										</div>
+									</div>
+									<div className={style.submitButton}>
+										<button>
+											{this.state.inRegistration && (
+												<span>
+													<FontAwesomeIcon spin={true} icon={faCircleNotch} />
+													&nbsp;
+												</span>
+											)}
+											Registrieren
+										</button>
+									</div>
+								</form>
+							</div>
+							<div className={style.link}>
+								<Link to="/login">Doch schon Teil der Crew? Hier geht's zur Anmeldung!</Link>
 							</div>
 						</div>
-						<div className={style.text}>
-							<p>Erstelle einen neuen Account bei Twanimal</p>
-						</div>
-						<div className={style.form}>
-							<form onSubmit={registration}>
-								{error && <div className={style.errorMessage}>{error}</div>}
-								<div className={style.inputs}>
-									<input
-										type="text"
-										placeholder="Name des Haustieres"
-										onChange={(e) => setDisplayName(e.target.value)}
-										required
-										minLength="1"
-										maxLength="120"
-									/>
-									<input
-										type="text"
-										placeholder="Nutzername"
-										onChange={(e) => setUsername(e.target.value)}
-										required
-										minLength="2"
-										maxLength="40"
-									/>
-									<input
-										type="email"
-										placeholder="Email"
-										onChange={(e) => setEmail(e.target.value)}
-										required
-									/>
-									<div className={style.passwordInput}>
-										<input
-											id="passwordConfirmLeft"
-											type="password"
-											placeholder="Passwort"
-											onChange={(e) => setPassword(e.target.value)}
-											required
-											minLength="8"
-											maxLength="200"
-										/>
-										<input
-											id="passwordConfirmRight"
-											type="password"
-											placeholder="Passwort wiederholen"
-											onChange={(e) => setPasswordRepeat(e.target.value)}
-											required
-											minLength="8"
-											maxLength="200"
-										/>
-									</div>
-								</div>
-								<div className={style.submitButton}>
-									<button>
-										{inRegistration && (
-											<span>
-												<FontAwesomeIcon spin={true} icon={faCircleNotch} />
-												&nbsp;
-											</span>
-										)}
-										Registrieren
-									</button>
-								</div>
-							</form>
-						</div>
-						<div className={style.link}>
-							<Link to="/login">Doch schon Teil der Crew? Hier geht's zur Anmeldung!</Link>
-						</div>
 					</div>
+					<Footer />
 				</div>
-        <Footer />
-			</div>
-		</React.Fragment>
-	);
+			</React.Fragment>
+		);
+	}
 }
+export default Registration;

@@ -1,4 +1,4 @@
-import React, { useState, Component } from 'react';
+import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleNotch, faPaw } from '@fortawesome/free-solid-svg-icons';
 import style from '../assets/css/routes/form.module.scss';
@@ -15,12 +15,12 @@ class Login extends Component {
 
 		this.state = {
 			loggingIn: false,
-			email: "",
-			password: "",
-			error: null
-		}
+			email: '',
+			password: '',
+			error: null,
+		};
 	}
-	
+
 	login = async (event) => {
 		event.preventDefault();
 
@@ -67,8 +67,8 @@ class Login extends Component {
 
 			this.setState({
 				error: message,
-				loggingIn: false
-			})
+				loggingIn: false,
+			});
 		}
 	};
 
@@ -94,14 +94,14 @@ class Login extends Component {
 											type="email"
 											placeholder="Email"
 											required
-											value={ this.state.email }
+											value={this.state.email}
 											onChange={(e) => this.setState({ email: e.target.value })}
 										/>
 										<input
 											type="password"
 											placeholder="Password"
 											required
-											value={ this.state.password }
+											value={this.state.password}
 											onChange={(e) => this.setState({ password: e.target.value })}
 										/>
 									</div>
