@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Navigation from '../components/Navigation';
 import ProfileCard from '../components/ProfileCard';
-import style from '../assets/css/routes/post.module.scss';
+import style from '../assets/css/routes/postPage.module.scss';
 import { authenticationService } from '../services/authenticationService';
 import config from '../config';
 import Post from './../components/Post';
