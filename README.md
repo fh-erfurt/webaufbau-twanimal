@@ -16,7 +16,7 @@ Eine Besonderheit an der Plattform ist, dass die am häufigsten bewerteten Haust
 * **Anna Lisa Merkel** - [Profil](https://github.com/anna-lisa1404)
 * **Salma Alkhaiyal** - [Profil](https://github.com/salma-alkhaiyal)
 * **Sarah Schelle** - [Profil](https://github.com/sarahschelle)
-* **Luca voges** - [Profil](https://github.com/Vogeslu)
+* **Luca Voges** - [Profil](https://github.com/Vogeslu)
 * **Molham Al-Khodari** - [Profil](https://github.com/Molham321)
 
 
