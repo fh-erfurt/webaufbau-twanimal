@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleNotch, faPaw } from '@fortawesome/free-solid-svg-icons';
 import style from '../assets/css/routes/form.module.scss';
@@ -9,22 +9,26 @@ import { authenticationService } from '../services/authenticationService';
 
 import config from '../config';
 
-export default function Login({ history }) {
-	const [loggingIn, setLoggingIn] = useState(false);
+class Login extends Component {
+	constructor(props) {
+		super(props);
 
-	const [email, setEmail] = useState();
-	const [password, setPassword] = useState();
-
-	const [error, setError] = useState(null);
-
-	const login = async (event) => {
+		this.state = {
+			loggingIn: false,
+			email: "",
+			password: "",
+			error: null
+		}
+	}
+	
+	login = async (event) => {
 		event.preventDefault();
 
-		if (loggingIn) return;
+		if (this.state.loggingIn) return;
 
 		//evtl validator einbauen
 
-		setLoggingIn(true);
+		this.setState({ loggingIn: true });
 
 		const response = await fetch(`${config.apiHost}/user/login`, {
 			method: 'post',
@@ -32,8 +36,8 @@ export default function Login({ history }) {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
-				username: email,
-				password: password,
+				username: this.state.email,
+				password: this.state.password,
 			}),
 		});
 
@@ -47,7 +51,7 @@ export default function Login({ history }) {
 				apiToken: apiToken,
 			});
 
-			history.push('/');
+			this.props.history.push('/');
 		} else {
 			let message = 'Unbekannter Fehler';
 			const errorObject = await response.json();
@@ -61,62 +65,69 @@ export default function Login({ history }) {
 					break;
 			}
 
-			setError(message);
-
-			setLoggingIn(false);
+			this.setState({
+				error: message,
+				loggingIn: false
+			})
 		}
 	};
 
-	return (
-		<React.Fragment>
-			<div className={style.page}>
-				<div className={style.verticalCenter}>
-					<div className={style.formTextContainer}>
-						<div className={style.contentWraperImage}>
-							<div className={style.logo}>
-								<FontAwesomeIcon className={style.icons} icon={faPaw} />
+	render() {
+		return (
+			<React.Fragment>
+				<div className={style.page}>
+					<div className={style.verticalCenter}>
+						<div className={style.formTextContainer}>
+							<div className={style.contentWraperImage}>
+								<div className={style.logo}>
+									<FontAwesomeIcon className={style.icons} icon={faPaw} />
+								</div>
+							</div>
+							<div className={style.text}>
+								<p>Melde dich bei Twanimal an</p>
+							</div>
+							<div className={style.form}>
+								<form onSubmit={this.login}>
+									{this.state.error && <div className={style.errorMessage}>{this.state.error}</div>}
+									<div className={style.inputs}>
+										<input
+											type="email"
+											placeholder="Email"
+											required
+											value={ this.state.email }
+											onChange={(e) => this.setState({ email: e.target.value })}
+										/>
+										<input
+											type="password"
+											placeholder="Password"
+											required
+											value={ this.state.password }
+											onChange={(e) => this.setState({ password: e.target.value })}
+										/>
+									</div>
+									<div className={style.submitButton}>
+										<button>
+											{this.state.loggingIn && (
+												<span>
+													<FontAwesomeIcon spin={true} icon={faCircleNotch} />
+													&nbsp;
+												</span>
+											)}
+											Login
+										</button>
+									</div>
+								</form>
+							</div>
+							<div className={style.link}>
+								<Link to="/registration">Noch nicht Teil der Crew? Hier geht's zur Registration</Link>
 							</div>
 						</div>
-						<div className={style.text}>
-							<p>Melde dich bei Twanimal an</p>
-						</div>
-						<div className={style.form}>
-							<form onSubmit={login}>
-								{error && <div className={style.errorMessage}>{error}</div>}
-								<div className={style.inputs}>
-									<input
-										type="email"
-										placeholder="Email"
-										required
-										onChange={(e) => setEmail(e.target.value)}
-									/>
-									<input
-										type="password"
-										placeholder="Password"
-										required
-										onChange={(e) => setPassword(e.target.value)}
-									/>
-								</div>
-								<div className={style.submitButton}>
-									<button>
-										{loggingIn && (
-											<span>
-												<FontAwesomeIcon spin={true} icon={faCircleNotch} />
-												&nbsp;
-											</span>
-										)}
-										Login
-									</button>
-								</div>
-							</form>
-						</div>
-						<div className={style.link}>
-							<Link to="/registration">Noch nicht Teil der Crew? Hier geht's zur Registration</Link>
-						</div>
 					</div>
+					<Footer />
 				</div>
-				<Footer />
-			</div>
-		</React.Fragment>
-	);
+			</React.Fragment>
+		);
+	}
 }
+
+export default Login;
