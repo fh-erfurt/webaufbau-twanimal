@@ -5,7 +5,7 @@ import Post from '../components/Post';
 
 import style from '../assets/css/routes/home.module.scss';
 import { authenticationService } from '../services/authenticationService';
-import config from '../config';
+import { config } from '../config';
 import NewPost from '../components/NewPost';
 import SearchForm from '../components/SearchForm';
 import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';

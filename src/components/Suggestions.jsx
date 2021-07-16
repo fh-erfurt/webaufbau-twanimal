@@ -2,10 +2,13 @@ import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
 import style from '../assets/css/components/Suggestions.module.scss';
-import config from '../config';
+import { config } from '../config';
 import { authenticationService } from '../services/authenticationService';
 import { Link } from 'react-router-dom';
 
+/**
+ * Komponent, welches dem angemeldeten Nutzer Vorschläge zum Folgen gibt
+ */
 class Suggestions extends Component {
 	constructor(props) {
 		super(props);

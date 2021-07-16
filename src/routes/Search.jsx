@@ -4,7 +4,7 @@ import Post from '../components/Post';
 
 import style from '../assets/css/routes/search.module.scss';
 import { authenticationService } from '../services/authenticationService';
-import config from '../config';
+import { config } from '../config';
 import SearchForm from '../components/SearchForm';
 import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -40,6 +40,9 @@ class Search extends Component {
 		this.searchCombined();
 	}
 
+	/**
+	 * Sucht nach Beiträgen und Nutzern kombiniert in einer Abfrage
+	 */
 	searchCombined = async () => {
 		if (this.state.loading) return;
 

@@ -14,7 +14,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import React, { Component } from 'react';
 import style from '../assets/css/components/newPost.module.scss';
-import config from '../config';
+import { config } from '../config';
 import { authenticationService } from '../services/authenticationService';
 
 class NewPost extends Component {
@@ -123,6 +123,9 @@ class NewPost extends Component {
 		if (type !== 'random') await this.loadFromGiphy(type);
 	};
 
+	/**
+	 * Lädt das ausgewählte Gif runter als blob und fügt die Datei als Anhang hinzu
+	 */
 	selectGif = async (item) => {
 		const response = await fetch(item.images.original.url);
 		const data = await response.blob();
@@ -204,8 +207,9 @@ class NewPost extends Component {
 				content: '',
 			});
 		} else {
-			const error = await response.json();
-			console.log(error);
+			alert('Der Beitrag konnte nicht gesendet werden.');
+
+			this.setState({ isSubmitting: false });
 		}
 	};
 

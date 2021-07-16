@@ -3,9 +3,10 @@ import style from '../assets/css/components/post.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faComment, faEnvelope, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-import config from '../config';
+import { config } from '../config';
 import { authenticationService } from '../services/authenticationService';
 import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
+import { utilityService } from './../services/utilityService';
 
 class Post extends Component {
 	constructor(props) {
@@ -118,7 +119,11 @@ class Post extends Component {
 								</Link>
 							</b>
 						)}
-						<div className={style.text}>{this.state.post.text}</div>
+						<div
+							className={style.text}
+							dangerouslySetInnerHTML={{
+								__html: utilityService.nl2br(utilityService.stripTags(this.state.post.text)),
+							}}></div>
 						{this.state.post.attachements.length > 0 && (
 							<div
 								className={

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import styles from '../assets/css/components/navigation.module.scss';
 
 import { authenticationService } from '../services/authenticationService';
-import config from '../config';
+import { config } from '../config';
 
 class NavigationItem extends Component {
 	render() {
@@ -39,6 +39,11 @@ class Navigation extends Component {
 		if (this.props.user !== prevProps.user) this.setState({ user: this.props.user });
 	}
 
+	/**
+	 * Prüfen, ob die aktuelle Session gültig ist.
+	 * Sollte der Token ungültig sein, so wird man automatisch
+	 * abgemeldet.
+	 */
 	validateSession = async () => {
 		try {
 			const response = await fetch(`${config.apiHost}/validate-session`, {

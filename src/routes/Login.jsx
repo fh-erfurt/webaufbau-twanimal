@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import { authenticationService } from '../services/authenticationService';
 
-import config from '../config';
+import { config } from '../config';
 
 class Login extends Component {
 	constructor(props) {
@@ -25,8 +25,6 @@ class Login extends Component {
 		event.preventDefault();
 
 		if (this.state.loggingIn) return;
-
-		//evtl validator einbauen
 
 		this.setState({ loggingIn: true });
 

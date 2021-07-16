@@ -4,7 +4,7 @@ import style from '../assets/css/routes/profile.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
 import Suggestions from '../components/Suggestions';
-import config from '../config';
+import { config } from '../config';
 import { authenticationService } from '../services/authenticationService';
 import Post from '../components/Post';
 import EditProfile from './../components/EditProfile';

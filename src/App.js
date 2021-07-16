@@ -14,7 +14,7 @@ import AboutUs from './routes/AboutUs';
 import PostPage from './routes/PostPage';
 import Search from './routes/Search';
 
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Router, Switch, Route } from 'react-router-dom';
 import { StartpageRoute } from './components/StartpageRoute';
 import { createBrowserHistory } from 'history';
 

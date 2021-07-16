@@ -2,7 +2,12 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import style from '../assets/css/components/profileCard.module.scss';
 import { authenticationService } from '../services/authenticationService';
+import { utilityService } from './../services/utilityService';
 
+/**
+ * Profilkarte des aktuellen Nutzers oder des Nutzers aus den properties,
+ * welcher mit Profilbild, Namen, Beschreibung und Statistiken angezeigt wird
+ */
 class ProfileCard extends Component {
 	constructor(props) {
 		super(props);
@@ -41,7 +46,10 @@ class ProfileCard extends Component {
 					</div>
 
 					<div className={style.status}>
-						<p>{this.state.user.description}</p>
+						<p
+							dangerouslySetInnerHTML={{
+								__html: utilityService.nl2br(utilityService.stripTags(this.state.user.description)),
+							}}></p>
 					</div>
 
 					<div className={style.footer}>

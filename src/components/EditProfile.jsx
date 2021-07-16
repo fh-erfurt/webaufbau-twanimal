@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import style from '../assets/css/components/editProfile.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import config from '../config';
+import { config } from '../config';
 import { authenticationService } from '../services/authenticationService';
 import { faCircleNotch, faTimes } from '@fortawesome/free-solid-svg-icons';
 
@@ -54,6 +54,8 @@ class EditProfile extends Component {
 
 		const formData = new FormData();
 
+		// Anhängen von geänderten Dateien
+
 		if (this.state.profilePicture) formData.append('profilePicture', this.state.profilePicture);
 
 		if (this.state.displayName !== currentUser.displayName) formData.append('displayName', this.state.displayName);
@@ -63,6 +65,8 @@ class EditProfile extends Component {
 		if (this.state.description !== currentUser.description) formData.append('description', this.state.description);
 
 		if (this.state.email !== currentUser.email) formData.append('email', this.state.email);
+
+		// Prüfen des Passworts, wenn eins eingegeben wurde
 
 		if (this.state.newPassword.length > 0)
 			if (this.state.newPassword !== this.state.repeatNewPassword)

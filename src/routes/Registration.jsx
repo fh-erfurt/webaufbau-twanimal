@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import { authenticationService } from '../services/authenticationService';
 
-import config from '../config';
+import { config } from '../config';
 
 class Registration extends Component {
 	constructor(props) {

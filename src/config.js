@@ -1,4 +1,4 @@
-export default {
+export const config = {
 	jwt: {
 		encryptionKey: 'WXIfBP9Aq5cLbLv9aDyUR3uVq79kDIeR',
 		initialisationVector: 'QnQo5dObEdup0bS0',

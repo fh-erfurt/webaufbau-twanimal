@@ -3,7 +3,7 @@ import Navigation from '../components/Navigation';
 import ProfileCard from '../components/ProfileCard';
 import style from '../assets/css/routes/postPage.module.scss';
 import { authenticationService } from '../services/authenticationService';
-import config from '../config';
+import { config } from '../config';
 import Post from './../components/Post';
 import NewPost from './../components/NewPost';
 import SearchForm from '../components/SearchForm';
